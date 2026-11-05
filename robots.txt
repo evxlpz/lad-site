@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://evxlpz.github.io/lad-site/sitemap.xml
