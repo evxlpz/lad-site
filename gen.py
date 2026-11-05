@@ -116,6 +116,7 @@ def head(title, desc, path, ld, root):
 <meta property="og:url" content="{url}">
 <meta property="og:locale" content="uk_UA">
 <meta name="theme-color" content="#16181D">
+<meta name="google-site-verification" content="qIzzCrMqHk6QFRNcGPq2N3UUjU6E1_YZE65H0vHtTgA">
 <link rel="icon" href="{root}favicon.svg" type="image/svg+xml">
 <link rel="preload" href="{root}fonts/manrope-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}fonts/unbounded-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
