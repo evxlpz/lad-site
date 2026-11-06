@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Как автоматически разнести наложенный платеж NovaPay в 1С | Лад</title>
+<meta name="description" content="Как загружать выписки и реестры NovaPay в 1С и BAS, разносить наложенный платеж по заказам по ТТН и отдельно учитывать комиссию.">
+<link rel="canonical" href="https://ladtech.com.ua/ru/statti/novapay-nakladenyy-platizh-1c/">
+<link rel="alternate" hreflang="uk" href="https://ladtech.com.ua/statti/novapay-nakladenyy-platizh-1c/">
+<link rel="alternate" hreflang="ru" href="https://ladtech.com.ua/ru/statti/novapay-nakladenyy-platizh-1c/">
+<link rel="alternate" hreflang="x-default" href="https://ladtech.com.ua/statti/novapay-nakladenyy-platizh-1c/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Как автоматически разнести наложенный платеж NovaPay в 1С | Лад">
+<meta property="og:description" content="Как загружать выписки и реестры NovaPay в 1С и BAS, разносить наложенный платеж по заказам по ТТН и отдельно учитывать комиссию.">
+<meta property="og:url" content="https://ladtech.com.ua/ru/statti/novapay-nakladenyy-platizh-1c/">
+<meta property="og:locale" content="ru_UA">
+<meta name="theme-color" content="#16181D">
+<meta name="google-site-verification" content="qIzzCrMqHk6QFRNcGPq2N3UUjU6E1_YZE65H0vHtTgA">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../../fonts/manrope-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../fonts/unbounded-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../../style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Лад", "url": "https://ladtech.com.ua/ru/", "sameAs": ["https://t.me/yadhtl"]}, {"@type": "Article", "headline": "Как автоматически разнести наложенный платеж NovaPay в 1С", "description": "Как загружать выписки и реестры NovaPay в 1С и BAS, разносить наложенный платеж по заказам по ТТН и отдельно учитывать комиссию.", "datePublished": "2026-11-06", "dateModified": "2026-11-06", "inLanguage": "ru", "author": {"@type": "Organization", "name": "Лад", "url": "https://ladtech.com.ua/ru/"}, "publisher": {"@type": "Organization", "name": "Лад"}, "mainEntityOfPage": "https://ladtech.com.ua/ru/statti/novapay-nakladenyy-platizh-1c/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://ladtech.com.ua/ru/"}, {"@type": "ListItem", "position": 2, "name": "Статьи", "item": "https://ladtech.com.ua/ru/statti/"}, {"@type": "ListItem", "position": 3, "name": "Как автоматически разнести наложенный платеж NovaPay в 1С", "item": "https://ladtech.com.ua/ru/statti/novapay-nakladenyy-platizh-1c/"}]}]}</script>
+</head>
+<body>
+<header class="wrap top"><a class="logo" href="../../"><span class="mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C6F26B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h5l3-7 3 14 3-7h2"/></svg></span>Лад</a><div class="navwrap"><a class="navlink" href="../../">← Все модули</a><a class="lang" href="https://ladtech.com.ua/statti/novapay-nakladenyy-platizh-1c/" hreflang="uk" lang="uk">UA</a></div></header>
+<main><article class="wrap sec prose">
+<p class="kicker"><a href="../">Статьи</a> · 06.11.2026</p>
+<h1>Как автоматически разнести наложенный платеж NovaPay в 1С</h1><p class="lead">Наложенный платеж — это десятки мелких сумм каждый день, и разносить их руками по заказам долго и с ошибками. NovaPay отдает выписки и реестры через API, поэтому эту работу можно полностью отдать 1С.</p>
+<h2>Откуда берутся данные</h2><p>NovaPay формирует выписки и реестры по каждому полученному наложенному платежу: сумма, номер ТТН, комиссия. Эти данные доступны через API бизнес-кабинета.</p><h2>Как найти заказ</h2><p>Самый надежный ключ — номер ТТН. Если ТТН хранится в заказе покупателя, модуль однозначно находит, за какой заказ пришли деньги, без поиска по сумме или фамилии.</p><h2>Что делать с комиссией</h2><p>Комиссия NovaPay должна идти отдельной статьей расходов, а не уменьшать оплату заказа. Иначе в учете вечно висят «недоплаты» на несколько гривен.</p><h2>Ненайденные посылки</h2><p>Иногда ТТН в заказе нет или она изменилась. Такие оплаты не должны теряться: модуль показывает их отдельным списком, и менеджер привязывает их сам.</p><h2>Несколько ФЛП</h2><p>Если посылки отправляются с нескольких ФЛП, выписки обрабатываются по каждому отдельно, и деньги попадают на правильную организацию.</p>
+<div class="box lime artcta"><h3>Готовый модуль: NovaPay: наложенный платеж Новой Почты в 1С</h3><p>Выписки и реестры наложенного платежа Новой Почты автоматически разнесены по заказам. 8 000 грн разово, установка под ключ.</p><a class="btn dark" href="../../novapay-1c/">Подробнее о модуле</a></div>
+</article></main>
+<section class="dark" id="contact"><div class="wrap ctaband">
+<div><h2 class="h2">Есть похожая задача?</h2><p class="muted">Напишите в Telegram, какая у вас система, — подскажу, как это сделать.</p></div>
+<a class="btn lime" href="https://t.me/yadhtl">Написать в Telegram @yadhtl</a>
+</div></section>
+<footer class="foot"><div class="wrap">© 2026 Лад · Автоматизация e-commerce · <a href="https://ladtech.com.ua/ru/statti/">Статьи</a> · <a href="https://t.me/yadhtl">Telegram @yadhtl</a></div></footer>
+</body>
+</html>

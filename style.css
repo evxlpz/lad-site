@@ -117,3 +117,8 @@ details p{margin:12px 0 0;color:var(--text)}
 .artcta{margin-top:44px}
 .artcta p{color:#2B3A10}
 .artcta .btn{align-self:flex-start;margin-top:6px}
+.navwrap{display:flex;flex-wrap:wrap;align-items:center;gap:20px}
+.lang{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:36px;padding:0 10px;border:1.5px solid var(--ink);border-radius:9px;color:var(--ink);text-decoration:none;font-weight:700;font-size:13px;letter-spacing:.04em}
+.lang:hover{background:var(--ink);color:#fff}
+@media (max-width:700px){.navwrap{display:contents}.top .lang{order:1}.top .nav,.top .navlink{order:2}.top .nav{width:100%;gap:2px 18px;font-size:15px}.top .nav a{min-height:36px}}
+@media (max-width:700px){.top .navlink{order:1;margin-left:auto}.top .lang{order:2}.top .nav{order:3;gap:2px 14px;font-size:14px}}

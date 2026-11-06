@@ -5,7 +5,13 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content import EXTRA, ARTICLES
 
 BASE = (sys.argv[1] if len(sys.argv) > 1 else 'https://example.com').rstrip('/')
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'build')
+LANG = sys.argv[2] if len(sys.argv) > 2 else 'uk'
+RU = LANG == 'ru'
+PFX = '/ru' if RU else ''
+SITE = BASE + PFX
+RP = '../' if RU else ''   # глибше на рівень — шлях до спільних файлів (css, шрифти)
+CUR = '/'
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'build', 'ru' if RU else '')
 TG = 'https://t.me/yadhtl'
 BRAND = 'Лад'
 TODAY = datetime.date.today().isoformat()
@@ -97,26 +103,37 @@ M = [
   features=['Питання до бази звичайною мовою','Прихідні накладні з фото документа','Підсумки дзвінків у замовленні','Розумний пошук по замовленнях і клієнтах','Працює через Telegram-групу команди']),
 ]
 
+if RU:
+    from content_ru import M_RU, EXTRA_RU, ARTICLES_RU, PHRASES
+    M, EXTRA, ARTICLES = M_RU, EXTRA_RU, ARTICLES_RU
+    PH = sorted(PHRASES.items(), key=lambda kv: -len(kv[0]))
+
 e = html.escape
 LOGO_SVG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C6F26B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h5l3-7 3 14 3-7h2"/></svg>'
 CHECK = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E5E4E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
 WARN = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B4532A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>'
 
 def head(title, desc, path, ld, root):
-    url = BASE + path
+    global CUR
+    CUR = path
+    url = SITE + path
+    root = RP + root if not root.startswith('http') else root
     return f'''<!doctype html>
-<html lang="uk">
+<html lang="{'ru' if RU else 'uk'}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{url}">
+<link rel="alternate" hreflang="uk" href="{BASE}{path}">
+<link rel="alternate" hreflang="ru" href="{BASE}/ru{path}">
+<link rel="alternate" hreflang="x-default" href="{BASE}{path}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{url}">
-<meta property="og:locale" content="uk_UA">
+<meta property="og:locale" content="{'ru_UA' if RU else 'uk_UA'}">
 <meta name="theme-color" content="#16181D">
 <meta name="google-site-verification" content="qIzzCrMqHk6QFRNcGPq2N3UUjU6E1_YZE65H0vHtTgA">
 <link rel="icon" href="{root}favicon.svg" type="image/svg+xml">
@@ -131,10 +148,11 @@ def head(title, desc, path, ld, root):
 def header(root, back=False):
     nav = (f'<a class="navlink" href="{root}">← Усі модулі</a>' if back else
            '<nav class="nav"><a href="#modules">Модулі</a><a href="#services">Послуги</a><a href="#how">Як працюємо</a><a href="statti/">Статті</a><a href="#contact">Контакти</a></nav>')
-    return f'<header class="wrap top"><a class="logo" href="{root}"><span class="mark">{LOGO_SVG}</span>{BRAND}</a>{nav}</header>\n'
+    sw = (f'<a class="lang" href="{BASE}{CUR}" hreflang="uk" lang="uk">UA</a>' if RU else f'<a class="lang" href="{BASE}/ru{CUR}" hreflang="ru" lang="ru">RU</a>')
+    return f'<header class="wrap top"><a class="logo" href="{root}"><span class="mark">{LOGO_SVG}</span>{BRAND}</a><div class="navwrap">{nav}{sw}</div></header>\n'
 
 def footer():
-    return f'<footer class="foot"><div class="wrap">© {datetime.date.today().year} {BRAND} · Автоматизація e-commerce · <a href="{BASE}/statti/">Статті</a> · <a href="{TG}">Telegram @yadhtl</a></div></footer>\n</body>\n</html>\n'
+    return f'<footer class="foot"><div class="wrap">© {datetime.date.today().year} {BRAND} · Автоматизація e-commerce · <a href="{SITE}/statti/">Статті</a> · <a href="{TG}">Telegram @yadhtl</a></div></footer>\n</body>\n</html>\n'
 
 def cta(title, text):
     return f'''<section class="dark" id="contact"><div class="wrap ctaband">
@@ -145,16 +163,19 @@ def cta(title, text):
 def write(path, s):
     full = os.path.join(OUT, path.strip('/'), 'index.html') if path != '/' else os.path.join(OUT, 'index.html')
     os.makedirs(os.path.dirname(full), exist_ok=True)
+    if RU:
+        for a, b in PH:
+            s = s.replace(a, b)
     open(full, 'w', encoding='utf-8').write(s)
 
-ORG = {"@type": "Organization", "name": BRAND, "url": BASE + '/', "sameAs": [TG]}
+ORG = {"@type": "Organization", "name": BRAND, "url": SITE + '/', "sameAs": [TG]}
 
 # ---------- index ----------
 cards = ''.join(f'''<a class="card" href="{m["slug"]}/"><span class="tag">{e(m["group"])}</span><h3>{e(m["card"])}</h3><p>{e(m["short"])}</p><span class="price"><b>{e(m["price"])}</b><small>разово</small></span></a>''' for m in M)
 ld_index = {"@context": "https://schema.org", "@graph": [ORG,
-    {"@type": "WebSite", "name": BRAND, "url": BASE + '/', "inLanguage": "uk"},
+    {"@type": "WebSite", "name": BRAND, "url": SITE + '/', "inLanguage": LANG},
     {"@type": "ItemList", "name": "Модулі автоматизації e-commerce для 1С і BAS",
-     "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f'{BASE}/{m["slug"]}/', "name": m["h1"]} for i, m in enumerate(M)]}]}
+     "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f'{SITE}/{m["slug"]}/', "name": m["h1"]} for i, m in enumerate(M)]}]}
 idx = head('Автоматизація інтернет-магазину: модулі для 1С і BAS — ' + BRAND,
            'Готові модулі для 1С, BAS і CRM: MonoPay, NovaPay, Нова Пошта, обмін із сайтом і постачальниками, AI-помічниця. Разова оплата, встановлення під ключ.',
            '/', ld_index, '')
@@ -212,8 +233,8 @@ for m in M:
         {"@type": "Service", "name": m["h1"], "description": m["desc"], "provider": {"@type": "Organization", "name": BRAND},
          "areaServed": "UA", "offers": {"@type": "Offer", "price": m["amount"], "priceCurrency": "UAH"}},
         {"@type": "BreadcrumbList", "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Модулі", "item": BASE + '/'},
-            {"@type": "ListItem", "position": 2, "name": m["card"], "item": BASE + path}]},
+            {"@type": "ListItem", "position": 1, "name": "Модулі", "item": SITE + '/'},
+            {"@type": "ListItem", "position": 2, "name": m["card"], "item": SITE + path}]},
         {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}]}
     s = head(f'{m["h1"]} — {m["price"]} | {BRAND}', m["desc"], path, ld, '../')
     s += header('../', back=True)
@@ -253,12 +274,12 @@ for a in ARTICLES:
     mod = MB[a["module"]]
     ld = {"@context": "https://schema.org", "@graph": [ORG,
         {"@type": "Article", "headline": a["title"], "description": a["desc"], "datePublished": a["date"], "dateModified": a["date"],
-         "inLanguage": "uk", "author": {"@type": "Organization", "name": BRAND, "url": BASE + '/'},
-         "publisher": {"@type": "Organization", "name": BRAND}, "mainEntityOfPage": BASE + path},
+         "inLanguage": LANG, "author": {"@type": "Organization", "name": BRAND, "url": SITE + '/'},
+         "publisher": {"@type": "Organization", "name": BRAND}, "mainEntityOfPage": SITE + path},
         {"@type": "BreadcrumbList", "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Головна", "item": BASE + '/'},
-            {"@type": "ListItem", "position": 2, "name": "Статті", "item": BASE + '/statti/'},
-            {"@type": "ListItem", "position": 3, "name": a["title"], "item": BASE + path}]}]}
+            {"@type": "ListItem", "position": 1, "name": "Головна", "item": SITE + '/'},
+            {"@type": "ListItem", "position": 2, "name": "Статті", "item": SITE + '/statti/'},
+            {"@type": "ListItem", "position": 3, "name": a["title"], "item": SITE + path}]}]}
     s = head(f'{a["title"]} | {BRAND}', a["desc"], path, ld, '../../')
     s += header('../../', back=True)
     body = ''.join(f'<h2>{e(h)}</h2>' + ''.join(f'<p>{e(p)}</p>' for p in ps) for h, ps in a["body"])
@@ -273,7 +294,7 @@ for a in ARTICLES:
     s += footer()
     write(path, s)
 
-ld = {"@context": "https://schema.org", "@graph": [ORG, {"@type": "CollectionPage", "name": "Статті про автоматизацію інтернет-магазину", "url": BASE + '/statti/', "inLanguage": "uk"}]}
+ld = {"@context": "https://schema.org", "@graph": [ORG, {"@type": "CollectionPage", "name": "Статті про автоматизацію інтернет-магазину", "url": SITE + '/statti/', "inLanguage": LANG}]}
 s = head(f'Статті: автоматизація інтернет-магазину з 1С і BAS | {BRAND}', 'Практичні інструкції: оплата monobank у 1С, накладений платіж NovaPay, залишки на сайт, Нова Пошта в обліку.', '/statti/', ld, '../')
 s += header('../', back=True)
 items = ''.join(f'<a class="card" href="{a["slug"]}/"><span class="tag">Інструкція</span><h3>{e(a["title"])}</h3><p>{e(a["desc"])}</p></a>' for a in ARTICLES)
@@ -282,16 +303,23 @@ s += cta('Хочете так само у себе?', 'Напишіть у Teleg
 s += footer()
 write('/statti/', s)
 
+if RU:
+    print('ok ru ->', SITE)
+    sys.exit(0)
+
 # ---------- sitemap, robots, 404, favicon ----------
 urls = ['/'] + [f'/{m["slug"]}/' for m in M] + ['/statti/'] + [f'/statti/{a["slug"]}/' for a in ARTICLES]
-sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(
-    f'  <url><loc>{BASE}{u}</loc><lastmod>{TODAY}</lastmod></url>\n' for u in urls) + '</urlset>\n'
+def alt(u):
+    return (f'<xhtml:link rel="alternate" hreflang="uk" href="{BASE}{u}"/><xhtml:link rel="alternate" hreflang="ru" href="{BASE}/ru{u}"/>'
+            f'<xhtml:link rel="alternate" hreflang="x-default" href="{BASE}{u}"/>')
+sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + ''.join(
+    f'  <url><loc>{BASE}{p}{u}</loc><lastmod>{TODAY}</lastmod>{alt(u)}</url>\n' for u in urls for p in ('', '/ru')) + '</urlset>\n'
 open(os.path.join(OUT, 'sitemap.xml'), 'w').write(sm)
 open(os.path.join(OUT, 'robots.txt'), 'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n')
 open(os.path.join(OUT, 'favicon.svg'), 'w').write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#16181D"/><path d="M6 16h6l4-9 4 18 4-9h2" fill="none" stroke="#C6F26B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>')
-nf = head('Сторінку не знайдено — ' + BRAND, 'Сторінку не знайдено.', '/404.html', ORG | {"@context": "https://schema.org"}, BASE + '/')
+nf = head('Сторінку не знайдено — ' + BRAND, 'Сторінку не знайдено.', '/404.html', ORG | {"@context": "https://schema.org"}, SITE + '/')
 nf = nf.replace('<link rel="canonical"', '<meta name="robots" content="noindex"><link rel="canonical"')
-nf += header(BASE + '/') + f'<main class="wrap sec"><h1>Сторінку не знайдено</h1><p class="lead"><a href="{BASE}/">На головну</a></p></main>' + footer()
+nf += header(SITE + '/') + f'<main class="wrap sec"><h1>Сторінку не знайдено</h1><p class="lead"><a href="{BASE}/">На головну</a></p></main>' + footer()
 open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8').write(nf)
 INDEXNOW = '6f1c2b9e4d7a4e0f9b3c8a51d2e7f640'
 open(os.path.join(OUT, INDEXNOW + '.txt'), 'w').write(INDEXNOW)
