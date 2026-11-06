@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Генератор статичного сайту «Лад». Запуск: python3 gen.py [BASE_URL]"""
 import json, os, sys, html, datetime
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from content import EXTRA, ARTICLES
 
 BASE = (sys.argv[1] if len(sys.argv) > 1 else 'https://example.com').rstrip('/')
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'build')
@@ -128,11 +130,11 @@ def head(title, desc, path, ld, root):
 
 def header(root, back=False):
     nav = (f'<a class="navlink" href="{root}">← Усі модулі</a>' if back else
-           '<nav class="nav"><a href="#modules">Модулі</a><a href="#services">Послуги</a><a href="#how">Як працюємо</a><a href="#contact">Контакти</a></nav>')
+           '<nav class="nav"><a href="#modules">Модулі</a><a href="#services">Послуги</a><a href="#how">Як працюємо</a><a href="statti/">Статті</a><a href="#contact">Контакти</a></nav>')
     return f'<header class="wrap top"><a class="logo" href="{root}"><span class="mark">{LOGO_SVG}</span>{BRAND}</a>{nav}</header>\n'
 
 def footer():
-    return f'<footer class="foot"><div class="wrap">© {datetime.date.today().year} {BRAND} · Автоматизація e-commerce · <a href="{TG}">Telegram @yadhtl</a></div></footer>\n</body>\n</html>\n'
+    return f'<footer class="foot"><div class="wrap">© {datetime.date.today().year} {BRAND} · Автоматизація e-commerce · <a href="{BASE}/statti/">Статті</a> · <a href="{TG}">Telegram @yadhtl</a></div></footer>\n</body>\n</html>\n'
 
 def cta(title, text):
     return f'''<section class="dark" id="contact"><div class="wrap ctaband">
@@ -188,32 +190,40 @@ idx += f'''<main>
 </div></div></section>
 <section class="wrap sec"><div class="box who"><div><p class="kicker">Хто це робить</p><h2 class="h2">Не агенція. Один розробник — від дзвінка до підтримки</h2></div>
 <div><p>Кожен модуль я зробив сам для живого магазину і щодня бачу, як він працює.</p><p>Ви говорите з тим, хто пише код, а не з менеджером агенції. Сам ставлю, сам навчаю, сам підтримую.</p></div></div></section>
-<section class="wrap sec case"><div><p class="kicker">Кейс</p><h2 class="h2">Інтернет-магазин контактних лінз</h2><p class="lead sm">Усі модулі вище працюють тут щодня: оплати, накладений платіж, обмін із сайтом і постачальниками, AI-помічниця для менеджерів.</p></div>
-<div class="stats"><div class="stat"><b>932</b><span>замовлення за жовтень 2026 через ці модулі</span></div><div class="stat"><b>≈50 год</b><span>ручної роботи на місяць забирає автоматика</span></div></div></section>
+<section class="wrap sec case"><div><p class="kicker">Перевірено в роботі</p><h2 class="h2">Не демо-стенд, а щоденна робота</h2><p class="lead sm">Кожен модуль спершу місяцями працює в живому інтернет-магазині: оплати, накладений платіж, обмін із сайтом і постачальниками, AI-помічниця для менеджерів. Лише потім — на продаж.</p></div>
+<div class="stats"><div class="stat"><b>12</b><span>модулів у щоденній роботі</span></div><div class="stat"><b>30 днів</b><span>виправлень після встановлення — у ціні</span></div></div></section>
 </main>
 '''
 idx += cta('Розкажіть, що болить', 'Напишіть, яка у вас система і що хочете автоматизувати. Відповім протягом дня з рішенням і оцінкою.')
 idx += footer()
 write('/', idx)
 
+GEN_FAQ = [('Чи запрацює на моїй конфігурації?', 'Модуль ставиться як розширення, без зміни основної конфігурації. Якщо у вас інша версія чи доопрацьована база — адаптую, оцінка безкоштовна.'),
+           ('А якщо сервіс змінить API?', 'Оновлю модуль за годинами, 600 грн/год. Зазвичай це година-дві роботи.'),
+           ('Можна доробити під мої процеси?', 'Так. Спершу оцінюю, скільки годин займе, потім роблю. 600 грн/год.')]
+
 # ---------- module pages ----------
 for m in M:
     path = f'/{m["slug"]}/'
+    x = EXTRA[m["key"]]
+    faq = x["faq"] + GEN_FAQ
+    art = [a for a in ARTICLES if a["module"] == m["key"]]
     ld = {"@context": "https://schema.org", "@graph": [ORG,
         {"@type": "Service", "name": m["h1"], "description": m["desc"], "provider": {"@type": "Organization", "name": BRAND},
          "areaServed": "UA", "offers": {"@type": "Offer", "price": m["amount"], "priceCurrency": "UAH"}},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Модулі", "item": BASE + '/'},
             {"@type": "ListItem", "position": 2, "name": m["card"], "item": BASE + path}]},
-        {"@type": "FAQPage", "mainEntity": [
-            {"@type": "Question", "name": "Чи запрацює на моїй конфігурації?", "acceptedAnswer": {"@type": "Answer", "text": "Модуль ставиться як розширення, без зміни основної конфігурації. Якщо у вас інша версія чи доопрацьована база — адаптую, оцінка безкоштовна."}},
-            {"@type": "Question", "name": "А якщо сервіс змінить API?", "acceptedAnswer": {"@type": "Answer", "text": "Оновлю модуль за годинами, 600 грн/год. Зазвичай це година-дві роботи."}},
-            {"@type": "Question", "name": "Можна доробити під мої процеси?", "acceptedAnswer": {"@type": "Answer", "text": "Так. Спершу оцінюю, скільки годин займе, потім роблю. 600 грн/год."}}]}]}
+        {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}]}
     s = head(f'{m["h1"]} — {m["price"]} | {BRAND}', m["desc"], path, ld, '../')
     s += header('../', back=True)
     pains = ''.join(f'<li>{WARN}<span>{e(p)}</span></li>' for p in m["pains"])
     feats = ''.join(f'<li>{CHECK}<span>{e(f)}</span></li>' for f in m["features"])
     others = ''.join(f'<a href="../{o["slug"]}/">{e(o["card"])}</a>' for o in M if o is not m)
+    how = ''.join(f'<li>{e(t)}</li>' for t in x["how"])
+    need = ''.join(f'<li>{CHECK}<span>{e(t)}</span></li>' for t in x["need"])
+    faqhtml = ''.join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in faq)
+    arthtml = ''.join(f'<section class="wrap sec"><a class="artlink" href="../statti/{a["slug"]}/"><span class="tag">Стаття</span><b>{e(a["title"])}</b></a></section>' for a in art)
     s += f'''<main>
 <section class="wrap hero">
 <div class="grow"><p class="kicker">{e(m["group"])}</p><h1>{e(m["h1"])}</h1><p class="lead">{e(m["lead"])}</p></div>
@@ -221,16 +231,14 @@ for m in M:
 </section>
 <section class="white"><div class="wrap sec"><h2 class="h2">Що зараз забирає час</h2><ul class="list pains">{pains}</ul></div></section>
 <section class="wrap sec"><h2 class="h2">Що робить модуль</h2><ul class="list feats">{feats}</ul></section>
+<section class="wrap sec"><h2 class="h2">Як це працює</h2><ol class="flow">{how}</ol></section>
+<section class="wrap sec"><h2 class="h2">Що потрібно для підключення</h2><ul class="need">{need}</ul></section>
 <section class="wrap sec"><div class="box lime grid3">
 <div><i>01</i><h3>Демо наживо</h3><p>Показую модуль у роботі через демонстрацію екрана, до оплати.</p></div>
 <div><i>02</i><h3>Встановлення</h3><p>Сам ставлю віддалено: спершу на копію бази, потім на робочу.</p></div>
 <div><i>03</i><h3>Навчання</h3><p>Показую вашим людям, як працювати, і 30 днів виправляю, якщо щось не так.</p></div>
 </div></section>
-<section class="wrap sec"><h2 class="h2">Питання</h2>
-<details><summary>Чи запрацює на моїй конфігурації?</summary><p>Модуль ставиться як розширення, без зміни основної конфігурації. Якщо у вас інша версія чи доопрацьована база — адаптую, оцінка безкоштовна.</p></details>
-<details><summary>А якщо сервіс змінить API?</summary><p>Оновлю модуль за годинами, 600 грн/год. Зазвичай це година-дві роботи.</p></details>
-<details><summary>Можна доробити під мої процеси?</summary><p>Так. Спершу оцінюю, скільки годин займе, потім роблю. 600 грн/год.</p></details>
-</section>
+<section class="wrap sec"><h2 class="h2">Питання</h2>{faqhtml}</section>{arthtml}
 <section class="wrap sec"><h2 class="h2 sm">Інші модулі</h2><div class="others">{others}</div></section>
 </main>
 '''
@@ -238,8 +246,44 @@ for m in M:
     s += footer()
     write(path, s)
 
+# ---------- articles ----------
+MB = {m["key"]: m for m in M}
+for a in ARTICLES:
+    path = f'/statti/{a["slug"]}/'
+    mod = MB[a["module"]]
+    ld = {"@context": "https://schema.org", "@graph": [ORG,
+        {"@type": "Article", "headline": a["title"], "description": a["desc"], "datePublished": a["date"], "dateModified": a["date"],
+         "inLanguage": "uk", "author": {"@type": "Organization", "name": BRAND, "url": BASE + '/'},
+         "publisher": {"@type": "Organization", "name": BRAND}, "mainEntityOfPage": BASE + path},
+        {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Головна", "item": BASE + '/'},
+            {"@type": "ListItem", "position": 2, "name": "Статті", "item": BASE + '/statti/'},
+            {"@type": "ListItem", "position": 3, "name": a["title"], "item": BASE + path}]}]}
+    s = head(f'{a["title"]} | {BRAND}', a["desc"], path, ld, '../../')
+    s += header('../../', back=True)
+    body = ''.join(f'<h2>{e(h)}</h2>' + ''.join(f'<p>{e(p)}</p>' for p in ps) for h, ps in a["body"])
+    s += f'''<main><article class="wrap sec prose">
+<p class="kicker"><a href="../">Статті</a> · {a["date"][8:10]}.{a["date"][5:7]}.{a["date"][:4]}</p>
+<h1>{e(a["title"])}</h1><p class="lead">{e(a["lead"])}</p>
+{body}
+<div class="box lime artcta"><h3>Готовий модуль: {e(mod["h1"])}</h3><p>{e(mod["short"])} {e(mod["price"])} разово, встановлення під ключ.</p><a class="btn dark" href="../../{mod["slug"]}/">Детальніше про модуль</a></div>
+</article></main>
+'''
+    s += cta('Є схожа задача?', 'Напишіть у Telegram, яка у вас система, — підкажу, як це зробити.')
+    s += footer()
+    write(path, s)
+
+ld = {"@context": "https://schema.org", "@graph": [ORG, {"@type": "CollectionPage", "name": "Статті про автоматизацію інтернет-магазину", "url": BASE + '/statti/', "inLanguage": "uk"}]}
+s = head(f'Статті: автоматизація інтернет-магазину з 1С і BAS | {BRAND}', 'Практичні інструкції: оплата monobank у 1С, накладений платіж NovaPay, залишки на сайт, Нова Пошта в обліку.', '/statti/', ld, '../')
+s += header('../', back=True)
+items = ''.join(f'<a class="card" href="{a["slug"]}/"><span class="tag">Інструкція</span><h3>{e(a["title"])}</h3><p>{e(a["desc"])}</p></a>' for a in ARTICLES)
+s += f'<main><section class="wrap hero"><div class="grow"><p class="kicker">Статті</p><h1>Автоматизація інтернет-магазину: практичні інструкції</h1><p class="lead">Як прибрати ручну роботу з оплатами, доставкою й обміном із сайтом у 1С та BAS.</p></div></section><section class="wrap sec"><div class="cards">{items}</div></section></main>\n'
+s += cta('Хочете так само у себе?', 'Напишіть у Telegram, яка у вас система.')
+s += footer()
+write('/statti/', s)
+
 # ---------- sitemap, robots, 404, favicon ----------
-urls = ['/'] + [f'/{m["slug"]}/' for m in M]
+urls = ['/'] + [f'/{m["slug"]}/' for m in M] + ['/statti/'] + [f'/statti/{a["slug"]}/' for a in ARTICLES]
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(
     f'  <url><loc>{BASE}{u}</loc><lastmod>{TODAY}</lastmod></url>\n' for u in urls) + '</urlset>\n'
 open(os.path.join(OUT, 'sitemap.xml'), 'w').write(sm)
@@ -249,4 +293,6 @@ nf = head('Сторінку не знайдено — ' + BRAND, 'Сторінк
 nf = nf.replace('<link rel="canonical"', '<meta name="robots" content="noindex"><link rel="canonical"')
 nf += header(BASE + '/') + f'<main class="wrap sec"><h1>Сторінку не знайдено</h1><p class="lead"><a href="{BASE}/">На головну</a></p></main>' + footer()
 open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8').write(nf)
+INDEXNOW = '6f1c2b9e4d7a4e0f9b3c8a51d2e7f640'
+open(os.path.join(OUT, INDEXNOW + '.txt'), 'w').write(INDEXNOW)
 print('ok', len(urls), 'pages ->', BASE)

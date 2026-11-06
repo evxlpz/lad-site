@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Як підключити оплату monobank до 1С: покрокова інструкція | Лад</title>
+<meta name="description" content="Що потрібно, щоб приймати оплату карткою monobank прямо із замовлення в 1С чи BAS: еквайринг, токен, налаштування, автоматичний статус і повернення.">
+<link rel="canonical" href="https://ladtech.com.ua/statti/pidkliuchennia-monobank-do-1c/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Як підключити оплату monobank до 1С: покрокова інструкція | Лад">
+<meta property="og:description" content="Що потрібно, щоб приймати оплату карткою monobank прямо із замовлення в 1С чи BAS: еквайринг, токен, налаштування, автоматичний статус і повернення.">
+<meta property="og:url" content="https://ladtech.com.ua/statti/pidkliuchennia-monobank-do-1c/">
+<meta property="og:locale" content="uk_UA">
+<meta name="theme-color" content="#16181D">
+<meta name="google-site-verification" content="qIzzCrMqHk6QFRNcGPq2N3UUjU6E1_YZE65H0vHtTgA">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/manrope-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/unbounded-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "Лад", "url": "https://ladtech.com.ua/", "sameAs": ["https://t.me/yadhtl"]}, {"@type": "Article", "headline": "Як підключити оплату monobank до 1С: покрокова інструкція", "description": "Що потрібно, щоб приймати оплату карткою monobank прямо із замовлення в 1С чи BAS: еквайринг, токен, налаштування, автоматичний статус і повернення.", "datePublished": "2026-11-06", "dateModified": "2026-11-06", "inLanguage": "uk", "author": {"@type": "Organization", "name": "Лад", "url": "https://ladtech.com.ua/"}, "publisher": {"@type": "Organization", "name": "Лад"}, "mainEntityOfPage": "https://ladtech.com.ua/statti/pidkliuchennia-monobank-do-1c/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://ladtech.com.ua/"}, {"@type": "ListItem", "position": 2, "name": "Статті", "item": "https://ladtech.com.ua/statti/"}, {"@type": "ListItem", "position": 3, "name": "Як підключити оплату monobank до 1С: покрокова інструкція", "item": "https://ladtech.com.ua/statti/pidkliuchennia-monobank-do-1c/"}]}]}</script>
+</head>
+<body>
+<header class="wrap top"><a class="logo" href="../../"><span class="mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C6F26B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h5l3-7 3 14 3-7h2"/></svg></span>Лад</a><a class="navlink" href="../../">← Усі модулі</a></header>
+<main><article class="wrap sec prose">
+<p class="kicker"><a href="../">Статті</a> · 06.11.2026</p>
+<h1>Як підключити оплату monobank до 1С: покрокова інструкція</h1><p class="lead">Щоб клієнт платив карткою monobank за посиланням із замовлення, а оплата сама з’являлась в 1С, потрібні три речі: інтернет-еквайринг monobank, токен і модуль, який зв’яже їх з обліком.</p>
+<h2>Крок 1. Підключіть інтернет-еквайринг</h2><p>Еквайринг підключається в кабінеті monobank бізнес для ФОП або ТОВ. Після підключення у вас з’являється термінал, через який проходять оплати карткою.</p><h2>Крок 2. Отримайте токен</h2><p>У кабінеті еквайрингу є токен — ключ, за яким облікова система створює рахунки від вашого імені. Його не варто пересилати в месенджерах і вписувати прямо в код: правильне місце — налаштування модуля в 1С.</p><h2>Крок 3. Прив’яжіть рахунок до замовлення</h2><p>Головне, що потрібно від інтеграції, — щоб рахунок створювався із замовлення покупця і залишався до нього прив’язаним. Тоді менеджер бачить історію рахунків прямо в замовленні, а не шукає оплату в банку за сумою і прізвищем.</p><h2>Крок 4. Автоматичний статус оплати</h2><p>Банк повідомляє про оплату, а модуль оновлює статус рахунку і створює в 1С документ оплати карткою. Якщо повідомлення з якоїсь причини не дійшло, модуль сам перевіряє неоплачені рахунки за розкладом.</p><h2>Крок 5. Повернення</h2><p>Повне чи часткове повернення робиться з того ж замовлення. В історії лишається, хто, коли і скільки повернув — це знімає більшість суперечок з клієнтами і бухгалтерією.</p><h2>Скільки часу займає</h2><p>Якщо еквайринг уже підключений, встановлення готового модуля і налаштування займає від кількох годин. Писати інтеграцію з нуля — зазвичай тижні роботи програміста.</p>
+<div class="box lime artcta"><h3>Готовий модуль: Інтеграція MonoPay з 1С і BAS</h3><p>Рахунки на оплату з замовлення, статуси, повернення та Покупка частинами — прямо в обліку. 7 000 грн разово, встановлення під ключ.</p><a class="btn dark" href="../../integratsiya-monopay-1c-bas/">Детальніше про модуль</a></div>
+</article></main>
+<section class="dark" id="contact"><div class="wrap ctaband">
+<div><h2 class="h2">Є схожа задача?</h2><p class="muted">Напишіть у Telegram, яка у вас система, — підкажу, як це зробити.</p></div>
+<a class="btn lime" href="https://t.me/yadhtl">Написати в Telegram @yadhtl</a>
+</div></section>
+<footer class="foot"><div class="wrap">© 2026 Лад · Автоматизація e-commerce · <a href="https://ladtech.com.ua/statti/">Статті</a> · <a href="https://t.me/yadhtl">Telegram @yadhtl</a></div></footer>
+</body>
+</html>
