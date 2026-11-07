@@ -330,3 +330,7 @@ PHRASES = {
  'Працює': 'Работает',
  '>разово<': '>разово<',
 }
+
+# Додаткові статті (рос.) — дивись articles_more.py
+from articles_more import ARTICLES_RU_MORE
+ARTICLES_RU += ARTICLES_RU_MORE

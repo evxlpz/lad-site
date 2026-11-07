@@ -3,6 +3,8 @@
 import json, os, sys, html, datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content import EXTRA, ARTICLES
+from home_extra import HOME
+import hashlib
 
 BASE = (sys.argv[1] if len(sys.argv) > 1 else 'https://example.com').rstrip('/')
 LANG = sys.argv[2] if len(sys.argv) > 2 else 'uk'
@@ -129,7 +131,16 @@ def head(title, desc, path, ld, root):
 <link rel="alternate" hreflang="uk" href="{BASE}{path}">
 <link rel="alternate" hreflang="ru" href="{BASE}/ru{path}">
 <link rel="alternate" hreflang="x-default" href="{BASE}{path}">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Лад">
+<meta property="og:image" content="{BASE}/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{e(title)}">
+<meta name="twitter:description" content="{e(desc)}">
+<meta name="twitter:image" content="{BASE}/og.png">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{url}">
@@ -159,6 +170,8 @@ def cta(title, text):
 <a class="btn lime" href="{TG}">Написати в Telegram @yadhtl</a>
 </div></section>\n'''
 
+HASHES = {}
+
 def write(path, s):
     full = os.path.join(OUT, path.strip('/'), 'index.html') if path != '/' else os.path.join(OUT, 'index.html')
     os.makedirs(os.path.dirname(full), exist_ok=True)
@@ -166,13 +179,21 @@ def write(path, s):
         for a, b in PH:
             s = s.replace(a, b)
     open(full, 'w', encoding='utf-8').write(s)
+    if not RU:
+        HASHES[path] = hashlib.sha1(s.encode('utf-8')).hexdigest()
 
-ORG = {"@type": "Organization", "name": BRAND, "url": SITE + '/', "sameAs": [TG]}
+ORG = {"@type": "Organization", "@id": BASE + "/#org", "name": BRAND, "url": SITE + '/', "logo": BASE + "/og.png", "sameAs": [TG],
+       "description": "Готові модулі автоматизації e-commerce для 1С і BAS: оплати, доставка, обмін із сайтом і постачальниками, AI-помічниця." if not RU else "Готовые модули автоматизации e-commerce для 1С и BAS: оплаты, доставка, обмен с сайтом и поставщиками, AI-помощница.",
+       "areaServed": "UA", "knowsAbout": ["1С", "BAS", "monobank", "NovaPay", "Нова Пошта", "Bitrix", "інтеграція інтернет-магазину з обліком"],
+       "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "url": TG, "availableLanguage": ["uk", "ru"]}}
 
 # ---------- index ----------
 cards = ''.join(f'''<a class="card" href="{m["slug"]}/"><span class="tag">{e(m["group"])}</span><h3>{e(m["card"])}</h3><p>{e(m["short"])}</p><span class="price"><b>{e(m["price"])}</b><small>разово</small></span></a>''' for m in M)
+HX = HOME[LANG]
+home_faq_html = '<section class="wrap sec"><h2 class="h2">' + HX['faq_h'] + '</h2>' + ''.join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in HX['faq']) + '</section>'
 ld_index = {"@context": "https://schema.org", "@graph": [ORG,
-    {"@type": "WebSite", "name": BRAND, "url": SITE + '/', "inLanguage": LANG},
+    {"@type": "WebSite", "name": BRAND, "url": SITE + '/', "inLanguage": LANG, "publisher": {"@id": BASE + "/#org"}},
+    {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in HX['faq']]},
     {"@type": "ItemList", "name": "Модулі автоматизації e-commerce для 1С і BAS",
      "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f'{SITE}/{m["slug"]}/', "name": m["h1"]} for i, m in enumerate(M)]}]}
 idx = head('Автоматизація інтернет-магазину: модулі для 1С і BAS — ' + BRAND,
@@ -212,7 +233,7 @@ idx += f'''<main>
 <div><p>Кожен модуль я зробив сам для живого магазину і щодня бачу, як він працює.</p><p>Ви говорите з тим, хто пише код, а не з менеджером агенції. Сам ставлю, сам навчаю, сам підтримую.</p></div></div></section>
 <section class="wrap sec case"><div><p class="kicker">Перевірено в роботі</p><h2 class="h2">Не демо-стенд, а щоденна робота</h2><p class="lead sm">Кожен модуль спершу місяцями працює в живому інтернет-магазині: оплати, накладений платіж, обмін із сайтом і постачальниками, AI-помічниця для менеджерів. Лише потім — на продаж.</p></div>
 <div class="stats"><div class="stat"><b>12</b><span>модулів у щоденній роботі</span></div><div class="stat"><b>30 днів</b><span>виправлень після встановлення — у ціні</span></div></div></section>
-</main>
+{home_faq_html}</main>
 '''
 idx += cta('Розкажіть, що болить', 'Напишіть, яка у вас система і що хочете автоматизувати. Відповім протягом дня з рішенням і оцінкою.')
 idx += footer()
@@ -229,8 +250,13 @@ for m in M:
     faq = x["faq"] + GEN_FAQ
     art = [a for a in ARTICLES if a["module"] == m["key"]]
     ld = {"@context": "https://schema.org", "@graph": [ORG,
-        {"@type": "Service", "name": m["h1"], "description": m["desc"], "provider": {"@type": "Organization", "name": BRAND},
+        {"@type": "Service", "name": m["h1"], "description": m["desc"], "provider": {"@id": BASE + "/#org"},
          "areaServed": "UA", "offers": {"@type": "Offer", "price": m["amount"], "priceCurrency": "UAH"}},
+        {"@type": "SoftwareApplication", "name": m["card"] + " " + ("для 1С і BAS" if not RU else "для 1С и BAS"), "description": m["desc"],
+         "applicationCategory": "BusinessApplication", "applicationSubCategory": "Extension for 1C:Enterprise / BAS",
+         "operatingSystem": "1C:Enterprise 8.3", "inLanguage": LANG, "url": SITE + path,
+         "publisher": {"@id": BASE + "/#org"},
+         "offers": {"@type": "Offer", "price": m["amount"], "priceCurrency": "UAH", "availability": "https://schema.org/InStock", "url": SITE + path}},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Модулі", "item": SITE + '/'},
             {"@type": "ListItem", "position": 2, "name": m["card"], "item": SITE + path}]},
@@ -273,15 +299,23 @@ for a in ARTICLES:
     mod = MB[a["module"]]
     ld = {"@context": "https://schema.org", "@graph": [ORG,
         {"@type": "Article", "headline": a["title"], "description": a["desc"], "datePublished": a["date"], "dateModified": a["date"],
-         "inLanguage": LANG, "author": {"@type": "Organization", "name": BRAND, "url": SITE + '/'},
-         "publisher": {"@type": "Organization", "name": BRAND}, "mainEntityOfPage": SITE + path},
+         "inLanguage": LANG, "image": BASE + "/og.png", "author": {"@id": BASE + "/#org"},
+         "publisher": {"@id": BASE + "/#org"}, "mainEntityOfPage": SITE + path},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Головна", "item": SITE + '/'},
             {"@type": "ListItem", "position": 2, "name": "Статті", "item": SITE + '/statti/'},
             {"@type": "ListItem", "position": 3, "name": a["title"], "item": SITE + path}]}]}
+    afaq = a.get('faq') or []
+    if afaq:
+        ld["@graph"].append({"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in afaq]})
     s = head(f'{a["title"]} | {BRAND}', a["desc"], path, ld, '../../')
     s += header('../../', back=True)
     body = ''.join(f'<h2>{e(h)}</h2>' + ''.join(f'<p>{e(p)}</p>' for p in ps) for h, ps in a["body"])
+    if afaq:
+        body += '<h2>' + HX['faq_h'] + '</h2>' + ''.join(f'<details><summary>{e(q)}</summary><p>{e(ans)}</p></details>' for q, ans in afaq)
+    rel = [x for x in ARTICLES if x is not a and x['module'] == a['module']] + [x for x in ARTICLES if x is not a and x['module'] != a['module']]
+    relhtml = ''.join(f'<a class="artlink" href="../{x["slug"]}/"><span class="tag">{"Стаття" if not RU else "Статья"}</span><b>{e(x["title"])}</b></a>' for x in rel[:3])
+    body += f'<h2>{HX["related"]}</h2><div class="related">{relhtml}</div>'
     s += f'''<main><article class="wrap sec prose">
 <p class="kicker"><a href="../">Статті</a> · {a["date"][8:10]}.{a["date"][5:7]}.{a["date"][:4]}</p>
 <h1>{e(a["title"])}</h1><p class="lead">{e(a["lead"])}</p>
@@ -311,8 +345,21 @@ urls = ['/'] + [f'/{m["slug"]}/' for m in M] + ['/statti/'] + [f'/statti/{a["slu
 def alt(u):
     return (f'<xhtml:link rel="alternate" hreflang="uk" href="{BASE}{u}"/><xhtml:link rel="alternate" hreflang="ru" href="{BASE}/ru{u}"/>'
             f'<xhtml:link rel="alternate" hreflang="x-default" href="{BASE}{u}"/>')
+# lastmod міняється лише коли змінився вміст сторінки (хеш), а не при кожній збірці
+LM_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lastmod.json')
+try:
+    LM = json.load(open(LM_FILE, encoding='utf-8'))
+except Exception:
+    LM = {}
+for u in urls:
+    h = HASHES.get(u)
+    if h and LM.get(u, {}).get('h') != h:
+        LM[u] = {'h': h, 'd': TODAY}
+json.dump(LM, open(LM_FILE, 'w', encoding='utf-8'), ensure_ascii=False, indent=1, sort_keys=True)
+def lm(u):
+    return LM.get(u, {}).get('d', TODAY)
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + ''.join(
-    f'  <url><loc>{BASE}{p}{u}</loc><lastmod>{TODAY}</lastmod>{alt(u)}</url>\n' for u in urls for p in ('', '/ru')) + '</urlset>\n'
+    f'  <url><loc>{BASE}{p}{u}</loc><lastmod>{lm(u)}</lastmod>{alt(u)}</url>\n' for u in urls for p in ('', '/ru')) + '</urlset>\n'
 open(os.path.join(OUT, 'sitemap.xml'), 'w').write(sm)
 open(os.path.join(OUT, 'robots.txt'), 'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n')
 open(os.path.join(OUT, 'favicon.svg'), 'w').write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#16181D"/><path d="M6 16h6l4-9 4 18 4-9h2" fill="none" stroke="#C6F26B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>')
@@ -320,6 +367,37 @@ nf = head('Сторінку не знайдено — ' + BRAND, 'Сторінк
 nf = nf.replace('<link rel="canonical"', '<meta name="robots" content="noindex"><link rel="canonical"')
 nf += header(SITE + '/') + f'<main class="wrap sec"><h1>Сторінку не знайдено</h1><p class="lead"><a href="{BASE}/">На головну</a></p></main>' + footer()
 open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8').write(nf)
+# ---------- llms.txt / llms-full.txt (для AI-асистентів і пошуку) ----------
+def llms():
+    L = [f'# {BRAND}', '',
+         '> Готові модулі (розширення) для 1С:УНФ і BAS Малий бізнес, які автоматизують інтернет-магазин: оплати monobank і NovaPay, Нова Пошта, обмін із сайтом і постачальниками, AI-помічниця в 1С. Разова оплата, встановлення під ключ, 30 днів виправлень. Один розробник від дзвінка до підтримки. Україна.', '',
+         f'Контакт: {TG} (Telegram @yadhtl). Доробки та консультації: 600 грн/год.', '', '## Модулі', '']
+    for m in M:
+        L.append(f'- [{m["h1"]}]({BASE}/{m["slug"]}/): {m["short"]} Ціна {m["price"]}, разово.')
+    L += ['', '## Статті', '']
+    for a in ARTICLES:
+        L.append(f'- [{a["title"]}]({BASE}/statti/{a["slug"]}/): {a["desc"]}')
+    L += ['', '## Додатково', '', f'- [Російська версія]({BASE}/ru/)', f'- [Sitemap]({BASE}/sitemap.xml)', '']
+    return '\n'.join(L)
+
+def llms_full():
+    L = [f'# {BRAND}: повний опис модулів і статей', '', f'Сайт: {BASE}/ · Telegram: {TG}', '']
+    for m in M:
+        x = EXTRA[m['key']]
+        L += [f'## {m["h1"]}', f'URL: {BASE}/{m["slug"]}/', f'Ціна: {m["price"]} разово (входить встановлення, налаштування, навчання, 30 днів виправлень).', '', m['lead'], '',
+              'Що забирає час без модуля: ' + '; '.join(m['pains']) + '.', 'Що робить модуль: ' + '; '.join(m['features']) + '.',
+              'Як працює: ' + ' '.join(f'{i + 1}) {t}' for i, t in enumerate(x['how'])), 'Що потрібно: ' + '; '.join(x['need']) + '.', '']
+        for q, ans in x['faq'] + GEN_FAQ:
+            L += [f'Питання: {q}', f'Відповідь: {ans}', '']
+    for a in ARTICLES:
+        L += [f'## {a["title"]}', f'URL: {BASE}/statti/{a["slug"]}/', '', a['lead'], '']
+        for h, ps in a['body']:
+            L += [f'### {h}'] + ps + ['']
+        for q, ans in (a.get('faq') or []):
+            L += [f'Питання: {q}', f'Відповідь: {ans}', '']
+    return '\n'.join(L)
+open(os.path.join(OUT, 'llms.txt'), 'w', encoding='utf-8').write(llms())
+open(os.path.join(OUT, 'llms-full.txt'), 'w', encoding='utf-8').write(llms_full())
 INDEXNOW = '6f1c2b9e4d7a4e0f9b3c8a51d2e7f640'
 open(os.path.join(OUT, INDEXNOW + '.txt'), 'w').write(INDEXNOW)
 print('ok', len(urls), 'pages ->', BASE)

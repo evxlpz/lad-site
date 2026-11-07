@@ -1,0 +1,106 @@
+{
+ "/": {
+  "d": "2026-11-07",
+  "h": "4af1145b2853a3bad2c5bc0e55cb9e8ae82e5189"
+ },
+ "/ai-pomichnytsya-1c/": {
+  "d": "2026-11-07",
+  "h": "88bb97d66f22ac6e393bf9f30ce33a5b68b305d4"
+ },
+ "/heneratsiya-kharakterystyk-1c/": {
+  "d": "2026-11-07",
+  "h": "539bfd271bd345d61ea0d50022a4769019540aad"
+ },
+ "/integratsiya-monopay-1c-bas/": {
+  "d": "2026-11-07",
+  "h": "4b6d24a8b56cb9f98f0f98c8a012facad747cb7e"
+ },
+ "/nova-poshta-1c/": {
+  "d": "2026-11-07",
+  "h": "f3ed7e243a461ae6dca5c00c97c9a1ea23f9bc73"
+ },
+ "/novapay-1c/": {
+  "d": "2026-11-07",
+  "h": "f77439322b43348c403131321222cebbf83ea026"
+ },
+ "/obmin-saytu-z-1c/": {
+  "d": "2026-11-07",
+  "h": "98cab2e4e683c0c1d297c7ac4e1a09dfe466f87e"
+ },
+ "/obmin-z-postachalnykom-api-1c/": {
+  "d": "2026-11-07",
+  "h": "0ce12a972fbdbae58324640f0d8cf467f3c3513c"
+ },
+ "/pryvat24-zalyshky-fop-1c/": {
+  "d": "2026-11-07",
+  "h": "3cdc80c814986f3378397a7fc4ae24e81fe6278f"
+ },
+ "/robochyy-stil-menedzhera-1c/": {
+  "d": "2026-11-07",
+  "h": "4f6b54335069d576cc9bb368e5025b87d51ec7bc"
+ },
+ "/rozpodil-zamovlen-fop-1c/": {
+  "d": "2026-11-07",
+  "h": "4cdd9bf17e2eabf76f22a7aa3072d12cca1f034b"
+ },
+ "/spovishchennya-viber-telegram-1c/": {
+  "d": "2026-11-07",
+  "h": "d12eecfffd8641b81068b332d433fb8a46d8b821"
+ },
+ "/statti/": {
+  "d": "2026-11-07",
+  "h": "50c92afad5afde6b3c38917a38fd9348201fde7d"
+ },
+ "/statti/ai-pomichnyk-1c-zapyty-do-bazy/": {
+  "d": "2026-11-07",
+  "h": "24fc4addd561d2550e484a0c37a808cf7eb4f982"
+ },
+ "/statti/avtopovidomlennia-klientam-viber-telegram-1c/": {
+  "d": "2026-11-07",
+  "h": "25b396860ec9d0e04c999baa0207de305bfc09b6"
+ },
+ "/statti/kilka-fop-v-1c-rozpodil-zamovlen/": {
+  "d": "2026-11-07",
+  "h": "f0c3049b937c81f568a331b66b6384a570d69c6c"
+ },
+ "/statti/nova-poshta-i-1c-shcho-avtomatyzuvaty/": {
+  "d": "2026-11-07",
+  "h": "fc01f0502941d1ab295a629c1e46257f71d012a8"
+ },
+ "/statti/novapay-nakladenyy-platizh-1c/": {
+  "d": "2026-11-07",
+  "h": "40a331bf374d7c2d48779486dab39d7f78f0e1a5"
+ },
+ "/statti/obmin-bitrix-z-1c-typovyy-chy-vlasne-api/": {
+  "d": "2026-11-07",
+  "h": "a3c4cd9e2dcb0384b0b76803c7618423aca3cf3f"
+ },
+ "/statti/pidkliuchennia-monobank-do-1c/": {
+  "d": "2026-11-07",
+  "h": "0b7139f1e1dbc814de60ac3a9eef8e4ecd20c8d0"
+ },
+ "/statti/pokupka-chastynamy-monobank-1c/": {
+  "d": "2026-11-07",
+  "h": "51d66b93247a085f9a94978df2af564820d3693a"
+ },
+ "/statti/povernennia-koshtiv-za-kartkoiu-1c/": {
+  "d": "2026-11-07",
+  "h": "f95399c1068ad3bbbb1711db8e060dc47b35a1fe"
+ },
+ "/statti/zalyshky-postachalnyka-na-saiti/": {
+  "d": "2026-11-07",
+  "h": "4d7b89a0a1ab3e7a0e42fd73e43220529ad6e2aa"
+ },
+ "/statti/zalyshky-z-1c-na-sayt-bez-ruchnoi-roboty/": {
+  "d": "2026-11-07",
+  "h": "84f27827259b98b66041540abd243215b1d05164"
+ },
+ "/statti/zvirka-nakladenoho-platezhu-1c/": {
+  "d": "2026-11-07",
+  "h": "6b1ef3863614959745cac77f665bfeab03b990de"
+ },
+ "/zalyshky-z-1c-na-sayt/": {
+  "d": "2026-11-07",
+  "h": "b695c9658e9d43b6639648cf553c2bb52dbf4557"
+ }
+}
