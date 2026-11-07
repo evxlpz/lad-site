@@ -148,11 +148,10 @@ def head(title, desc, path, ld, root):
 def header(root, back=False):
     nav = (f'<a class="navlink" href="{root}">← Усі модулі</a>' if back else
            '<nav class="nav"><a href="#modules">Модулі</a><a href="#services">Послуги</a><a href="#how">Як працюємо</a><a href="statti/">Статті</a><a href="#contact">Контакти</a></nav>')
-    sw = (f'<a class="lang" href="{BASE}{CUR}" hreflang="uk" lang="uk">UA</a>' if RU else f'<a class="lang" href="{BASE}/ru{CUR}" hreflang="ru" lang="ru">RU</a>')
-    return f'<header class="wrap top"><a class="logo" href="{root}"><span class="mark">{LOGO_SVG}</span>{BRAND}</a><div class="navwrap">{nav}{sw}</div></header>\n'
+    return f'<header class="wrap top"><a class="logo" href="{root}"><span class="mark">{LOGO_SVG}</span>{BRAND}</a>{nav}</header>\n'
 
 def footer():
-    return f'<footer class="foot"><div class="wrap">© {datetime.date.today().year} {BRAND} · Автоматизація e-commerce · <a href="{SITE}/statti/">Статті</a> · <a href="{TG}">Telegram @yadhtl</a></div></footer>\n</body>\n</html>\n'
+    return f'<footer class="foot"><div class="wrap"><span>© {datetime.date.today().year} {BRAND} · Автоматизація e-commerce · <a href="{SITE}/statti/">Статті</a> · <a href="{TG}">Telegram @yadhtl</a></span><a class="langlink" href="{(BASE + CUR) if RU else (BASE + '/ru' + CUR)}" hreflang="{'uk' if RU else 'ru'}">{'Українською' if RU else 'Русская версия'}</a></div></footer>\n</body>\n</html>\n'
 
 def cta(title, text):
     return f'''<section class="dark" id="contact"><div class="wrap ctaband">

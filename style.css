@@ -122,3 +122,6 @@ details p{margin:12px 0 0;color:var(--text)}
 .lang:hover{background:var(--ink);color:#fff}
 @media (max-width:700px){.navwrap{display:contents}.top .lang{order:1}.top .nav,.top .navlink{order:2}.top .nav{width:100%;gap:2px 18px;font-size:15px}.top .nav a{min-height:36px}}
 @media (max-width:700px){.top .navlink{order:1;margin-left:auto}.top .lang{order:2}.top .nav{order:3;gap:2px 14px;font-size:14px}}
+.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px}
+.foot a.langlink{color:#6A6E77;text-decoration:none}
+.foot a.langlink:hover{color:#B7BAC1}
