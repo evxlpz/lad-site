@@ -1,7 +1,7 @@
 """Русская версия контента сайта «Лад» (/ru/). Ключи, slug и цены — как в украинской."""
 
 M_RU = [
- dict(key='monopay', slug='integratsiya-monopay-1c-bas', group='Оплаты', card='Эквайринг monobank', price='7 000 грн', amount=7000,
+ dict(key='monopay', slug='ekvairynh-monobank-1c', group='Оплаты', card='Эквайринг monobank', price='7 000 грн', amount=7000,
   h1='Эквайринг monobank и Покупка частями в 1С',
   desc='Эквайринг monobank (plata by mono) для 1С и BAS: счет из заказа в один клик, авто-статус оплаты, возврат, Покупка частями. Установка под ключ.',
   short='Счета на оплату из заказа, статусы, возвраты и Покупка частями — прямо в учете.',

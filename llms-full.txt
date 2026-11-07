@@ -3,7 +3,7 @@
 Сайт: https://ladtech.com.ua/ · Telegram: https://t.me/yadhtl
 
 ## Еквайринг monobank і Покупка частинами в 1С
-URL: https://ladtech.com.ua/integratsiya-monopay-1c-bas/
+URL: https://ladtech.com.ua/ekvairynh-monobank-1c/
 Ціна: 7 000 грн разово (входить встановлення, налаштування, навчання, 30 днів виправлень).
 
 Менеджер створює рахунок на оплату прямо із замовлення, клієнт платить карткою, а оплата сама падає в облік і прив’язується до замовлення.

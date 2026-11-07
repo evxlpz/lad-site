@@ -19,7 +19,7 @@ BRAND = 'Лад'
 TODAY = datetime.date.today().isoformat()
 
 M = [
- dict(key='monopay', slug='integratsiya-monopay-1c-bas', group='Оплати', card='Еквайринг monobank', price='7 000 грн', amount=7000,
+ dict(key='monopay', slug='ekvairynh-monobank-1c', group='Оплати', card='Еквайринг monobank', price='7 000 грн', amount=7000,
   h1='Еквайринг monobank і Покупка частинами в 1С',
   desc='Еквайринг monobank (plata by mono) для 1С і BAS: рахунок із замовлення в один клік, авто-статус оплати, повернення, Покупка частинами. Установка під ключ.',
   short='Рахунки на оплату з замовлення, статуси, повернення та Покупка частинами — прямо в обліку.',
@@ -257,6 +257,9 @@ for m in M:
          "operatingSystem": "1C:Enterprise 8.3", "inLanguage": LANG, "url": SITE + path,
          "publisher": {"@id": BASE + "/#org"},
          "offers": {"@type": "Offer", "price": m["amount"], "priceCurrency": "UAH", "availability": "https://schema.org/InStock", "url": SITE + path}},
+        {"@type": "VideoObject", "name": m["h1"] + (": демо" if not RU else ": демо"), "description": m["desc"],
+         "thumbnailUrl": f'{BASE}/video/{m["slug"]}.jpg', "contentUrl": f'{BASE}/video/{m["slug"]}.mp4',
+         "uploadDate": "2026-11-07", "duration": "PT20S", "inLanguage": "uk", "publisher": {"@id": BASE + "/#org"}},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Модулі", "item": SITE + '/'},
             {"@type": "ListItem", "position": 2, "name": m["card"], "item": SITE + path}]},
@@ -278,6 +281,7 @@ for m in M:
 <div class="grow"><p class="kicker">{e(m["group"])}</p><h1>{e(m["h1"])}</h1><p class="lead">{e(m["lead"])}</p></div>
 <aside class="pricebox"><span class="muted">Разова оплата, модуль ваш назавжди</span><b>{e(m["price"])}</b><span>Встановлення, налаштування, навчання і 30 днів виправлень уже в ціні.</span><a class="btn lime" href="{TG}">Подивитись демо</a></aside>
 </section>
+<section class="wrap sec"><h2 class="h2">{"Дивитись у дії" if not RU else "Смотреть в действии"}</h2><video class="demo" controls preload="metadata" playsinline poster="/video/{m["slug"]}.jpg"><source src="/video/{m["slug"]}.mp4" type="video/mp4"></video></section>
 <section class="white"><div class="wrap sec"><h2 class="h2">Що зараз забирає час</h2><ul class="list pains">{pains}</ul></div></section>
 <section class="wrap sec"><h2 class="h2">Що робить модуль</h2><ul class="list feats">{feats}</ul></section>
 <section class="wrap sec"><h2 class="h2">Як це працює</h2><ol class="flow">{how}</ol></section>
@@ -371,6 +375,12 @@ write('/tsiny/', s)
 _stub = f'<!doctype html><html lang="{LANG}"><head><meta charset="utf-8"><title>{PX["crumb"]} | {BRAND}</title><link rel="canonical" href="{SITE}/tsiny/"><meta http-equiv="refresh" content="0;url={PFX}/tsiny/"></head><body><a href="{PFX}/tsiny/">{PX["crumb"]}</a></body></html>'
 os.makedirs(os.path.join(OUT, 'ceny'), exist_ok=True)
 open(os.path.join(OUT, 'ceny', 'index.html'), 'w', encoding='utf-8').write(_stub)
+
+# заглушка зі старого slug monopay
+_old='integratsiya-monopay-1c-bas'
+_s2=f'<!doctype html><html lang="{LANG}"><head><meta charset="utf-8"><title>Еквайринг monobank | {BRAND}</title><link rel="canonical" href="{SITE}/ekvairynh-monobank-1c/"><meta http-equiv="refresh" content="0;url={PFX}/ekvairynh-monobank-1c/"></head><body><a href="{PFX}/ekvairynh-monobank-1c/">Еквайринг monobank</a></body></html>'
+os.makedirs(os.path.join(OUT,_old),exist_ok=True)
+open(os.path.join(OUT,_old,'index.html'),'w',encoding='utf-8').write(_s2)
 
 # ---------- питання й відповіді ----------
 FQ = FAQP[LANG]

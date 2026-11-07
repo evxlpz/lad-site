@@ -133,3 +133,4 @@ details p{margin:12px 0 0;color:var(--text)}
 .ptable a:hover{color:var(--green)}
 .ptable td.pr{white-space:nowrap;font-weight:700}
 @media(max-width:640px){.ptable thead{display:none}.ptable tr{display:block;padding:12px 0;border-bottom:1px solid var(--line)}.ptable td{display:block;border:0;padding:3px 18px}}
+.demo{width:100%;max-width:960px;border-radius:16px;display:block;background:#16181D;box-shadow:0 12px 40px rgba(20,30,45,.18)}
