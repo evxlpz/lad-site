@@ -3,7 +3,7 @@
 import json, os, sys, html, datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content import EXTRA, ARTICLES
-from home_extra import HOME, AKA, PRICES
+from home_extra import HOME, AKA, PRICES, FAQP
 import hashlib
 
 BASE = (sys.argv[1] if len(sys.argv) > 1 else 'https://example.com').rstrip('/')
@@ -158,11 +158,11 @@ def head(title, desc, path, ld, root):
 
 def header(root, back=False):
     nav = (f'<a class="navlink" href="{root}">← Усі модулі</a>' if back else
-           '<nav class="nav"><a href="#modules">Модулі</a><a href="#services">Послуги</a><a href="#how">Як працюємо</a><a href="ceny/">' + ('Ціни' if not RU else 'Цены') + '</a><a href="statti/">Статті</a><a href="#contact">Контакти</a></nav>')
+           '<nav class="nav"><a href="#modules">Модулі</a><a href="#services">Послуги</a><a href="#how">Як працюємо</a><a href="tsiny/">' + ('Ціни' if not RU else 'Цены') + '</a><a href="statti/">Статті</a><a href="#contact">Контакти</a></nav>')
     return f'<header class="wrap top"><a class="logo" href="{root}"><span class="mark">{LOGO_SVG}</span>{BRAND}</a>{nav}</header>\n'
 
 def footer():
-    return f'<footer class="foot"><div class="wrap"><span>© {datetime.date.today().year} {BRAND} · Автоматизація e-commerce · <a href="{SITE}/statti/">Статті</a> · <a href="{TG}">Telegram @yadhtl</a></span><a class="langlink" href="{(BASE + CUR) if RU else (BASE + '/ru' + CUR)}" hreflang="{'uk' if RU else 'ru'}">{'Українською' if RU else 'Русская версия'}</a></div></footer>\n</body>\n</html>\n'
+    return f'<footer class="foot"><div class="wrap"><span>© {datetime.date.today().year} {BRAND} · Автоматизація e-commerce · <a href="{SITE}/tsiny/">{'Цены' if RU else 'Ціни'}</a> · <a href="{SITE}/pytannia/">{'Вопросы и ответы' if RU else 'Питання й відповіді'}</a> · <a href="{SITE}/statti/">{'Статьи' if RU else 'Статті'}</a> · <a href="{TG}">Telegram @yadhtl</a></span><a class="langlink" href="{(BASE + CUR) if RU else (BASE + '/ru' + CUR)}" hreflang="{'uk' if RU else 'ru'}">{'Українською' if RU else 'Російською'}</a></div></footer>\n</body>\n</html>\n'
 
 def cta(title, text):
     return f'''<section class="dark" id="contact"><div class="wrap ctaband">
@@ -203,7 +203,7 @@ idx += header('')
 idx += f'''<main>
 <section class="wrap hero">
 <div class="grow"><p class="kicker">Автоматизація e-commerce</p>
-<h1>Оплати, доставка, сайт і облік — в одній системі, без ручної роботи</h1>
+<h1>Модулі для 1С і BAS: оплати, доставка, сайт і облік без ручної роботи</h1>
 <p class="lead">Готові модулі для облікових систем (1С, BAS та інших) і CRM: еквайринг monobank, NovaPay, Нова Пошта, обмін із сайтом і постачальниками, AI-помічниця. Перевірено щодня на реальному інтернет-магазині.</p>
 <div class="row"><a class="btn dark" href="{TG}">Безкоштовна консультація</a><a class="btn ghost" href="#modules">Дивитись модулі</a></div></div>
 <div class="stats"><div class="stat"><b>12</b><span>готових модулів</span></div><div class="stat"><b>1 раз</b><span>купуєте — і назавжди ваше</span></div><div class="stat lime wide"><b>600 грн/год</b><span>консультації і доробки під вас</span></div></div>
@@ -343,15 +343,15 @@ write('/statti/', s)
 # ---------- сторінка цін ----------
 PX = PRICES[LANG]
 ld = {"@context": "https://schema.org", "@graph": [ORG,
-    {"@type": "WebPage", "name": PX['title'], "url": SITE + '/ceny/', "inLanguage": LANG},
+    {"@type": "WebPage", "name": PX['title'], "url": SITE + '/tsiny/', "inLanguage": LANG},
     {"@type": "ItemList", "name": PX['h1'], "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "item": {"@type": "SoftwareApplication", "name": m["h1"], "url": f'{SITE}/{m["slug"]}/',
           "applicationCategory": "BusinessApplication", "operatingSystem": "1C:Enterprise 8.3",
           "offers": {"@type": "Offer", "price": m["amount"], "priceCurrency": "UAH", "availability": "https://schema.org/InStock"}}} for i, m in enumerate(M)]},
     {"@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Лад" if not RU else "Лад", "item": SITE + '/'},
-        {"@type": "ListItem", "position": 2, "name": PX['crumb'], "item": SITE + '/ceny/'}]}]}
-s = head(f'{PX["title"]} | {BRAND}', PX['desc'], '/ceny/', ld, '../')
+        {"@type": "ListItem", "position": 2, "name": PX['crumb'], "item": SITE + '/tsiny/'}]}]}
+s = head(f'{PX["title"]} | {BRAND}', PX['desc'], '/tsiny/', ld, '../')
 s += header('../', back=True)
 rows = ''.join(f'<tr><td><a href="../{m["slug"]}/">{e(m["card"])}</a></td><td>{e(m["short"])}</td><td class="pr">{e(m["price"])}</td></tr>' for m in M)
 extra = ''.join(f'<p>{e(t)}</p>' for t in PX['extra'])
@@ -365,14 +365,45 @@ s += f'''<main>
 '''
 s += cta(PX['how_h'], PX['extra'][1])
 s += footer()
-write('/ceny/', s)
+write('/tsiny/', s)
+
+# заглушка зі старого адреси /ceny/ (був доступний кілька хвилин)
+_stub = f'<!doctype html><html lang="{LANG}"><head><meta charset="utf-8"><title>{PX["crumb"]} | {BRAND}</title><link rel="canonical" href="{SITE}/tsiny/"><meta http-equiv="refresh" content="0;url={PFX}/tsiny/"></head><body><a href="{PFX}/tsiny/">{PX["crumb"]}</a></body></html>'
+os.makedirs(os.path.join(OUT, 'ceny'), exist_ok=True)
+open(os.path.join(OUT, 'ceny', 'index.html'), 'w', encoding='utf-8').write(_stub)
+
+# ---------- питання й відповіді ----------
+FQ = FAQP[LANG]
+_groups = [(FQ['general'], HX['faq'] + GEN_FAQ)] + [(m['card'], EXTRA[m['key']]['faq']) for m in M] + [(FQ['articles'], [qa for a in ARTICLES for qa in (a.get('faq') or [])])]
+_seen = set(); G = []
+for _h, _items in _groups:
+    _u = []
+    for _q, _a in _items:
+        if _q not in _seen:
+            _seen.add(_q); _u.append((_q, _a))
+    if _u:
+        G.append((_h, _u))
+_all = [qa for _h, _i in G for qa in _i]
+ld = {"@context": "https://schema.org", "@graph": [ORG,
+    {"@type": "FAQPage", "name": FQ['h1'], "url": SITE + '/pytannia/', "inLanguage": LANG,
+     "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in _all]},
+    {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": BRAND, "item": SITE + '/'},
+        {"@type": "ListItem", "position": 2, "name": FQ['crumb'], "item": SITE + '/pytannia/'}]}]}
+s = head(f'{FQ["title"]} | {BRAND}', FQ['desc'], '/pytannia/', ld, '../')
+s += header('../', back=True)
+_body = ''.join(f'<h2 class="h2 sm">{e(h)}</h2>' + ''.join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in i) for h, i in G)
+s += f'<main><section class="wrap hero"><div class="grow"><p class="kicker">{e(FQ["crumb"])}</p><h1>{e(FQ["h1"])}</h1><p class="lead">{e(FQ["lead"])}</p></div></section><section class="wrap sec prose">{_body}</section></main>\n'
+s += cta(FQ['cta_h'], FQ['cta_t'])
+s += footer()
+write('/pytannia/', s)
 
 if RU:
     print('ok ru ->', SITE)
     sys.exit(0)
 
 # ---------- sitemap, robots, 404, favicon ----------
-urls = ['/'] + [f'/{m["slug"]}/' for m in M] + ['/ceny/', '/statti/'] + [f'/statti/{a["slug"]}/' for a in ARTICLES]
+urls = ['/'] + [f'/{m["slug"]}/' for m in M] + ['/tsiny/', '/pytannia/', '/statti/'] + [f'/statti/{a["slug"]}/' for a in ARTICLES]
 def alt(u):
     return (f'<xhtml:link rel="alternate" hreflang="uk" href="{BASE}{u}"/><xhtml:link rel="alternate" hreflang="ru" href="{BASE}/ru{u}"/>'
             f'<xhtml:link rel="alternate" hreflang="x-default" href="{BASE}{u}"/>')
@@ -405,7 +436,7 @@ def llms():
          f'Контакт: {TG} (Telegram @yadhtl). Доробки та консультації: 600 грн/год.', '', '## Модулі', '']
     for m in M:
         L.append(f'- [{m["h1"]}]({BASE}/{m["slug"]}/): {m["short"]} Ціна {m["price"]}, разово.')
-    L += ['', f'- [Ціни на всі модулі]({BASE}/ceny/)', '', '## Статті', '']
+    L += ['', f'- [Ціни на всі модулі]({BASE}/tsiny/)', f'- [Питання й відповіді]({BASE}/pytannia/)', '', '## Статті', '']
     for a in ARTICLES:
         L.append(f'- [{a["title"]}]({BASE}/statti/{a["slug"]}/): {a["desc"]}')
     L += ['', '## Додатково', '', f'- [Російська версія]({BASE}/ru/)', f'- [Sitemap]({BASE}/sitemap.xml)', '']
