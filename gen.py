@@ -3,7 +3,7 @@
 import json, os, sys, html, datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content import EXTRA, ARTICLES
-from home_extra import HOME
+from home_extra import HOME, AKA, PRICES
 import hashlib
 
 BASE = (sys.argv[1] if len(sys.argv) > 1 else 'https://example.com').rstrip('/')
@@ -19,16 +19,16 @@ BRAND = 'Лад'
 TODAY = datetime.date.today().isoformat()
 
 M = [
- dict(key='monopay', slug='integratsiya-monopay-1c-bas', group='Оплати', card='MonoPay', price='7 000 грн', amount=7000,
-  h1='Інтеграція MonoPay з 1С і BAS',
-  desc='Рахунок monobank із замовлення в один клік, автоматичний статус оплати, повернення коштів з 1С. Модуль-розширення, встановлення під ключ.',
+ dict(key='monopay', slug='integratsiya-monopay-1c-bas', group='Оплати', card='Еквайринг monobank', price='7 000 грн', amount=7000,
+  h1='Еквайринг monobank і Покупка частинами в 1С',
+  desc='Еквайринг monobank (plata by mono) для 1С і BAS: рахунок із замовлення в один клік, авто-статус оплати, повернення, Покупка частинами. Установка під ключ.',
   short='Рахунки на оплату з замовлення, статуси, повернення та Покупка частинами — прямо в обліку.',
   lead='Менеджер створює рахунок на оплату прямо із замовлення, клієнт платить карткою, а оплата сама падає в облік і прив’язується до замовлення.',
   pains=['Посилання на оплату робиться вручну в кабінеті банку','Оплати звіряються з замовленнями руками, по сумі й прізвищу','Повернення коштів клієнту — окрема морока і в банку, і в обліку'],
   features=['Рахунок monobank із замовлення в один клік','Посилання на оплату клієнту в месенджер','Статус оплати оновлюється сам, без звірок','Оплата автоматично проводиться і прив’язується до замовлення','Повернення коштів з обліку, повне або часткове','Підтримка «Покупки частинами» monobank']),
- dict(key='novapay', slug='novapay-1c', group='Оплати', card='NovaPay', price='8 000 грн', amount=8000,
-  h1='NovaPay: накладений платіж Нової Пошти в 1С',
-  desc='Автоматичне завантаження виписок і реєстрів NovaPay в 1С і BAS, рознесення накладеного платежу по замовленнях за ТТН.',
+ dict(key='novapay', slug='novapay-1c', group='Оплати', card='NovaPay: накладений платіж', price='8 000 грн', amount=8000,
+  h1='Накладений платіж NovaPay і Нова Пошта в 1С',
+  desc='Накладений платіж Нової Пошти (післяплата) в 1С і BAS: виписки й реєстри NovaPay автоматично розносяться по замовленнях за ТТН, комісія окремо.',
   short='Виписки й реєстри накладеного платежу Нової Пошти автоматично рознесені по замовленнях.',
   lead='Виписки й реєстри NovaPay завантажуються в облік і розносяться по замовленнях за номером ТТН. Без Excel і ручного рознесення.',
   pains=['Реєстри накладеного платежу розносяться вручну','Важко зрозуміти, яке замовлення оплачене, а яке ні','Комісії NovaPay губляться у звітах'],
@@ -158,7 +158,7 @@ def head(title, desc, path, ld, root):
 
 def header(root, back=False):
     nav = (f'<a class="navlink" href="{root}">← Усі модулі</a>' if back else
-           '<nav class="nav"><a href="#modules">Модулі</a><a href="#services">Послуги</a><a href="#how">Як працюємо</a><a href="statti/">Статті</a><a href="#contact">Контакти</a></nav>')
+           '<nav class="nav"><a href="#modules">Модулі</a><a href="#services">Послуги</a><a href="#how">Як працюємо</a><a href="ceny/">' + ('Ціни' if not RU else 'Цены') + '</a><a href="statti/">Статті</a><a href="#contact">Контакти</a></nav>')
     return f'<header class="wrap top"><a class="logo" href="{root}"><span class="mark">{LOGO_SVG}</span>{BRAND}</a>{nav}</header>\n'
 
 def footer():
@@ -196,15 +196,15 @@ ld_index = {"@context": "https://schema.org", "@graph": [ORG,
     {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in HX['faq']]},
     {"@type": "ItemList", "name": "Модулі автоматизації e-commerce для 1С і BAS",
      "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f'{SITE}/{m["slug"]}/', "name": m["h1"]} for i, m in enumerate(M)]}]}
-idx = head('Автоматизація інтернет-магазину: модулі для 1С і BAS — ' + BRAND,
-           'Готові модулі для 1С, BAS і CRM: MonoPay, NovaPay, Нова Пошта, обмін із сайтом і постачальниками, AI-помічниця. Разова оплата, встановлення під ключ.',
+idx = head('Купити модулі для 1С і BAS: еквайринг monobank, NovaPay, Нова Пошта — ' + BRAND,
+           'Готові модулі для 1С, BAS і CRM: еквайринг monobank, NovaPay, Нова Пошта, обмін із сайтом і постачальниками, AI-помічниця. Разова оплата, встановлення під ключ.',
            '/', ld_index, '')
 idx += header('')
 idx += f'''<main>
 <section class="wrap hero">
 <div class="grow"><p class="kicker">Автоматизація e-commerce</p>
 <h1>Оплати, доставка, сайт і облік — в одній системі, без ручної роботи</h1>
-<p class="lead">Готові модулі для облікових систем (1С, BAS та інших) і CRM: MonoPay, NovaPay, Нова Пошта, обмін із сайтом і постачальниками, AI-помічниця. Перевірено щодня на реальному інтернет-магазині.</p>
+<p class="lead">Готові модулі для облікових систем (1С, BAS та інших) і CRM: еквайринг monobank, NovaPay, Нова Пошта, обмін із сайтом і постачальниками, AI-помічниця. Перевірено щодня на реальному інтернет-магазині.</p>
 <div class="row"><a class="btn dark" href="{TG}">Безкоштовна консультація</a><a class="btn ghost" href="#modules">Дивитись модулі</a></div></div>
 <div class="stats"><div class="stat"><b>12</b><span>готових модулів</span></div><div class="stat"><b>1 раз</b><span>купуєте — і назавжди ваше</span></div><div class="stat lime wide"><b>600 грн/год</b><span>консультації і доробки під вас</span></div></div>
 </section>
@@ -261,7 +261,10 @@ for m in M:
             {"@type": "ListItem", "position": 1, "name": "Модулі", "item": SITE + '/'},
             {"@type": "ListItem", "position": 2, "name": m["card"], "item": SITE + path}]},
         {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}]}
-    s = head(f'{m["h1"]} — {m["price"]} | {BRAND}', m["desc"], path, ld, '../')
+    mt = f'{m["h1"]}: купити, {m["price"]} | {BRAND}'
+    if len(mt) > 70:
+        mt = f'{m["h1"]} — {m["price"]} | {BRAND}'
+    s = head(mt, m["desc"], path, ld, '../')
     s += header('../', back=True)
     pains = ''.join(f'<li>{WARN}<span>{e(p)}</span></li>' for p in m["pains"])
     feats = ''.join(f'<li>{CHECK}<span>{e(f)}</span></li>' for f in m["features"])
@@ -285,6 +288,7 @@ for m in M:
 <div><i>03</i><h3>Навчання</h3><p>Показую вашим людям, як працювати, і 30 днів виправляю, якщо щось не так.</p></div>
 </div></section>
 <section class="wrap sec"><h2 class="h2">Питання</h2>{faqhtml}</section>{arthtml}
+<section class="wrap sec"><p class="note"><b>{AKA[LANG]["head"]}:</b> {e(AKA[LANG][m["key"]])}</p></section>
 <section class="wrap sec"><h2 class="h2 sm">Інші модулі</h2><div class="others">{others}</div></section>
 </main>
 '''
@@ -336,12 +340,39 @@ s += cta('Хочете так само у себе?', 'Напишіть у Teleg
 s += footer()
 write('/statti/', s)
 
+# ---------- сторінка цін ----------
+PX = PRICES[LANG]
+ld = {"@context": "https://schema.org", "@graph": [ORG,
+    {"@type": "WebPage", "name": PX['title'], "url": SITE + '/ceny/', "inLanguage": LANG},
+    {"@type": "ItemList", "name": PX['h1'], "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "item": {"@type": "SoftwareApplication", "name": m["h1"], "url": f'{SITE}/{m["slug"]}/',
+          "applicationCategory": "BusinessApplication", "operatingSystem": "1C:Enterprise 8.3",
+          "offers": {"@type": "Offer", "price": m["amount"], "priceCurrency": "UAH", "availability": "https://schema.org/InStock"}}} for i, m in enumerate(M)]},
+    {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Лад" if not RU else "Лад", "item": SITE + '/'},
+        {"@type": "ListItem", "position": 2, "name": PX['crumb'], "item": SITE + '/ceny/'}]}]}
+s = head(f'{PX["title"]} | {BRAND}', PX['desc'], '/ceny/', ld, '../')
+s += header('../', back=True)
+rows = ''.join(f'<tr><td><a href="../{m["slug"]}/">{e(m["card"])}</a></td><td>{e(m["short"])}</td><td class="pr">{e(m["price"])}</td></tr>' for m in M)
+extra = ''.join(f'<p>{e(t)}</p>' for t in PX['extra'])
+how = ''.join(f'<li>{e(t)}</li>' for t in PX['how'])
+s += f'''<main>
+<section class="wrap hero"><div class="grow"><p class="kicker">{e(PX["crumb"])}</p><h1>{e(PX["h1"])}</h1><p class="lead">{e(PX["lead"])}</p></div></section>
+<section class="wrap sec"><table class="ptable"><thead><tr><th>{PX["col"][0]}</th><th>{PX["col"][1]}</th><th>{PX["col"][2]}</th></tr></thead><tbody>{rows}</tbody></table></section>
+<section class="wrap sec"><h2 class="h2 sm">{e(PX["extra_h"])}</h2><div class="prose">{extra}</div></section>
+<section class="wrap sec"><h2 class="h2 sm">{e(PX["how_h"])}</h2><ol class="flow">{how}</ol></section>
+</main>
+'''
+s += cta(PX['how_h'], PX['extra'][1])
+s += footer()
+write('/ceny/', s)
+
 if RU:
     print('ok ru ->', SITE)
     sys.exit(0)
 
 # ---------- sitemap, robots, 404, favicon ----------
-urls = ['/'] + [f'/{m["slug"]}/' for m in M] + ['/statti/'] + [f'/statti/{a["slug"]}/' for a in ARTICLES]
+urls = ['/'] + [f'/{m["slug"]}/' for m in M] + ['/ceny/', '/statti/'] + [f'/statti/{a["slug"]}/' for a in ARTICLES]
 def alt(u):
     return (f'<xhtml:link rel="alternate" hreflang="uk" href="{BASE}{u}"/><xhtml:link rel="alternate" hreflang="ru" href="{BASE}/ru{u}"/>'
             f'<xhtml:link rel="alternate" hreflang="x-default" href="{BASE}{u}"/>')
@@ -374,7 +405,7 @@ def llms():
          f'Контакт: {TG} (Telegram @yadhtl). Доробки та консультації: 600 грн/год.', '', '## Модулі', '']
     for m in M:
         L.append(f'- [{m["h1"]}]({BASE}/{m["slug"]}/): {m["short"]} Ціна {m["price"]}, разово.')
-    L += ['', '## Статті', '']
+    L += ['', f'- [Ціни на всі модулі]({BASE}/ceny/)', '', '## Статті', '']
     for a in ARTICLES:
         L.append(f'- [{a["title"]}]({BASE}/statti/{a["slug"]}/): {a["desc"]}')
     L += ['', '## Додатково', '', f'- [Російська версія]({BASE}/ru/)', f'- [Sitemap]({BASE}/sitemap.xml)', '']

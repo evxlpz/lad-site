@@ -126,3 +126,10 @@ details p{margin:12px 0 0;color:var(--text)}
 .foot a.langlink{color:#6A6E77;text-decoration:none}
 .foot a.langlink:hover{color:#B7BAC1}
 .related{display:grid;gap:12px;margin-top:8px}
+.ptable{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.ptable th,.ptable td{text-align:left;padding:16px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+.ptable th{font-size:14px;color:var(--muted);font-weight:700}
+.ptable a{color:var(--ink);font-weight:700;text-decoration:none}
+.ptable a:hover{color:var(--green)}
+.ptable td.pr{white-space:nowrap;font-weight:700}
+@media(max-width:640px){.ptable thead{display:none}.ptable tr{display:block;padding:12px 0;border-bottom:1px solid var(--line)}.ptable td{display:block;border:0;padding:3px 18px}}

@@ -1,67 +1,83 @@
 {
  "/": {
   "d": "2026-11-07",
-  "h": "4af1145b2853a3bad2c5bc0e55cb9e8ae82e5189"
+  "h": "db603e26aee2c20cec1477bc0446a44320f67db9"
  },
  "/ai-pomichnytsya-1c/": {
   "d": "2026-11-07",
-  "h": "88bb97d66f22ac6e393bf9f30ce33a5b68b305d4"
+  "h": "e10d70eaf95cebe4fec0a34de1841bf2bc3d7896"
+ },
+ "/ceny/": {
+  "d": "2026-11-07",
+  "h": "76a6c707306ed24fe5f268854c8b83e8b1a45e53"
  },
  "/heneratsiya-kharakterystyk-1c/": {
   "d": "2026-11-07",
-  "h": "539bfd271bd345d61ea0d50022a4769019540aad"
+  "h": "af239ab7a551837497b1752d0d3e70e9ec688ce3"
  },
  "/integratsiya-monopay-1c-bas/": {
   "d": "2026-11-07",
-  "h": "4b6d24a8b56cb9f98f0f98c8a012facad747cb7e"
+  "h": "df6f91ece26c9c191387ab3a93c9dafb2a43207f"
  },
  "/nova-poshta-1c/": {
   "d": "2026-11-07",
-  "h": "f3ed7e243a461ae6dca5c00c97c9a1ea23f9bc73"
+  "h": "40f13ed08297fb3a13571dbd9aed11235e5c921b"
  },
  "/novapay-1c/": {
   "d": "2026-11-07",
-  "h": "f77439322b43348c403131321222cebbf83ea026"
+  "h": "381ddfcd5fdae0b463ee893bcd10fa8028fdde97"
  },
  "/obmin-saytu-z-1c/": {
   "d": "2026-11-07",
-  "h": "98cab2e4e683c0c1d297c7ac4e1a09dfe466f87e"
+  "h": "44900c7a6a6b0b3edf7573c3da2645651de7aaed"
  },
  "/obmin-z-postachalnykom-api-1c/": {
   "d": "2026-11-07",
-  "h": "0ce12a972fbdbae58324640f0d8cf467f3c3513c"
+  "h": "fe62a14f016cca36eb8d79bc222c8ca595017fd2"
  },
  "/pryvat24-zalyshky-fop-1c/": {
   "d": "2026-11-07",
-  "h": "3cdc80c814986f3378397a7fc4ae24e81fe6278f"
+  "h": "e95199d6563a32735865e7481726c6e870e6e337"
  },
  "/robochyy-stil-menedzhera-1c/": {
   "d": "2026-11-07",
-  "h": "4f6b54335069d576cc9bb368e5025b87d51ec7bc"
+  "h": "90f701f04432b72f882e9d54c5e79aad12db100f"
  },
  "/rozpodil-zamovlen-fop-1c/": {
   "d": "2026-11-07",
-  "h": "4cdd9bf17e2eabf76f22a7aa3072d12cca1f034b"
+  "h": "fa7d842808a54b0d622c9d4fba538453c95282c2"
  },
  "/spovishchennya-viber-telegram-1c/": {
   "d": "2026-11-07",
-  "h": "d12eecfffd8641b81068b332d433fb8a46d8b821"
+  "h": "f8d37e70c1c1b73f94edfa7d1f42656f3d96031b"
  },
  "/statti/": {
   "d": "2026-11-07",
-  "h": "50c92afad5afde6b3c38917a38fd9348201fde7d"
+  "h": "157131dd6ddbcc3ede04bfe57165e06fb01f10d5"
  },
  "/statti/ai-pomichnyk-1c-zapyty-do-bazy/": {
   "d": "2026-11-07",
   "h": "24fc4addd561d2550e484a0c37a808cf7eb4f982"
  },
+ "/statti/avtomatyzatsiia-internet-mahazynu-1c-z-choho-pochaty/": {
+  "d": "2026-11-07",
+  "h": "24962b564cd10877e288c68fdbcdfcb853f1e145"
+ },
  "/statti/avtopovidomlennia-klientam-viber-telegram-1c/": {
   "d": "2026-11-07",
   "h": "25b396860ec9d0e04c999baa0207de305bfc09b6"
  },
+ "/statti/ekvairynh-monobank-plata-by-mono-1c/": {
+  "d": "2026-11-07",
+  "h": "2cdf3b00c0052efcf13c4bffd2dadfb0dfcf480e"
+ },
  "/statti/kilka-fop-v-1c-rozpodil-zamovlen/": {
   "d": "2026-11-07",
   "h": "f0c3049b937c81f568a331b66b6384a570d69c6c"
+ },
+ "/statti/nakladenyy-platizh-nova-poshta-oblik-1c/": {
+  "d": "2026-11-07",
+  "h": "3b10c1a023730e43e67f7e67d991f269c0d6f1eb"
  },
  "/statti/nova-poshta-i-1c-shcho-avtomatyzuvaty/": {
   "d": "2026-11-07",
@@ -69,23 +85,27 @@
  },
  "/statti/novapay-nakladenyy-platizh-1c/": {
   "d": "2026-11-07",
-  "h": "40a331bf374d7c2d48779486dab39d7f78f0e1a5"
+  "h": "dbadcbafbe4a5332b6686e2e236796be9cf91e16"
  },
  "/statti/obmin-bitrix-z-1c-typovyy-chy-vlasne-api/": {
   "d": "2026-11-07",
-  "h": "a3c4cd9e2dcb0384b0b76803c7618423aca3cf3f"
+  "h": "0873bacdb2a5bcf921d37b993b1aef330677da22"
  },
  "/statti/pidkliuchennia-monobank-do-1c/": {
   "d": "2026-11-07",
-  "h": "0b7139f1e1dbc814de60ac3a9eef8e4ecd20c8d0"
+  "h": "cf85f0dd24c97e69ea6797ab1a5510f9d9dfc67f"
  },
  "/statti/pokupka-chastynamy-monobank-1c/": {
   "d": "2026-11-07",
-  "h": "51d66b93247a085f9a94978df2af564820d3693a"
+  "h": "74031e9a4205ac1c3d645aef749bcc8ab46cf971"
  },
  "/statti/povernennia-koshtiv-za-kartkoiu-1c/": {
   "d": "2026-11-07",
-  "h": "f95399c1068ad3bbbb1711db8e060dc47b35a1fe"
+  "h": "55e3858d3284c0d419a60dcb0e35d58f9560f226"
+ },
+ "/statti/skilky-koshtuie-intehratsiia-1c/": {
+  "d": "2026-11-07",
+  "h": "dda389bcc3f5b0bfd01205673f0123d6287f355d"
  },
  "/statti/zalyshky-postachalnyka-na-saiti/": {
   "d": "2026-11-07",
@@ -97,10 +117,10 @@
  },
  "/statti/zvirka-nakladenoho-platezhu-1c/": {
   "d": "2026-11-07",
-  "h": "6b1ef3863614959745cac77f665bfeab03b990de"
+  "h": "3275081324c8a022dbb9fd65ada12b196dc789aa"
  },
  "/zalyshky-z-1c-na-sayt/": {
   "d": "2026-11-07",
-  "h": "b695c9658e9d43b6639648cf553c2bb52dbf4557"
+  "h": "ec2a3e01b9be28fc7a23eb9c94e3db342a4515e5"
  }
 }
