@@ -5,7 +5,7 @@
  },
  "/ai-pomichnytsya-1c/": {
   "d": "2026-11-07",
-  "h": "0e04042df7a8a339a166cd2a5ecca630a103bd03"
+  "h": "8399962105447a7f66061dba76bda61387b6e915"
  },
  "/ceny/": {
   "d": "2026-11-07",
@@ -13,11 +13,11 @@
  },
  "/ekvairynh-monobank-1c/": {
   "d": "2026-11-07",
-  "h": "601fcb3b9198bfe8aeb206a96cc17d2cb1c82d3c"
+  "h": "34c6c3116ef6c8925862ca6d67d2e60e81304df9"
  },
  "/heneratsiya-kharakterystyk-1c/": {
   "d": "2026-11-07",
-  "h": "eeb6df6a513a9c8b4db297b263bc24ef7c564688"
+  "h": "6cecdab48c5551d2375d40e730de7ee90c6d5c17"
  },
  "/integratsiya-monopay-1c-bas/": {
   "d": "2026-11-07",
@@ -25,23 +25,23 @@
  },
  "/nova-poshta-1c/": {
   "d": "2026-11-07",
-  "h": "5416acb509774079b35aa4508ca2ef82d6c719eb"
+  "h": "637f438794ecbb90b54f66434befa232e33e5b36"
  },
  "/novapay-1c/": {
   "d": "2026-11-07",
-  "h": "42c30a1985b60c1fbea9837aef7fff4129cfe3d0"
+  "h": "a641d7dbc7a835c778ca0da9469c7a5bd3eaad4b"
  },
  "/obmin-saytu-z-1c/": {
   "d": "2026-11-07",
-  "h": "74f3cc042f4b84f3691e705fb0c023334dbb8a0c"
+  "h": "f96ee585ff5047f785e8586f4061e814fd6ec71b"
  },
  "/obmin-z-postachalnykom-api-1c/": {
   "d": "2026-11-07",
-  "h": "65b7bee6e23c13d0462c119cb25644d2616583d8"
+  "h": "4e8108604006279690fca52e8a12ae0634f2327d"
  },
  "/pryvat24-zalyshky-fop-1c/": {
   "d": "2026-11-07",
-  "h": "aeb51e55a16e4612a0ded771c88bc960852c91b8"
+  "h": "5ffb732a6df0d31b70c541566e72aa6aee642557"
  },
  "/pytannia/": {
   "d": "2026-11-07",
@@ -49,15 +49,15 @@
  },
  "/robochyy-stil-menedzhera-1c/": {
   "d": "2026-11-07",
-  "h": "fe96c4351f083efb88f33db96b4b55dba056cdd1"
+  "h": "18ae8d942d44692dcee7d2ab5338804477c82a63"
  },
  "/rozpodil-zamovlen-fop-1c/": {
   "d": "2026-11-07",
-  "h": "3a1dcd966c7c4112ebb9728393bf3d20972d7578"
+  "h": "7e5fd7cabc477cf5fd65663ae40595cde73d8d6f"
  },
  "/spovishchennya-viber-telegram-1c/": {
   "d": "2026-11-07",
-  "h": "b194e0b40e27a3b2dd335317a544639f966b1c48"
+  "h": "5699224a8181115bee56baf8a7cb9dc4634f2fab"
  },
  "/statti/": {
   "d": "2026-11-07",
@@ -133,6 +133,6 @@
  },
  "/zalyshky-z-1c-na-sayt/": {
   "d": "2026-11-07",
-  "h": "b1fe7c0bbbfc3fc42f9df59fcdd94e1115951a2a"
+  "h": "82bc383170d83756f68bc333f526a9f3d3f147c9"
  }
 }

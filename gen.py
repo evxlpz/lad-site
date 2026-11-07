@@ -281,7 +281,7 @@ for m in M:
 <div class="grow"><p class="kicker">{e(m["group"])}</p><h1>{e(m["h1"])}</h1><p class="lead">{e(m["lead"])}</p></div>
 <aside class="pricebox"><span class="muted">Разова оплата, модуль ваш назавжди</span><b>{e(m["price"])}</b><span>Встановлення, налаштування, навчання і 30 днів виправлень уже в ціні.</span><a class="btn lime" href="{TG}">Подивитись демо</a></aside>
 </section>
-<section class="wrap sec"><h2 class="h2">{"Дивитись у дії" if not RU else "Смотреть в действии"}</h2><video class="demo" controls preload="metadata" playsinline poster="/video/{m["slug"]}.jpg"><source src="/video/{m["slug"]}.mp4" type="video/mp4"></video></section>
+<section class="wrap sec"><h2 class="h2">{"Дивитись у дії" if not RU else "Смотреть в действии"}</h2><div class="vwrap"><video class="demo" controls preload="metadata" playsinline poster="/video/{m["slug"]}.jpg"><source src="/video/{m["slug"]}.mp4" type="video/mp4"></video></div></section>
 <section class="white"><div class="wrap sec"><h2 class="h2">Що зараз забирає час</h2><ul class="list pains">{pains}</ul></div></section>
 <section class="wrap sec"><h2 class="h2">Що робить модуль</h2><ul class="list feats">{feats}</ul></section>
 <section class="wrap sec"><h2 class="h2">Як це працює</h2><ol class="flow">{how}</ol></section>
