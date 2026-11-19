@@ -1,7 +1,7 @@
 {
  "/": {
   "d": "2026-11-20",
-  "h": "1a537cb4cfb0e07412520bea2505caf9e176a41a"
+  "h": "f996002c1e4d6ba1d249e7923efa3056c5d582ae"
  },
  "/ai-pomichnytsya-1c/": {
   "d": "2026-11-20",
@@ -13,7 +13,7 @@
  },
  "/chaty-viber-telegram-1c/": {
   "d": "2026-11-20",
-  "h": "f8d17b20116808a4b5706cd08597a36a8c9644fa"
+  "h": "ddd7a336f19bc23f76d02e43254b27f3dd991594"
  },
  "/ekvairynh-monobank-1c/": {
   "d": "2026-11-20",
@@ -41,7 +41,7 @@
  },
  "/obmin-saytu-z-1c/": {
   "d": "2026-11-20",
-  "h": "bae1de9366f96fbeb2712e10f1e3cbafe3a9ae26"
+  "h": "78590b76d23689b94f8f5b86404404cb26b52970"
  },
  "/obmin-z-postachalnykom-api-1c/": {
   "d": "2026-11-20",
@@ -57,7 +57,7 @@
  },
  "/pytannia/": {
   "d": "2026-11-20",
-  "h": "f0eaebe30a73087dbdbc7e2cfe9c0711e63acfb7"
+  "h": "66b7544ae71984f4babc4638f2f5c46dce25c2a9"
  },
  "/robochyy-stil-menedzhera-1c/": {
   "d": "2026-11-20",
@@ -73,7 +73,7 @@
  },
  "/statti/": {
   "d": "2026-11-20",
-  "h": "a51bffb9668c13e246c389d4219607073c695b6a"
+  "h": "e38e5e307127217b8f93804b207427089032aa13"
  },
  "/statti/ai-pomichnyk-1c-zapyty-do-bazy/": {
   "d": "2026-11-20",
@@ -81,11 +81,11 @@
  },
  "/statti/alternatyva-chatbullet-easybusy-chaty-v-1c/": {
   "d": "2026-11-20",
-  "h": "6454763de9863141603db6f0f9cf748ec5857d5b"
+  "h": "746fc046fdb1072d63069acd8c569b8bcec09bfa"
  },
  "/statti/avtomatyzatsiia-internet-mahazynu-1c-z-choho-pochaty/": {
   "d": "2026-11-20",
-  "h": "671ed3b782c8febaa2709354f96504ed0a6c0d16"
+  "h": "4013bfa45af8623735c9b1c78efe2438480055b1"
  },
  "/statti/avtopovidomlennia-klientam-viber-telegram-1c/": {
   "d": "2026-11-20",
@@ -93,11 +93,15 @@
  },
  "/statti/chaty-viber-telegram-v-1c-bez-abonplaty/": {
   "d": "2026-11-20",
-  "h": "5477d66132457cbc833f6ac42b65eb119822db25"
+  "h": "f6f665dc947dbfc33fdb10a440b6498311863f5e"
  },
  "/statti/ekvairynh-monobank-plata-by-mono-1c/": {
   "d": "2026-11-20",
   "h": "e8a55cba37a449ac9593e35f64600063f4b0a350"
+ },
+ "/statti/keis-avtomatyzatsiia-internet-mahazynu-1c-unf/": {
+  "d": "2026-11-20",
+  "h": "62cdb5202840b7433bb21ad65c4bf3016dc0ab69"
  },
  "/statti/keis-avtomatyzatsiia-mahazynu-kontaktnykh-linz-1c/": {
   "d": "2026-11-20",
@@ -105,7 +109,7 @@
  },
  "/statti/kharakterystyky-nomenklatury-1c-unf/": {
   "d": "2026-11-20",
-  "h": "37d11f821114dc7d1a327c6b09ce5bc00f35e8aa"
+  "h": "9fc471a7f8f55564a24afe9b8d36ccbdec905811"
  },
  "/statti/kilka-fop-v-1c-rozpodil-zamovlen/": {
   "d": "2026-11-20",
@@ -129,7 +133,7 @@
  },
  "/statti/obmin-bitrix-z-1c-typovyy-chy-vlasne-api/": {
   "d": "2026-11-20",
-  "h": "4d72cc05a0ff0c6f1103c320988077ffa230b9e9"
+  "h": "e907526ff04f0f17945df3e9d73786190f75f4ef"
  },
  "/statti/oplata-chastynamy-pryvatbank-na-sayti-1c/": {
   "d": "2026-11-20",
@@ -153,7 +157,7 @@
  },
  "/statti/skilky-koshtuie-intehratsiia-1c/": {
   "d": "2026-11-20",
-  "h": "e67a9cd0fe6c5ed9df19f9e0cfb32b7e2735321a"
+  "h": "eab977e78a181961c8a6c3f4d60bd6b383a89d8f"
  },
  "/statti/zalyshky-postachalnyka-na-saiti/": {
   "d": "2026-11-20",
