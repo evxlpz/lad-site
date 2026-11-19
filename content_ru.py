@@ -518,3 +518,9 @@ for _a in ARTICLES_RU:
         _b, _f = _ADD3_RU[_a['slug']]
         _a['body'] = list(_a['body']) + _b
         _a['faq'] = list(_a.get('faq') or []) + _f
+
+# 20.11 (3): усиление еще 10 статей — articles_boost.py
+from articles_boost import boost as _boost
+_boost(ARTICLES_RU, "ru")
+from articles_boost import add_new as _add_new
+_add_new(ARTICLES_RU, EXTRA_RU, "ru")
