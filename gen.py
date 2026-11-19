@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Генератор статичного сайту «Лад». Запуск: python3 gen.py [BASE_URL]"""
-import json, os, sys, html, datetime
+import json, os, sys, html, datetime, re
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content import EXTRA, ARTICLES
 from home_extra import HOME, AKA, PRICES, FAQP
@@ -36,7 +36,7 @@ M = [
   features=['Завантаження виписок і реєстрів NovaPay','Рознесення оплат по замовленнях за ТТН','Комісія NovaPay враховується окремо','Видно неоплачені й незнайдені посилки','Робота з кількома ФОП']),
  dict(key='privat', slug='pryvat24-zalyshky-fop-1c', group='Оплати', card='Приват24: залишки', price='3 500 грн', amount=3500,
   h1='Залишки Приват24 по кожному ФОП в 1С',
-  desc='Баланси рахунків Приват24 по всіх ФОП прямо в 1С і BAS, з порівнянням із залишком в обліку.',
+  desc='Баланси рахунків Приват24 по всіх ФОП прямо в 1С і BAS зі зведенням із залишком в обліку. Без входу в банк під кожен ФОП. Разова оплата 3 500 грн.',
   short='Залишки на рахунках кожного ФОП поруч із даними обліку, без входу в банк.',
   lead='Баланси рахунків у Приват24 по всіх ваших ФОП видно прямо в обліку — поруч із тим, що показує 1С.',
   pains=['Щоб глянути залишки, треба заходити в банк під кожен ФОП','Розбіжності між банком і обліком знаходяться запізно','Немає однієї картини грошей по всіх ФОП'],
@@ -50,56 +50,56 @@ M = [
   features=['Актуальні відділення й поштомати НП в обліку','Автоматично додає нові відділення й поштомати НП у довідник 1С і прибирає закриті','Претензія по посилці в один клік','Нагадування клієнту про посилку на зберіганні','Робота з кількома ФОП-відправниками']),
  dict(key='hub', slug='obmin-saytu-z-1c', group='Сайт ↔ облік', card='Хаб обміну', price='від 15 000 грн', amount=15000,
   h1='Обмін сайту з 1С: замовлення, статуси, клієнти',
-  desc='Двосторонній обмін інтернет-магазину з 1С і BAS: замовлення, статуси, клієнти, власне API для ботів і CRM.',
+  desc='Двосторонній обмін інтернет-магазину з 1С і BAS: замовлення, статуси, клієнти й власне API для ботів та CRM. Bitrix, Laravel. Від 15 000 грн разово.',
   short='Замовлення, статуси, клієнти й API між сайтом та обліком в обидва боки.',
   lead='Замовлення з сайту одразу в обліку, статуси з обліку — на сайті й у клієнта. Плюс API, щоб підключати бота, CRM чи інші сервіси.',
   pains=['Замовлення з сайту переносяться в облік руками','Клієнт не бачить актуального статусу','Кожна нова інтеграція — окремий костиль'],
   features=['Замовлення з сайту в облік автоматично','Статуси з обліку назад на сайт','Клієнти й історія замовлень синхронізовані','Власне API для ботів, CRM та сервісів','Журнал обміну: видно, що і коли пройшло']),
  dict(key='stock', slug='zalyshky-z-1c-na-sayt', group='Сайт ↔ облік', card='Залишки на сайт', price='6 000 грн', amount=6000,
   h1='Залишки з 1С на сайт автоматично',
-  desc='Автоматичне вивантаження залишків з 1С і BAS на сайт інтернет-магазину без ручних файлів.',
+  desc='Автоматичне вивантаження залишків з 1С і BAS на сайт інтернет-магазину за розкладом, без ручних файлів. Bitrix, інші платформи — адаптація. Разова оплата.',
   short='Наявність товару з обліку на сайті, автоматично й без вивантажень руками.',
   lead='Наявність товару на сайті береться з обліку. Немає товару — сайт це знає, з’явився — одразу доступний до замовлення.',
   pains=['Залишки на сайт вивантажуються руками','Клієнти замовляють те, чого вже немає','Сайт показує «немає», хоча товар на складі'],
   features=['Залишки з обліку на сайт за розкладом','Тільки потрібні склади й товари','Без ручних вивантажень і файлів','Працює з Bitrix, адаптується під інші платформи']),
  dict(key='supplier', slug='obmin-z-postachalnykom-api-1c', group='Постачальники', card='Обмін з постачальником', price='від 9 000 грн', amount=9000,
   h1='Обмін з постачальником по API з 1С',
-  desc='Автоматична відправка замовлень постачальнику з 1С і BAS, його залишки й статуси назад в облік.',
+  desc='Автоматична відправка замовлень постачальнику з 1С і BAS, його залишки, статуси та імпорт прайсу з PDF чи Excel. Від 9 000 грн, разова оплата.',
   short='Замовлення постачальнику та його залишки через API, без дзвінків і таблиць.',
   lead='Замовлення постачальнику йде з обліку автоматично, а його залишки й відповіді повертаються назад. Без дзвінків, листів і таблиць.',
   pains=['Замовлення постачальнику складаються й відправляються вручну','Невідомо, чи є товар у постачальника','Прихідні накладні не сходяться з замовленням'],
   features=['Відправка замовлень постачальнику з обліку','Залишки постачальника в обліку','Статуси й відповіді постачальника назад','Журнал обміну з помилками','Імпорт прайсу постачальника з PDF або Excel: ШІ розбирає таблицю і зіставляє з номенклатурою','Адаптую під API вашого постачальника']),
  dict(key='generator', slug='heneratsiya-kharakterystyk-1c', group='Товари', card='Генератор характеристик', price='6 000 грн', amount=6000,
   h1='Генератор характеристик номенклатури в 1С',
-  desc='Пакетне створення характеристик номенклатури в 1С і BAS з параметрів, пошук і злиття дублікатів.',
+  desc='Пакетне створення характеристик номенклатури в 1С УНФ і BAS з параметрів, пошук і злиття дублів. Для магазинів з розмірами й кольорами. Разова оплата.',
   short='Створює характеристики товару пакетом і прибирає дублікати.',
   lead='Створює характеристики товару пакетом із вибраних параметрів і знаходить дублікати, щоб у довіднику був порядок.',
   pains=['Характеристики заводяться по одній, годинами','Дублікати характеристик ламають залишки й звіти','Значення параметрів пишуться по-різному'],
   features=['Пакетне створення характеристик з параметрів','Без дублікатів: перевірка перед створенням','Пошук і злиття вже наявних дублів','Нормалізація значень параметрів']),
  dict(key='notify', slug='spovishchennya-viber-telegram-1c', group='Клієнти', card='Сповіщення Viber / Telegram', price='5 000 грн', amount=5000,
   h1='Сповіщення клієнтам у Viber і Telegram з 1С',
-  desc='Автоматичні повідомлення клієнтам з 1С і BAS у Viber і Telegram: підтвердження замовлення, оплата, ТТН, нагадування.',
+  desc='Автоматичні повідомлення клієнтам з 1С і BAS у Viber і Telegram: підтвердження замовлення, оплата, ТТН, нагадування. Разова оплата, встановлення під ключ.',
   short='Клієнт отримує статус, посилання на оплату й ТТН у месенджер автоматично.',
   lead='Клієнт отримує підтвердження замовлення, посилання на оплату, ТТН і нагадування в месенджер — автоматично, як тільки менеджер провів замовлення.',
   pains=['Менеджери пишуть клієнтам вручну','Клієнт не знає, де його замовлення, і дзвонить','Повідомлення забувають відправити'],
   features=['Повідомлення з обліку у Viber і Telegram','Підтвердження, оплата, ТТН — за статусами','Нагадування про повторне замовлення','Шаблони текстів під ваш бренд']),
  dict(key='fop', slug='rozpodil-zamovlen-fop-1c', group='Контроль', card='Контроль ФОП', price='9 000 грн', amount=9000,
   h1='Розподіл замовлень по ФОП і контроль лімітів у 1С',
-  desc='Автоматичний вибір ФОП у замовленнях 1С і BAS, контроль лімітів і грошей по ФОП, звірки з постачальниками, доступи.',
+  desc='Автоматичний вибір ФОП у замовленнях 1С і BAS, контроль лімітів і грошей по ФОП, звірки з постачальниками, доступи. Разова оплата, встановлення під ключ.',
   short='Розподіл замовлень по ФОП, ліміти, звірки з постачальниками, доступи для працівників.',
   lead='Облік сам підставляє правильний ФОП у замовлення, стежить за лімітами й допомагає звіряти розрахунки з постачальниками.',
   pains=['ФОП у замовленнях обирається вручну і з помилками','Ліміти ФОП легко перевищити непомітно','Звірки з постачальниками — цілий день роботи'],
   features=['Закріплення ФОП за постачальником','Заборона ФОП з автоматичною заміною','Контроль грошей і лімітів по кожному ФОП','Звірки з постачальниками','Доступи до функцій для кожного працівника']),
  dict(key='desk', slug='robochyy-stil-menedzhera-1c', group='Менеджери', card='Робочий стіл', price='18 000 грн', amount=18000,
   h1='Робочий стіл менеджера в 1С',
-  desc='Один екран менеджера в 1С і BAS: пропущені дзвінки, дозамовлення, замовлення, посилки та статистика.',
+  desc='Робоче місце менеджера в 1С і BAS: пропущені дзвінки, дозамовлення, замовлення, посилки та статистика на одному екрані. Разова оплата, під ключ.',
   short='Один екран менеджера: дзвінки, дозамовлення, замовлення й посилки.',
   lead='Один зручний екран замість десятка форм: кому передзвонити, кому пора дозамовити, які замовлення горять і де посилки.',
   pains=['Менеджер стрибає між формами і губить клієнтів','Пропущені дзвінки й обіцянки передзвонити забуваються','Ніхто не нагадує клієнтам, що пора дозамовити'],
   features=['Картки клієнтів: пропущені, обіцяні, пора дозамовити','Список замовлень з фільтрами й швидким пошуком','Статуси посилок НП прямо в рядку','Статистика роботи менеджерів для власника','Працює на будь-якому екрані']),
  dict(key='ai', slug='ai-pomichnytsya-1c', group='AI', card='AI-помічниця', price='30 000 грн', amount=30000,
   h1='AI-помічниця для 1С',
-  desc='AI-помічниця в 1С і BAS: питання до бази простою мовою, прихідні накладні з фото, підсумки дзвінків, розумний пошук.',
+  desc='AI-помічник у 1С і BAS: питання до бази простою мовою, прихідні накладні з фото, підсумки дзвінків і розумний пошук. Разова оплата, під ключ.',
   short='Питання до бази простою мовою, накладні з фото, підсумки дзвінків, розумний пошук.',
   lead='Помічниця всередині обліку: відповідає на питання по базі простою мовою, заводить накладні з фото, підсумовує дзвінки клієнтів.',
   pains=['Щоб отримати цифру, треба просити програміста про звіт','Накладні постачальників набиваються вручну','Про що говорили з клієнтом по телефону — ніхто не пам’ятає'],
@@ -112,20 +112,46 @@ M = [
   pains=['Клієнти пишуть у Viber і Telegram на особисті телефони менеджерів','Історія спілкування зникає разом зі співробітником або телефоном','Сторонні сервіси чатів з абонплатою не знають замовлень і клієнтів з обліку'],
   features=['Один екран для всіх чатів Telegram і Viber','Чат автоматично прив’язується до картки клієнта за телефоном чи ідентифікатором месенджера','Панель чату відкривається прямо в замовленні покупця й на робочому столі менеджера','З чату одним кліком: текст замовлення, ТТН Нової Пошти, рахунок PDF, файли','Швидкі відповіді за шаблонами й теги розмов','Історія лишається в 1С, а не в особистих телефонах']),
  dict(key='finance', slug='groshi-marzha-1c', group='Контроль', card='Гроші і маржа', price='20 000 грн', amount=20000,
-  h1='Гроші і маржа в 1С: каси, витрати, чиста маржа після реклами',
-  desc='Екран «Гроші» як у банківському застосунку і екран «Маржа» в 1С і BAS: каси, витрати з фото чека, маржа по каналах продажу з урахуванням комісій, доставки й реклами.',
+  h1='Гроші і маржа в 1С: каси, витрати, чиста маржа',
+  desc='Екрани «Гроші» і «Маржа» в 1С і BAS: каси, витрати з фото чека, чиста маржа по каналах після комісій, доставки й реклами. Разова оплата.',
   short='Каси, витрати з фото чека й чиста маржа по каналах продажу після комісій, доставки й реклами.',
   lead='Екран «Гроші» показує рахунки й каси, як банківський застосунок, а екран «Маржа» — скільки лишається з продажів після комісій, доставки, повернень і реклами.',
   pains=['Авансові звіти й розрахунки з готівкою ведуться вручну','Не видно, на що пішли гроші за період','Маржа рахується без урахування реклами, комісій еквайрингу й доставки'],
   features=['Екран «Гроші»: картки рахунків і кас із залишками, стрічка операцій по днях','Розбивка «на що пішли гроші»','Проста форма витрати, яку заповнює ШІ-помічниця з фото чека чи текстового повідомлення','Каси по людях (картки власників), виплати зарплат','Екран «Маржа» по каналах продажу з урахуванням еквайрингу й NovaPay, доставки та повернень','Витрати на рекламу підтягуються самі: Google Ads, розсилки Viber і SMS — до «чистого результату»']),
  dict(key='parts', slug='oplata-chastynamy-pryvatbank-1c', group='Оплати', card='Оплата частинами ПриватБанку', price='7 000 грн', amount=7000,
   h1='Оплата частинами ПриватБанку: сайт + 1С',
-  desc='Кнопка «Оплата частинами» ПриватБанку на сайті з Bitrix і статус оплати в замовленні 1С і BAS автоматично: заявка в банку, зворотний виклик із перевіркою підпису.',
+  desc='Кнопка «Оплата частинами» ПриватБанку на сайті з Bitrix і статус оплати в замовленні 1С і BAS автоматично: заявка в банку, перевірка підпису.',
   short='Кнопка розстрочки ПриватБанку на сайті, а статус оплати сам потрапляє в замовлення 1С.',
   lead='Клієнт обирає «Оплату частинами» на сайті, оформлює заявку в банку, а результат сам з’являється в замовленні 1С. Суму завжди бере сервер із замовлення.',
   pains=['Статус розстрочки з банку перевіряється вручну по кабінету','Невідомо, чи схвалив банк заявку і чи можна відправляти товар','Суму в запиті можна підмінити на боці браузера'],
   features=['Кнопка «Оплата частинами ПриватБанку» на сторінці оформлення замовлення','Заявка створюється в банку з даних замовлення','Зворотний виклик банку з перевіркою підпису (SHA1)','Статус оплати сам потрапляє в замовлення 1С','Фонова перевірка статусів кожні 10 хвилин','Сума завжди береться із замовлення на сервері, клієнт її не змінить']),
 ]
+
+# SEO-заголовки модулів (до 54 знаків, разом із « | Лад» — до 60), зібрані з реальних підказок пошуку
+TITLES = {
+ 'monopay': 'Еквайринг monobank для 1С і BAS: модуль',
+ 'novapay': 'NovaPay 1С: накладений платіж Нової Пошти',
+ 'privat': 'Приват24 і 1С: модуль залишків по ФОП',
+ 'novaposhta': 'Модуль Нова Пошта для 1С і BAS: ТТН',
+ 'hub': 'Обмін 1С з сайтом: Bitrix, Laravel, API',
+ 'stock': 'Вивантаження залишків з 1С на сайт',
+ 'supplier': 'Обмін з постачальником і прайси в 1С',
+ 'generator': 'Характеристики номенклатури 1С УНФ і BAS',
+ 'notify': 'Сповіщення у Viber і Telegram з 1С / BAS',
+ 'fop': 'Розподіл замовлень по ФОП у 1С і ліміти',
+ 'desk': 'Робоче місце менеджера в 1С / BAS',
+ 'ai': 'AI-помічник для 1С і BAS',
+ 'chats': 'Чат у 1С: Viber і Telegram в одному вікні',
+ 'finance': 'Маржа в 1С і управлінський облік грошей',
+ 'parts': 'Оплата частинами ПриватБанку: сайт і 1С',
+}
+for _m in M:
+    _m['title'] = TITLES[_m['key']]
+
+# Теми для блоку «Читайте також»: спершу статті того ж модуля, потім тієї ж теми
+TOPIC = {'monopay': 'money', 'novapay': 'money', 'parts': 'money', 'privat': 'money', 'finance': 'money', 'fop': 'money',
+         'hub': 'site', 'stock': 'site', 'supplier': 'site', 'generator': 'site',
+         'novaposhta': 'work', 'notify': 'work', 'desk': 'work', 'chats': 'work', 'ai': 'work'}
 
 if RU:
     from content_ru import M_RU, EXTRA_RU, ARTICLES_RU, PHRASES
@@ -137,11 +163,17 @@ LOGO_SVG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="
 CHECK = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E5E4E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
 WARN = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B4532A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>'
 
-def head(title, desc, path, ld, root):
+def head(title, desc, path, ld, root, robots='index,follow,max-image-preview:large,max-snippet:-1', indexable=True):
     global CUR
     CUR = path
     url = SITE + path
     root = RP + root if not root.startswith('http') else root
+    seo_links = f'''<link rel="canonical" href="{url}">
+<link rel="alternate" hreflang="uk" href="{BASE}{path}">
+<link rel="alternate" hreflang="ru" href="{BASE}/ru{path}">
+<link rel="alternate" hreflang="x-default" href="{BASE}{path}">
+''' if indexable else ''
+    ld_tag = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n' if ld else ''
     return f'''<!doctype html>
 <html lang="{'ru' if RU else 'uk'}">
 <head>
@@ -149,11 +181,7 @@ def head(title, desc, path, ld, root):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
-<link rel="canonical" href="{url}">
-<link rel="alternate" hreflang="uk" href="{BASE}{path}">
-<link rel="alternate" hreflang="ru" href="{BASE}/ru{path}">
-<link rel="alternate" hreflang="x-default" href="{BASE}{path}">
-<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+{seo_links}<meta name="robots" content="{robots}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Лад">
 <meta property="og:image" content="{BASE}/og.png">
@@ -173,8 +201,7 @@ def head(title, desc, path, ld, root):
 <link rel="preload" href="{root}fonts/manrope-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}fonts/unbounded-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{root}style.css">
-<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
-</head>
+{ld_tag}</head>
 <body>
 '''
 
@@ -184,7 +211,7 @@ def header(root, back=False):
     return f'<header class="wrap top"><a class="logo" href="{root}"><span class="mark">{LOGO_SVG}</span>{BRAND}</a>{nav}</header>\n'
 
 def footer():
-    return f'<footer class="foot"><div class="wrap"><span>© {datetime.date.today().year} {BRAND} · Автоматизація e-commerce · <a href="{SITE}/tsiny/">{'Цены' if RU else 'Ціни'}</a> · <a href="{SITE}/pytannia/">{'Вопросы и ответы' if RU else 'Питання й відповіді'}</a> · <a href="{SITE}/statti/">{'Статьи' if RU else 'Статті'}</a> · <a href="{TG}">Telegram @yadhtl</a> · <a href="{FH}" rel="noopener">{'Отзывы на Freelancehunt' if RU else 'Відгуки на Freelancehunt'}</a></span><a class="langlink" href="{(BASE + CUR) if RU else (BASE + '/ru' + CUR)}" hreflang="{'uk' if RU else 'ru'}">{'Українською' if RU else 'Російською'}</a></div></footer>\n</body>\n</html>\n'
+    return f'<footer class="foot"><div class="wrap"><span>© {datetime.date.today().year} {BRAND} · Автоматизація e-commerce · <a href="{SITE}/tsiny/">{'Цены' if RU else 'Ціни'}</a> · <a href="{SITE}/pytannia/">{'Вопросы и ответы' if RU else 'Питання й відповіді'}</a> · <a href="{SITE}/statti/">{'Статьи' if RU else 'Статті'}</a> · <a href="{TG}">Telegram @yadhtl</a> · <a href="{FH}" rel="noopener">{'Отзывы на Freelancehunt' if RU else 'Відгуки на Freelancehunt'}</a></span><a class="langlink" href="{(BASE + CUR) if RU else (BASE + '/ru' + (CUR if CUR != '/404.html' else '/'))}" hreflang="{'uk' if RU else 'ru'}">{'Українською' if RU else 'Російською'}</a></div></footer>\n</body>\n</html>\n'
 
 def cta(title, text):
     return f'''<section class="dark" id="contact"><div class="wrap ctaband">
@@ -194,6 +221,13 @@ def cta(title, text):
 
 HASHES = {}
 
+# lastmod.json: дата останньої зміни вмісту сторінки (для sitemap і Article.dateModified)
+LM_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lastmod.json')
+try:
+    LM = json.load(open(LM_FILE, encoding='utf-8'))
+except Exception:
+    LM = {}
+
 def write(path, s):
     full = os.path.join(OUT, path.strip('/'), 'index.html') if path != '/' else os.path.join(OUT, 'index.html')
     os.makedirs(os.path.dirname(full), exist_ok=True)
@@ -202,11 +236,12 @@ def write(path, s):
             s = s.replace(a, b)
     open(full, 'w', encoding='utf-8').write(s)
     if not RU:
-        HASHES[path] = hashlib.sha1(s.encode('utf-8')).hexdigest()
+        # dateModified береться з самого lastmod.json, тому в хеш він не входить
+        HASHES[path] = hashlib.sha1(re.sub(r'"dateModified": "[^"]*"', '', s).encode('utf-8')).hexdigest()
 
-ORG = {"@type": "Organization", "@id": BASE + "/#org", "name": BRAND, "url": SITE + '/', "logo": BASE + "/og.png", "sameAs": [TG, FH],
+ORG = {"@type": "Organization", "@id": BASE + "/#org", "name": BRAND, "url": SITE + '/', "logo": BASE + "/logo.png", "sameAs": [TG, FH],
        "description": "Готові модулі автоматизації e-commerce для 1С і BAS: оплати, доставка, обмін із сайтом і постачальниками, AI-помічниця." if not RU else "Готовые модули автоматизации e-commerce для 1С и BAS: оплаты, доставка, обмен с сайтом и поставщиками, AI-помощница.",
-       "areaServed": "UA", "knowsAbout": ["1С", "BAS", "monobank", "NovaPay", "Нова Пошта", "Bitrix", "інтеграція інтернет-магазину з обліком"],
+       "areaServed": "UA", "knowsAbout": ["1С", "BAS", "monobank", "NovaPay", "Нова Пошта", "Bitrix", "інтеграція інтернет-магазину з обліком" if not RU else "интеграция интернет-магазина с учетом"],
        "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "url": TG, "availableLanguage": ["uk", "ru"]}}
 
 # ---------- index ----------
@@ -218,7 +253,7 @@ ld_index = {"@context": "https://schema.org", "@graph": [ORG,
     {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in HX['faq']]},
     {"@type": "ItemList", "name": "Модулі автоматизації e-commerce для 1С і BAS",
      "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": f'{SITE}/{m["slug"]}/', "name": m["h1"]} for i, m in enumerate(M)]}]}
-idx = head('Купити модулі для 1С і BAS: еквайринг monobank, NovaPay, Нова Пошта — ' + BRAND,
+idx = head(HX['title'],
            'Готові модулі для 1С, BAS і CRM: еквайринг monobank, NovaPay, Нова Пошта, обмін із сайтом і постачальниками, AI-помічниця. Разова оплата, встановлення під ключ.',
            '/', ld_index, '')
 idx += header('')
@@ -272,24 +307,26 @@ for m in M:
     faq = x["faq"] + GEN_FAQ
     HAS_VIDEO = os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'video', m["slug"] + '.mp4'))
     art =[a for a in ARTICLES if a["module"] == m["key"]]
+    # ціна «від …» — діапазон (minPrice), точна ціна — price
+    if m["price"].startswith(('від', 'от')):
+        offer = {"@type": "Offer", "priceSpecification": {"@type": "PriceSpecification", "minPrice": m["amount"], "priceCurrency": "UAH"},
+                 "availability": "https://schema.org/InStock", "url": SITE + path}
+    else:
+        offer = {"@type": "Offer", "price": m["amount"], "priceCurrency": "UAH", "availability": "https://schema.org/InStock", "url": SITE + path}
     ld = {"@context": "https://schema.org", "@graph": [ORG,
-        {"@type": "Service", "name": m["h1"], "description": m["desc"], "provider": {"@id": BASE + "/#org"},
-         "areaServed": "UA", "offers": {"@type": "Offer", "price": m["amount"], "priceCurrency": "UAH"}},
         {"@type": "SoftwareApplication", "name": m["card"] + " " + ("для 1С і BAS" if not RU else "для 1С и BAS"), "description": m["desc"],
          "applicationCategory": "BusinessApplication", "applicationSubCategory": "Extension for 1C:Enterprise / BAS",
          "operatingSystem": "1C:Enterprise 8.3", "inLanguage": LANG, "url": SITE + path,
          "publisher": {"@id": BASE + "/#org"},
-         "offers": {"@type": "Offer", "price": m["amount"], "priceCurrency": "UAH", "availability": "https://schema.org/InStock", "url": SITE + path}},
+         "offers": offer},
         ] + ([{"@type": "VideoObject", "name": m["h1"] + (": демо" if not RU else ": демо"), "description": m["desc"],
          "thumbnailUrl": f'{BASE}/video/{m["slug"]}.jpg', "contentUrl": f'{BASE}/video/{m["slug"]}.mp4',
-         "uploadDate": "2026-11-07", "duration": "PT20S", "inLanguage": "uk", "publisher": {"@id": BASE + "/#org"}}] if HAS_VIDEO else []) + [
+         "uploadDate": "2026-11-07T00:00:00+02:00", "duration": "PT20S", "inLanguage": "uk", "publisher": {"@id": BASE + "/#org"}}] if HAS_VIDEO else []) + [
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Модулі", "item": SITE + '/'},
             {"@type": "ListItem", "position": 2, "name": m["card"], "item": SITE + path}]},
         {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}]}
-    mt = f'{m["h1"]}: купити, {m["price"]} | {BRAND}'
-    if len(mt) > 70:
-        mt = f'{m["h1"]} — {m["price"]} | {BRAND}'
+    mt = f'{m["title"]} | {BRAND}'
     s = head(mt, m["desc"], path, ld, '../')
     s += header('../', back=True)
     pains = ''.join(f'<li>{WARN}<span>{e(p)}</span></li>' for p in m["pains"])
@@ -330,7 +367,7 @@ for a in ARTICLES:
     path = f'/statti/{a["slug"]}/'
     mod = MB[a["module"]]
     ld = {"@context": "https://schema.org", "@graph": [ORG,
-        {"@type": "Article", "headline": a["title"], "description": a["desc"], "datePublished": a["date"], "dateModified": a["date"],
+        {"@type": "Article", "headline": a["title"], "description": a["desc"], "datePublished": a["date"], "dateModified": LM.get(path, {}).get('d', a["date"]),
          "inLanguage": LANG, "image": BASE + "/og.png", "author": {"@id": BASE + "/#org"},
          "publisher": {"@id": BASE + "/#org"}, "mainEntityOfPage": SITE + path},
         {"@type": "BreadcrumbList", "itemListElement": [
@@ -340,12 +377,19 @@ for a in ARTICLES:
     afaq = a.get('faq') or []
     if afaq:
         ld["@graph"].append({"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in afaq]})
-    s = head(f'{a["title"]} | {BRAND}', a["desc"], path, ld, '../../')
+    at = f'{a["title"]} | {BRAND}'
+    if len(at) > 60:
+        at = a["title"]
+    s = head(at, a["desc"], path, ld, '../../')
     s += header('../../', back=True)
     body = ''.join(f'<h2>{e(h)}</h2>' + ''.join(f'<p>{e(p)}</p>' for p in ps) for h, ps in a["body"])
     if afaq:
         body += '<h2>' + HX['faq_h'] + '</h2>' + ''.join(f'<details><summary>{e(q)}</summary><p>{e(ans)}</p></details>' for q, ans in afaq)
-    rel = [x for x in ARTICLES if x is not a and x['module'] == a['module']] + [x for x in ARTICLES if x is not a and x['module'] != a['module']]
+    # схожі статті: той самий модуль, потім та сама тема, далі решта — по колу від поточної, щоб добірка різнилась
+    _ia, _n = ARTICLES.index(a), len(ARTICLES)
+    def _tier(x):
+        return 0 if x['module'] == a['module'] else 1 if TOPIC[x['module']] == TOPIC[a['module']] else 2
+    rel = sorted((x for x in ARTICLES if x is not a), key=lambda x: (_tier(x), (ARTICLES.index(x) - _ia) % _n))
     relhtml = ''.join(f'<a class="artlink" href="../{x["slug"]}/"><span class="tag">{"Стаття" if not RU else "Статья"}</span><b>{e(x["title"])}</b></a>' for x in rel[:3])
     body += f'<h2>{HX["related"]}</h2><div class="related">{relhtml}</div>'
     s += f'''<main><article class="wrap sec prose">
@@ -360,9 +404,9 @@ for a in ARTICLES:
     write(path, s)
 
 ld = {"@context": "https://schema.org", "@graph": [ORG, {"@type": "CollectionPage", "name": "Статті про автоматизацію інтернет-магазину", "url": SITE + '/statti/', "inLanguage": LANG}]}
-s = head(f'Статті: автоматизація інтернет-магазину з 1С і BAS | {BRAND}', 'Практичні інструкції: оплата monobank у 1С, накладений платіж NovaPay, залишки на сайт, Нова Пошта в обліку.', '/statti/', ld, '../')
+s = head(f'Статті: автоматизація інтернет-магазину з 1С і BAS | {BRAND}', 'Практичні інструкції для інтернет-магазину: оплата monobank у 1С, накладений платіж NovaPay, залишки на сайт, Нова Пошта в обліку, чати й маржа.', '/statti/', ld, '../')
 s += header('../', back=True)
-items = ''.join(f'<a class="card" href="{a["slug"]}/"><span class="tag">Інструкція</span><h3>{e(a["title"])}</h3><p>{e(a["desc"])}</p></a>' for a in ARTICLES)
+items = ''.join(f'<a class="card" href="{a["slug"]}/"><span class="tag">Інструкція</span><h2>{e(a["title"])}</h2><p>{e(a["desc"])}</p></a>' for a in ARTICLES)
 s += f'<main><section class="wrap hero"><div class="grow"><p class="kicker">Статті</p><h1>Автоматизація інтернет-магазину: практичні інструкції</h1><p class="lead">Як прибрати ручну роботу з оплатами, доставкою й обміном із сайтом у 1С та BAS.</p></div></section><section class="wrap sec"><div class="cards">{items}</div></section></main>\n'
 s += cta('Хочете так само у себе?', 'Напишіть у Telegram, яка у вас система.')
 s += footer()
@@ -375,7 +419,9 @@ ld = {"@context": "https://schema.org", "@graph": [ORG,
     {"@type": "ItemList", "name": PX['h1'], "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "item": {"@type": "SoftwareApplication", "name": m["h1"], "url": f'{SITE}/{m["slug"]}/',
           "applicationCategory": "BusinessApplication", "operatingSystem": "1C:Enterprise 8.3",
-          "offers": {"@type": "Offer", "price": m["amount"], "priceCurrency": "UAH", "availability": "https://schema.org/InStock"}}} for i, m in enumerate(M)]},
+          "offers": ({"@type": "Offer", "priceSpecification": {"@type": "PriceSpecification", "minPrice": m["amount"], "priceCurrency": "UAH"}, "availability": "https://schema.org/InStock"}
+                     if m["price"].startswith(('від', 'от')) else
+                     {"@type": "Offer", "price": m["amount"], "priceCurrency": "UAH", "availability": "https://schema.org/InStock"})}} for i, m in enumerate(M)]},
     {"@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Лад" if not RU else "Лад", "item": SITE + '/'},
         {"@type": "ListItem", "position": 2, "name": PX['crumb'], "item": SITE + '/tsiny/'}]}]}
@@ -396,13 +442,13 @@ s += footer()
 write('/tsiny/', s)
 
 # заглушка зі старого адреси /ceny/ (був доступний кілька хвилин)
-_stub = f'<!doctype html><html lang="{LANG}"><head><meta charset="utf-8"><title>{PX["crumb"]} | {BRAND}</title><link rel="canonical" href="{SITE}/tsiny/"><meta http-equiv="refresh" content="0;url={PFX}/tsiny/"></head><body><a href="{PFX}/tsiny/">{PX["crumb"]}</a></body></html>'
+_stub = f'<!doctype html><html lang="{LANG}"><head><meta charset="utf-8"><title>{PX["crumb"]} | {BRAND}</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="{SITE}/tsiny/"><meta http-equiv="refresh" content="0;url={PFX}/tsiny/"></head><body><a href="{PFX}/tsiny/">{PX["crumb"]}</a></body></html>'
 os.makedirs(os.path.join(OUT, 'ceny'), exist_ok=True)
 open(os.path.join(OUT, 'ceny', 'index.html'), 'w', encoding='utf-8').write(_stub)
 
 # заглушка зі старого slug monopay
 _old='integratsiya-monopay-1c-bas'
-_s2=f'<!doctype html><html lang="{LANG}"><head><meta charset="utf-8"><title>Еквайринг monobank | {BRAND}</title><link rel="canonical" href="{SITE}/ekvairynh-monobank-1c/"><meta http-equiv="refresh" content="0;url={PFX}/ekvairynh-monobank-1c/"></head><body><a href="{PFX}/ekvairynh-monobank-1c/">Еквайринг monobank</a></body></html>'
+_s2=f'<!doctype html><html lang="{LANG}"><head><meta charset="utf-8"><title>Еквайринг monobank | {BRAND}</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="{SITE}/ekvairynh-monobank-1c/"><meta http-equiv="refresh" content="0;url={PFX}/ekvairynh-monobank-1c/"></head><body><a href="{PFX}/ekvairynh-monobank-1c/">Еквайринг monobank</a></body></html>'
 os.makedirs(os.path.join(OUT,_old),exist_ok=True)
 open(os.path.join(OUT,_old,'index.html'),'w',encoding='utf-8').write(_s2)
 
@@ -441,12 +487,7 @@ urls = ['/'] + [f'/{m["slug"]}/' for m in M] + ['/tsiny/', '/pytannia/', '/statt
 def alt(u):
     return (f'<xhtml:link rel="alternate" hreflang="uk" href="{BASE}{u}"/><xhtml:link rel="alternate" hreflang="ru" href="{BASE}/ru{u}"/>'
             f'<xhtml:link rel="alternate" hreflang="x-default" href="{BASE}{u}"/>')
-# lastmod міняється лише коли змінився вміст сторінки (хеш), а не при кожній збірці
-LM_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lastmod.json')
-try:
-    LM = json.load(open(LM_FILE, encoding='utf-8'))
-except Exception:
-    LM = {}
+# lastmod міняється лише коли змінився вміст сторінки (хеш), а не при кожній збірці (LM завантажено на початку)
 for u in urls:
     h = HASHES.get(u)
     if h and LM.get(u, {}).get('h') != h:
@@ -459,8 +500,7 @@ sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps
 open(os.path.join(OUT, 'sitemap.xml'), 'w').write(sm)
 open(os.path.join(OUT, 'robots.txt'), 'w').write(f'User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n')
 open(os.path.join(OUT, 'favicon.svg'), 'w').write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#16181D"/><path d="M6 16h6l4-9 4 18 4-9h2" fill="none" stroke="#C6F26B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>')
-nf = head('Сторінку не знайдено — ' + BRAND, 'Сторінку не знайдено.', '/404.html', ORG | {"@context": "https://schema.org"}, SITE + '/')
-nf = nf.replace('<link rel="canonical"', '<meta name="robots" content="noindex"><link rel="canonical"')
+nf = head('Сторінку не знайдено — ' + BRAND, 'Сторінку не знайдено.', '/404.html', None, SITE + '/', robots='noindex', indexable=False)
 nf += header(SITE + '/') + f'<main class="wrap sec"><h1>Сторінку не знайдено</h1><p class="lead"><a href="{BASE}/">На головну</a></p></main>' + footer()
 open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8').write(nf)
 # ---------- llms.txt / llms-full.txt (для AI-асистентів і пошуку) ----------

@@ -27,7 +27,7 @@ h1,h2,h3{margin:0}
 h1{font:700 clamp(32px,5vw,64px)/1.06 Unbounded,sans-serif;letter-spacing:-.02em}
 .h2{font:700 clamp(26px,3.4vw,42px)/1.12 Unbounded,sans-serif;letter-spacing:-.01em;margin-bottom:28px}
 .h2.sm{font-size:clamp(20px,2.4vw,26px)}
-h3{font:500 20px/1.25 Unbounded,sans-serif}
+h3,.card h2{font:500 20px/1.25 Unbounded,sans-serif}
 .lead{margin:22px 0 0;max-width:640px;font-size:19px;color:var(--text)}
 .lead.sm{font-size:17px;margin:-12px 0 36px}
 .row{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px}

@@ -176,5 +176,6 @@ ARTICLES = [
 ]
 
 # Додаткові статті (укр.) — дивись articles_more.py
-from articles_more import ARTICLES_UK_MORE
+from articles_more import ARTICLES_UK_MORE, apply_titles
 ARTICLES += ARTICLES_UK_MORE
+apply_titles(ARTICLES, 0)
