@@ -1,10 +1,10 @@
 {
  "/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "82cb235e988f54044914c31e534604b9335e4394"
  },
  "/ai-pomichnytsya-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "8abf0b5fa8e678d1e70d5918b01b2f5e703a1e81"
  },
  "/ceny/": {
@@ -12,19 +12,19 @@
   "h": "76a6c707306ed24fe5f268854c8b83e8b1a45e53"
  },
  "/chaty-viber-telegram-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "e91f5a61020dada1c29426a72e15cd86dd435d55"
  },
  "/ekvairynh-monobank-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "40e4d083f476bef444041ab439fab3e3d6901e62"
  },
  "/groshi-marzha-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "4f324164d4cc3fc2648005ec0eb5c7189e8c7e7b"
  },
  "/heneratsiya-kharakterystyk-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "0060a64993b2c08d6410ff74f44b012e7676fb02"
  },
  "/integratsiya-monopay-1c-bas/": {
@@ -32,51 +32,51 @@
   "h": "734251bc48c59f075c238b283e671d98c430ed47"
  },
  "/nova-poshta-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "5ae6502d6485a9ea03ffdf90e4cc05298c8ad492"
  },
  "/novapay-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "a91634eba437a10459e87a99570b40acaecbd28f"
  },
  "/obmin-saytu-z-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "eaa1e62d4fe2ec507d1d444dd5ec8b9a34125738"
  },
  "/obmin-z-postachalnykom-api-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "8cb9c9e16f32ace6fc91b59a23a82e54fc9592e2"
  },
  "/oplata-chastynamy-pryvatbank-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "d68477a438eaec001a018eaa7596cfddd1b4b64a"
  },
  "/pryvat24-zalyshky-fop-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "40bc6224257e809dc791b21fa7f9e8ac0e82c06d"
  },
  "/pytannia/": {
   "d": "2026-11-20",
-  "h": "7b3ba3d47120157e752321ac5cf8dce4836c8a0e"
+  "h": "c82d354ce1890d6c0276fd8c5a2e77652ecc1906"
  },
  "/robochyy-stil-menedzhera-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "51ec694beaca02e714ae6a778f0682cbcab37113"
  },
  "/rozpodil-zamovlen-fop-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "9c0f94bdee01d708402b51148930578c889d9c69"
  },
  "/spovishchennya-viber-telegram-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "cf9a3d274a001e3bd158e54120f4569e0fa78a5b"
  },
  "/statti/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "af698ae220d045dba90840564eba0f52f2fd7ed7"
  },
  "/statti/ai-pomichnyk-1c-zapyty-do-bazy/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "26ed5aa599b6afd09ae1b3e0fb7771453ccf276d"
  },
  "/statti/avtomatyzatsiia-internet-mahazynu-1c-z-choho-pochaty/": {
@@ -84,91 +84,91 @@
   "h": "c1c4e960b4adf85961599576c8d5f0a311321ac2"
  },
  "/statti/avtopovidomlennia-klientam-viber-telegram-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "ac93916f83411138038201a7e5c47d4da55f838f"
  },
  "/statti/chaty-viber-telegram-v-1c-bez-abonplaty/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "1d34c68ca2bbc493c1fb69ac58897c849c5e6c6a"
  },
  "/statti/ekvairynh-monobank-plata-by-mono-1c/": {
-  "d": "2026-11-19",
-  "h": "95928b2429c680831a28a5f75c7b4fd4675132af"
+  "d": "2026-11-20",
+  "h": "e8a55cba37a449ac9593e35f64600063f4b0a350"
  },
  "/statti/kharakterystyky-nomenklatury-1c-unf/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "863a9feabee203a1af539e61a5668daf5faed45d"
  },
  "/statti/kilka-fop-v-1c-rozpodil-zamovlen/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "0ebbe3d5f5513e6ff6002b90d879f717fd677ed8"
  },
  "/statti/marzha-pislia-reklamy-v-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "78e3a58f3aaf96cd0ce5520213c8bd869c4c301c"
  },
  "/statti/nakladenyy-platizh-nova-poshta-oblik-1c/": {
-  "d": "2026-11-19",
-  "h": "78800e33f93bd2b9cc370779a54238f5a49b559c"
+  "d": "2026-11-20",
+  "h": "439afd74627732b9100c8734087da3b5a6249764"
  },
  "/statti/nova-poshta-i-1c-shcho-avtomatyzuvaty/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "f9218479bad162b9a954911475d294c75030a90f"
  },
  "/statti/novapay-nakladenyy-platizh-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "963feae464721b57de7f0e96904b8bf329f47938"
  },
  "/statti/obmin-bitrix-z-1c-typovyy-chy-vlasne-api/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "6a83dfe18ddc6e17bddb52043c28cc44c125064d"
  },
  "/statti/oplata-chastynamy-pryvatbank-na-sayti-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "32c1bd6fea11ed5446efe2260b3cf10580eee342"
  },
  "/statti/pidkliuchennia-monobank-do-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "48d76f2bd2e8495bba218e3ce9bb6963b7c162cb"
  },
  "/statti/pokupka-chastynamy-monobank-1c/": {
-  "d": "2026-11-19",
-  "h": "766fc4c8d3bdd520d8566840116ffc305c516d7f"
+  "d": "2026-11-20",
+  "h": "ecd5ded840796e74118d808cf144841ccc8fb34e"
  },
  "/statti/povernennia-koshtiv-za-kartkoiu-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "d270b82b1b60fc6935b929004121f78deeb8b254"
  },
  "/statti/robochyy-stil-menedzhera-internet-mahazynu-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "45cf5d6ca75be75ff4b0f2fbd6c68142bac50aaa"
  },
  "/statti/skilky-koshtuie-intehratsiia-1c/": {
-  "d": "2026-11-19",
-  "h": "921f357f81e2d14ff63ca307ff0c5aa97dc7a2ee"
+  "d": "2026-11-20",
+  "h": "2271ed96bd9721d0d6fa887e7bda156a8e31d00d"
  },
  "/statti/zalyshky-postachalnyka-na-saiti/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "befa75832be613f0339269f93d9ec89802e1a0fc"
  },
  "/statti/zalyshky-pryvat24-po-vsikh-fop-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "12db1932c125137a0bcb99e86fcb6c8219961f4a"
  },
  "/statti/zalyshky-z-1c-na-sayt-bez-ruchnoi-roboty/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "f4503e76ed4ea69f802341717465a06ccee4381c"
  },
  "/statti/zvirka-nakladenoho-platezhu-1c/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "10093ebd7b463dce9ff03debb9c072fb2a812dd0"
  },
  "/tsiny/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "79c6d12174c08fad79119a03899d85f711de7419"
  },
  "/zalyshky-z-1c-na-sayt/": {
-  "d": "2026-11-19",
+  "d": "2026-11-20",
   "h": "ae82fa2a555b42016d0640a7755891aa9cf7c89b"
  }
 }
