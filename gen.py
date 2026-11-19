@@ -15,6 +15,7 @@ RP = '../' if RU else ''   # глибше на рівень — шлях до с
 CUR = '/'
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'build', 'ru' if RU else '')
 TG = 'https://t.me/yadhtl'
+FH = 'https://freelancehunt.com/freelancer/evxlpz.html'
 BRAND = 'Лад'
 TODAY = datetime.date.today().isoformat()
 
@@ -183,12 +184,12 @@ def header(root, back=False):
     return f'<header class="wrap top"><a class="logo" href="{root}"><span class="mark">{LOGO_SVG}</span>{BRAND}</a>{nav}</header>\n'
 
 def footer():
-    return f'<footer class="foot"><div class="wrap"><span>© {datetime.date.today().year} {BRAND} · Автоматизація e-commerce · <a href="{SITE}/tsiny/">{'Цены' if RU else 'Ціни'}</a> · <a href="{SITE}/pytannia/">{'Вопросы и ответы' if RU else 'Питання й відповіді'}</a> · <a href="{SITE}/statti/">{'Статьи' if RU else 'Статті'}</a> · <a href="{TG}">Telegram @yadhtl</a></span><a class="langlink" href="{(BASE + CUR) if RU else (BASE + '/ru' + CUR)}" hreflang="{'uk' if RU else 'ru'}">{'Українською' if RU else 'Російською'}</a></div></footer>\n</body>\n</html>\n'
+    return f'<footer class="foot"><div class="wrap"><span>© {datetime.date.today().year} {BRAND} · Автоматизація e-commerce · <a href="{SITE}/tsiny/">{'Цены' if RU else 'Ціни'}</a> · <a href="{SITE}/pytannia/">{'Вопросы и ответы' if RU else 'Питання й відповіді'}</a> · <a href="{SITE}/statti/">{'Статьи' if RU else 'Статті'}</a> · <a href="{TG}">Telegram @yadhtl</a> · <a href="{FH}" rel="noopener">{'Отзывы на Freelancehunt' if RU else 'Відгуки на Freelancehunt'}</a></span><a class="langlink" href="{(BASE + CUR) if RU else (BASE + '/ru' + CUR)}" hreflang="{'uk' if RU else 'ru'}">{'Українською' if RU else 'Російською'}</a></div></footer>\n</body>\n</html>\n'
 
 def cta(title, text):
     return f'''<section class="dark" id="contact"><div class="wrap ctaband">
 <div><h2 class="h2">{title}</h2><p class="muted">{text}</p></div>
-<a class="btn lime" href="{TG}">Написати в Telegram @yadhtl</a>
+<div class="row"><a class="btn lime" href="{TG}">Написати в Telegram @yadhtl</a><a class="btn ghost" href="{FH}" rel="noopener">Замовити через Freelancehunt (Сейф)</a></div>
 </div></section>\n'''
 
 HASHES = {}
@@ -203,7 +204,7 @@ def write(path, s):
     if not RU:
         HASHES[path] = hashlib.sha1(s.encode('utf-8')).hexdigest()
 
-ORG = {"@type": "Organization", "@id": BASE + "/#org", "name": BRAND, "url": SITE + '/', "logo": BASE + "/og.png", "sameAs": [TG],
+ORG = {"@type": "Organization", "@id": BASE + "/#org", "name": BRAND, "url": SITE + '/', "logo": BASE + "/og.png", "sameAs": [TG, FH],
        "description": "Готові модулі автоматизації e-commerce для 1С і BAS: оплати, доставка, обмін із сайтом і постачальниками, AI-помічниця." if not RU else "Готовые модули автоматизации e-commerce для 1С и BAS: оплаты, доставка, обмен с сайтом и поставщиками, AI-помощница.",
        "areaServed": "UA", "knowsAbout": ["1С", "BAS", "monobank", "NovaPay", "Нова Пошта", "Bitrix", "інтеграція інтернет-магазину з обліком"],
        "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "url": TG, "availableLanguage": ["uk", "ru"]}}
