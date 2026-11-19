@@ -1,0 +1,55 @@
+<style>
+.site{background:#fff}
+.url{margin:10px 15px;background:#eef1f5;border-radius:16px;padding:5px 14px;font-size:12px;color:#6b7280}
+.opt{display:flex;align-items:center;gap:12px;border:1.5px solid #d6dae0;border-radius:10px;padding:12px 14px;margin-bottom:9px;font-size:15px}
+.opt i{width:18px;height:18px;border-radius:50%;border:2px solid #aab;flex:none}
+.opt.on{border-color:#2a9d62;background:#f0faf4}.opt.on i{border-color:#2a9d62;background:radial-gradient(#2a9d62 45%,#fff 50%)}
+.opt small{color:#7b838e;font-size:12px;display:block}
+.pb{background:#3a7d1e;color:#fff;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:700;margin-left:auto}
+.bk{background:#fff;border-radius:14px;margin:12px;padding:14px;font-size:13px}
+.bk b.big{font-size:24px;display:block;margin:4px 0}
+.bk .go{background:#3a7d1e;color:#fff;border-radius:10px;text-align:center;padding:11px;font-weight:700;margin-top:10px}
+.bk .go.press{transform:scale(.96)}
+</style>
+<div class="win site" data-t="0-7.3">
+  <div class="tb" style="background:#e6e9ee;color:#333"><span style="font-weight:500">Інтернет-магазин · Оформлення замовлення</span></div>
+  <div class="url">🔒 shop.example.ua/checkout</div>
+  <div style="padding:6px 28px">
+    <div class="lbl" style="font-size:13px;margin-bottom:8px">Спосіб оплати · Сума 2 450,00 грн</div>
+    <div class="opt"><i></i><div>Накладений платіж<small>Оплата при отриманні</small></div></div>
+    <div class="opt"><i></i><div>Оплата карткою<small>Visa / Mastercard</small></div></div>
+    <div class="opt" id="o3" data-cl='[[3.2,"on"]]'><i></i><div>Оплата частинами ПриватБанк<small data-sw='[[0,"Розподіл платежів"],[3.2,"4 платежі по 612,50 грн"]]'>Розподіл платежів</small></div><span class="pb">ПриватБанк</span></div>
+    <div class="btn y" id="ob" style="margin-top:16px;display:inline-block;padding:11px 26px;font-size:16px" data-press="6">Оформити замовлення</div>
+  </div>
+</div>
+<div class="win" data-t="7.3">
+  <div class="tb"><b>1С</b>Замовлення покупця № 00237</div>
+  <div class="tabs"><span class="a">Основне</span><span>Товари</span><span>Оплата частинами</span></div>
+  <div class="bar"><div class="btn y">Підтвердити</div><div class="btn">Створити ТТН</div></div>
+  <div style="padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:0 16px">
+    <div><div class="lbl">Контрагент</div><div class="fld">Іван Петренко</div></div>
+    <div><div class="lbl">Сума</div><div class="fld" id="sum" data-cl='[[15,"hl"]]'>2 450,00 грн</div></div>
+    <div><div class="lbl">Статус</div><div class="fld" style="position:relative"><span class="chip o" data-t="0-11.4">Очікує оплати</span><span class="chip g" data-t="11.4" style="position:absolute;left:10px;top:7px">Оплачено (частинами)</span></div></div>
+    <div><div class="lbl">Банк</div><div class="fld">ПриватБанк · 4 платежі по 612,50 грн</div></div>
+  </div>
+  <div style="padding:16px 20px"><table class="t"><tr><th>Товар</th><th>К-сть</th><th>Ціна</th><th>Сума</th></tr>
+    <tr><td>Куртка зимова, M</td><td>1</td><td>1 950,00</td><td>1 950,00</td></tr>
+    <tr><td>Шапка в’язана</td><td>2</td><td>250,00</td><td>500,00</td></tr>
+    <tr><td><b>Разом</b></td><td></td><td></td><td><b>2 450,00</b></td></tr></table></div>
+  <div class="sc" data-t="15.2" style="left:20px;top:490px;font-size:14px;color:#1c7a3a;font-weight:600">Сума береться з замовлення — вручну її ніхто не вводить</div>
+</div>
+<div class="phone"><div class="scr">
+  <div class="ph-h"><div class="av" style="background:#3a7d1e">П</div><div><b>Приват24</b><small>оплата частинами</small></div></div>
+  <div class="sc" data-t="8.2" style="left:0;right:0;top:73px">
+    <div class="bk"><span style="color:#7b838e">Магазин · замовлення № 00237</span><b class="big">2 450 ₴</b>
+      <div style="line-height:1.7">4 платежі по <b>612,50 грн</b><br>Перший платіж — сьогодні</div>
+      <div class="go" id="go" data-press="10.6" data-t="0-12" data-nomove="1">Підтвердити</div>
+      <div class="go" data-t="11.3" style="background:#2a9d62">Підтверджено ✓</div>
+    </div>
+  </div>
+</div></div>
+<script>
+window.DUR=20;window.POSTER=16.5;
+window.CAPS=[[0.5,7.3,1,"Клієнт обирає оплату частинами на сайті"],[7.3,14,2,"Банк підтверджує — статус сам приходить у 1С"],[14,20,3,"Сума завжди береться з замовлення"]];
+window.CUR=[[0.3,[500,500]],[2.8,"#o3",true],[5.8,"#ob",true],[8.6,[1000,400]],[10.4,"#go",true],[12.5,[500,350]],[15,[600,480]]];
+</script>

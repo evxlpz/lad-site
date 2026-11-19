@@ -1,0 +1,56 @@
+<style>
+.cards{display:flex;gap:10px;padding:14px 20px 4px}
+.ac{flex:1;border-radius:12px;padding:12px;color:#fff;min-height:84px}
+.ac small{font-size:11px;opacity:.8;display:block}.ac b{font-size:19px;display:block;margin-top:6px}
+.a1{background:#2b3038}.a2{background:#3b6fd4}.a3{background:#2a9d62}.a4{background:#d4531f}
+.feed{padding:6px 20px}
+.fr{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #eef0f3;font-size:14px}
+.fr .tm{color:#8a919c;width:44px;font-size:12px}.fr .d{flex:1}.fr .s{font-weight:700;width:110px;text-align:right}
+.plus{color:#1c7a3a}.minus{color:#b3261e}
+.fr.new{background:#fff6d6;border-radius:6px}
+.rc{background:#fff;border-radius:6px;width:130px;padding:9px;font-size:10px;line-height:1.5;align-self:flex-end;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+</style>
+<div class="win">
+  <div class="tb"><b>1С</b>Гроші</div>
+  <div class="tabs"><span class="a" data-cl='[[0,"a"],[13,""]]'>Каси й рахунки</span><span id="tm" data-cl='[[13,"a"]]'>Маржа</span></div>
+  <div class="sc" style="left:0;right:0;top:78px" data-t="0-13.2">
+    <div class="cards">
+      <div class="ac a1"><small>Каса · готівка</small><b data-sw='[[0,"12 480,00 грн"],[10.5,"11 840,00 грн"]]'>12 480,00 грн</b></div>
+      <div class="ac a2"><small>Рахунок ФОП · mono</small><b>86 250,00 грн</b></div>
+      <div class="ac a3"><small>Рахунок ФОП · Приват</small><b>41 900,00 грн</b></div>
+      <div class="ac a4"><small>Накладений платіж</small><b>9 320,00 грн</b></div>
+    </div>
+    <div class="feed">
+      <div class="lbl" style="margin:12px 0 2px">Сьогодні, операції дня</div>
+      <div class="fr new" data-t="10.5"><span class="tm">11:24</span><span class="d">Пакувальні матеріали · Каса</span><span class="s minus">−640,00</span></div>
+      <div class="fr"><span class="tm">10:58</span><span class="d">Оплата замовлення № 00231 · Іван Петренко</span><span class="s plus">+1 850,00</span></div>
+      <div class="fr"><span class="tm">10:15</span><span class="d">Нова пошта · переказ накладеного платежу</span><span class="s plus">+3 240,00</span></div>
+      <div class="fr"><span class="tm">09:40</span><span class="d">Реклама · Google Ads</span><span class="s minus">−1 200,00</span></div>
+      <div class="fr"><span class="tm">09:12</span><span class="d">Оплата замовлення № 00229 · Марія Шевченко</span><span class="s plus">+980,00</span></div>
+    </div>
+  </div>
+  <div class="sc" style="left:20px;right:20px;top:100px" data-t="13.2">
+    <div class="lbl" style="font-size:13px;margin-bottom:8px">Маржа за місяць, грн</div>
+    <table class="t"><tr><th>Канал</th><th>Виручка</th><th>Собівартість</th><th>Комісії</th><th>Доставка</th><th>Реклама</th><th>Чистий результат</th></tr>
+      <tr data-t="13.8"><td>Сайт</td><td>148 200</td><td>89 300</td><td>2 960</td><td>6 100</td><td>18 400</td><td><b>31 440</b></td></tr>
+      <tr data-t="14.6"><td>Rozetka</td><td>96 500</td><td>61 200</td><td>11 580</td><td>4 800</td><td>7 300</td><td><b>11 620</b></td></tr>
+      <tr data-t="15.4"><td>Prom</td><td>52 800</td><td>33 100</td><td>4 224</td><td>2 900</td><td>5 600</td><td><b>6 976</b></td></tr>
+      <tr data-t="16.2"><td>Instagram · Viber</td><td>38 400</td><td>22 700</td><td>0</td><td>2 100</td><td>4 500</td><td><b>9 100</b></td></tr>
+      <tr data-t="17.2" style="background:#fff6d6"><td><b>Разом</b></td><td><b>335 900</b></td><td><b>206 300</b></td><td><b>18 764</b></td><td><b>15 900</b></td><td><b>35 800</b></td><td><b>59 136</b></td></tr>
+    </table>
+  </div>
+</div>
+<div class="phone"><div class="scr">
+  <div class="ph-h"><div class="av" style="background:#2a9d62">А</div><div><b>Асистент</b><small>облік витрат</small></div></div>
+  <div class="msgs">
+    <div class="rc bub me" style="background:#fff;color:#222;padding:9px;max-width:140px" data-t="6.5"><b>ЧЕК · Пакування</b><br>Коробки 20 шт ...... 480<br>Скотч 4 шт ........ 160<br><b>РАЗОМ 640,00 грн</b></div>
+    <div class="bub" data-t="8.2">Витрата 640,00 грн · Пакувальні матеріали · Каса. Записати?<small>11:23</small></div>
+    <div class="bub me" data-t="9.2">Так</div>
+    <div class="bub" data-t="10.2">Записано в 1С ✓<small>11:24</small></div>
+  </div>
+</div></div>
+<script>
+window.DUR=20;window.POSTER=17.8;
+window.CAPS=[[0.5,6.2,1,"Усі каси й рахунки як у банківському застосунку"],[6.2,12.8,2,"Витрата з фото чека — за секунди"],[12.8,20,3,"Маржа по каналах після реклами"]];
+window.CUR=[[0.3,[600,520]],[3,[400,300]],[11.5,[420,200]],[12.6,"#tm",true],[14,[700,400]]];
+</script>

@@ -1,0 +1,39 @@
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1280px;height:720px;overflow:hidden}
+body{font-family:"Segoe UI","Manrope",Arial,sans-serif;color:#1d232b;background:linear-gradient(135deg,#eef2f6,#dfe6ee);position:relative}
+.brand{position:absolute;left:60px;top:14px;display:flex;align-items:center;gap:10px;font-size:19px;font-weight:700}
+.brand i{width:20px;height:20px;border-radius:6px;background:#2b3038;color:#c9f26b;font-style:normal;font-size:13px;display:flex;align-items:center;justify-content:center}
+.win{position:absolute;left:60px;top:47px;width:793px;height:573px;background:#fff;border-radius:10px;box-shadow:0 20px 50px rgba(30,40,60,.18);overflow:hidden}
+.tb{height:37px;background:#272c33;color:#fff;display:flex;align-items:center;gap:10px;padding:0 15px;font-size:15px;font-weight:600}
+.tb b{background:#ffd24a;color:#272c33;border-radius:5px;padding:1px 7px;font-size:13px}
+.tabs{height:41px;background:#f6f7f9;border-bottom:1px solid #e2e5ea;display:flex;align-items:flex-end;padding:0 14px;gap:6px;font-size:14px;color:#6b7280}
+.tabs span{padding:10px 14px}
+.tabs span.a{background:#fff;color:#1d232b;font-weight:600;border-radius:6px 6px 0 0}
+.bar{display:flex;gap:8px;padding:14px 20px 8px}
+.btn{border:1px solid #d6dae0;background:#f4f6f8;border-radius:6px;padding:8px 15px;font-size:14px;font-weight:600}
+.btn.y{background:#ffd24a;border-color:#f1c232}
+.btn.press{transform:scale(.95);filter:brightness(.92)}
+.lbl{font-size:11px;color:#8a919c;margin:6px 0 2px}
+.fld{border:1px solid #d6dae0;border-radius:6px;padding:8px 10px;font-size:15px;min-height:35px}
+.chip{display:inline-block;border-radius:12px;padding:2px 9px;font-size:12px;font-weight:600}
+.chip.b{background:#dbe9fb;color:#2459a8}.chip.o{background:#ffe9b8;color:#8a5a00}.chip.g{background:#d4f3dc;color:#1c7a3a}
+.phone{position:absolute;left:893px;top:47px;width:287px;height:573px;background:#14171c;border-radius:38px;padding:11px;box-shadow:0 20px 50px rgba(30,40,60,.3)}
+.scr{width:100%;height:100%;background:#e8edf1;border-radius:28px;overflow:hidden;position:relative}
+.ph-h{background:#fff;height:73px;padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #dfe3e8}
+.av{width:32px;height:32px;border-radius:50%;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px;flex:none}
+.ph-h b{font-size:15px;display:block}.ph-h small{font-size:11px;color:#7b838e}
+.msgs{position:absolute;left:0;right:0;bottom:0;top:73px;padding:11px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px}
+.bub{background:#fff;border-radius:14px;padding:9px 12px;font-size:13px;line-height:1.35;max-width:82%;align-self:flex-start}
+.bub.me{align-self:flex-end;background:#7360f2;color:#fff}
+.bub small{display:block;font-size:10px;opacity:.6;margin-top:3px}
+.cap{position:absolute;left:0;right:0;top:635px;display:flex;justify-content:center}
+.pill{background:#272c33;color:#fff;border-radius:12px;padding:10px 14px 10px 10px;display:flex;align-items:center;gap:14px;font-size:23px;font-weight:700;height:56px}
+.pill i{background:#c9f26b;color:#272c33;border-radius:9px;width:38px;height:38px;font-style:normal;display:flex;align-items:center;justify-content:center;font-size:23px}
+#cur{position:absolute;left:0;top:0;width:24px;height:24px;z-index:99;pointer-events:none}
+#ring{position:absolute;width:30px;height:30px;border-radius:50%;border:3px solid #ffb300;z-index:98;pointer-events:none;opacity:0}
+.sc{position:absolute}
+table.t{border-collapse:collapse;width:100%;font-size:14px}
+table.t th{background:#f3f5f8;color:#6b7280;font-size:12px;font-weight:600;padding:9px 10px;border:1px solid #e2e5ea;text-align:right}
+table.t th:first-child,table.t td:first-child{text-align:left}
+table.t td{padding:10px;border:1px solid #e2e5ea;text-align:right}
+.hl{box-shadow:0 0 0 3px #ffd24a;border-radius:6px}

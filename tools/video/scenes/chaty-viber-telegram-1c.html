@@ -1,0 +1,52 @@
+<style>
+.lst{position:absolute;left:0;top:78px;width:255px;bottom:0;border-right:1px solid #e2e5ea}
+.row{display:flex;gap:10px;padding:11px 14px;border-bottom:1px solid #eef0f3;align-items:center}
+.row.sel{background:#fff6d6}
+.row b{font-size:14px;display:block}.row small{font-size:12px;color:#7b838e}
+.ic{width:30px;height:30px;border-radius:50%;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.v{background:#7360f2}.tg{background:#2aa3e0}
+.hist{position:absolute;left:256px;right:0;top:78px;bottom:0;padding:14px 18px}
+.card{background:#f3f7fd;border:1px solid #cfe0f6;border-radius:8px;padding:9px 12px;font-size:13px;display:flex;gap:16px}
+.card b{font-size:14px}
+.m{border-radius:12px;padding:8px 12px;font-size:14px;max-width:340px;margin-top:9px;background:#f0f2f5}
+.m.o{background:#dff3d2;margin-left:auto}
+.m small{display:block;color:#8a919c;font-size:10px;margin-top:2px}
+.acts{position:absolute;left:18px;right:18px;bottom:16px;display:flex;gap:8px}
+</style>
+<div class="win">
+  <div class="tb"><b>1С</b>Чати · Viber і Telegram</div>
+  <div class="tabs"><span class="a">Усі чати</span><span>Нові</span><span>Без відповіді</span></div>
+  <div class="lst">
+    <div class="row" id="r1" data-cl='[[3,"sel"]]'><div class="ic v">В</div><div><b>Іван Петренко</b><small>Дякую, чекаю на ТТН</small></div></div>
+    <div class="row"><div class="ic tg">T</div><div><b>Марія Шевченко</b><small>Є розмір 40?</small></div></div>
+    <div class="row"><div class="ic v">В</div><div><b>Олег Бондаренко</b><small>Коли буде знижка?</small></div></div>
+    <div class="row"><div class="ic tg">T</div><div><b>Софія Мельник</b><small>Оплатила, перевірте</small></div></div>
+    <div class="row"><div class="ic tg">T</div><div><b>Андрій Коваль</b><small>Дякую!</small></div></div>
+  </div>
+  <div class="hist" data-t="3.2">
+    <div class="card" data-t="6.5"><div>Клієнт<br><b>Іван Петренко</b></div><div>Замовлення<br><b>№ 00231</b></div><div>Сума<br><b>1 850,00 грн</b></div><div>Статус<br><span class="chip o">Зібрано</span></div></div>
+    <div class="m" data-t="4">Добрий день! Чи відправили моє замовлення?<small>10:38</small></div>
+    <div class="m o" data-t="5">Вітаю, Іване! Зараз надішлю ТТН.<small>10:40</small></div>
+    <div class="m o" id="ttnm" data-t="14.2">Посилка в дорозі. ТТН 2045 3300 0215<small>10:41 · доставлено</small></div>
+    <div class="acts">
+      <div class="btn y" id="b1" data-press="13.6">Надіслати ТТН</div>
+      <div class="btn" id="b2" data-press="16.6">Рахунок PDF</div>
+      <div class="btn">Шаблони ▾</div>
+    </div>
+    <div class="sc" id="pdfm" data-t="17.2" style="right:18px;bottom:74px"><div class="m o" style="margin:0">Рахунок № 00231.pdf · 1 850,00 грн<small>10:42 · доставлено</small></div></div>
+  </div>
+</div>
+<div class="phone"><div class="scr">
+  <div class="ph-h"><div class="av v" style="background:#7360f2">В</div><div><b>Магазин</b><small>Viber</small></div></div>
+  <div class="msgs">
+    <div class="bub me" data-t="4">Добрий день! Чи відправили моє замовлення?<small>10:38</small></div>
+    <div class="bub" data-t="5">Вітаю, Іване! Зараз надішлю ТТН.<small>10:40</small></div>
+    <div class="bub" data-t="14.6">Посилка в дорозі. ТТН 2045 3300 0215<small>10:41</small></div>
+    <div class="bub" data-t="17.6">Рахунок № 00231.pdf · 1 850,00 грн<small>10:42</small></div>
+  </div>
+</div></div>
+<script>
+window.DUR=20;window.POSTER=18.5;
+window.CAPS=[[0.5,6.5,1,"Усі чати Viber і Telegram в одному вікні 1С"],[6.5,12.8,2,"Чат прив'язаний до клієнта і замовлення"],[12.8,20,3,"ТТН, рахунок PDF і шаблони — одним кліком"]];
+window.CUR=[[0.3,[600,500]],[2.4,"#r1",true],[6.8,[700,230]],[10,[600,420]],[13.6,"#b1",true],[16.6,"#b2",true],[18.4,[700,400]]];
+</script>
