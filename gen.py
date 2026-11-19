@@ -379,6 +379,10 @@ for a in ARTICLES:
             {"@type": "ListItem", "position": 1, "name": "Головна", "item": SITE + '/'},
             {"@type": "ListItem", "position": 2, "name": "Статті", "item": SITE + '/statti/'},
             {"@type": "ListItem", "position": 3, "name": a["title"], "item": SITE + path}]}]}
+    # 20.11: словник термінів — DefinedTermSet (для Google і ШІ-асистентів)
+    if a['slug'].startswith('slovnyk-'):
+        ld["@graph"].append({"@type": "DefinedTermSet", "name": a['title'], "url": SITE + path,
+            "hasDefinedTerm": [{"@type": "DefinedTerm", "name": t, "description": ' '.join(p)} for t, p in a['body']]})
     afaq = a.get('faq') or []
     if afaq:
         ld["@graph"].append({"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in afaq]})

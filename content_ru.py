@@ -532,3 +532,5 @@ from articles_new import add_new_arts as _ana
 _ana(ARTICLES_RU, "ru")
 from articles_new import add_mod_faq as _amf
 _amf(EXTRA_RU, "ru")
+from articles_new import add_platform as _apl
+_apl(ARTICLES_RU, EXTRA_RU, "ru")

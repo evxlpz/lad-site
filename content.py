@@ -299,3 +299,5 @@ from articles_new import add_new_arts as _ana
 _ana(ARTICLES, "uk")
 from articles_new import add_mod_faq as _amf
 _amf(EXTRA, "uk")
+from articles_new import add_platform as _apl
+_apl(ARTICLES, EXTRA, "uk")
