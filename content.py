@@ -293,3 +293,9 @@ from articles_boost import add_new as _add_new
 _add_new(ARTICLES, EXTRA, "uk")
 from articles_boost import add_case as _add_case
 _add_case(ARTICLES, "uk")
+
+# 20.11 (ніч): нові статті — articles_new.py
+from articles_new import add_new_arts as _ana
+_ana(ARTICLES, "uk")
+from articles_new import add_mod_faq as _amf
+_amf(EXTRA, "uk")

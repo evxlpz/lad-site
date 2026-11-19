@@ -526,3 +526,9 @@ from articles_boost import add_new as _add_new
 _add_new(ARTICLES_RU, EXTRA_RU, "ru")
 from articles_boost import add_case as _add_case
 _add_case(ARTICLES_RU, "ru")
+
+# 20.11 (ночь): новые статьи — articles_new.py
+from articles_new import add_new_arts as _ana
+_ana(ARTICLES_RU, "ru")
+from articles_new import add_mod_faq as _amf
+_amf(EXTRA_RU, "ru")
