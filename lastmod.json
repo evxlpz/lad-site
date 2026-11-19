@@ -1,7 +1,7 @@
 {
  "/": {
   "d": "2026-11-20",
-  "h": "05323304305783700cd9ac17400fcb40d7c5701e"
+  "h": "7eaa1acffc5b76c27230dc1b8b6312186a663e43"
  },
  "/ai-pomichnytsya-1c/": {
   "d": "2026-11-20",
@@ -41,7 +41,7 @@
  },
  "/obmin-saytu-z-1c/": {
   "d": "2026-11-20",
-  "h": "85b8daa96cb8745f1d53a8b8a167788de4ab0ab4"
+  "h": "69c9695a87f9ff640c02d9ce4dcc68b8030d9b1b"
  },
  "/obmin-z-postachalnykom-api-1c/": {
   "d": "2026-11-20",
@@ -57,7 +57,7 @@
  },
  "/pytannia/": {
   "d": "2026-11-20",
-  "h": "a762a5365ec47c80848d149fde50abdb4c1c0aad"
+  "h": "683a4bbb578e43f8deead6d9cbfe307ba6b0fdb0"
  },
  "/robochyy-stil-menedzhera-1c/": {
   "d": "2026-11-20",
@@ -73,7 +73,7 @@
  },
  "/statti/": {
   "d": "2026-11-20",
-  "h": "8e402a51015ccc42bf69d60b0d62c0a1d079d4cc"
+  "h": "6f877857b09df437bb30f9b48af4a04e34b24bd4"
  },
  "/statti/ai-pomichnyk-1c-zapyty-do-bazy/": {
   "d": "2026-11-20",
@@ -105,7 +105,7 @@
  },
  "/statti/intehratsii-bas-malyi-biznes-internet-mahazyn/": {
   "d": "2026-11-20",
-  "h": "8105de640b56d7adc69cfe824d8be9b35c7103dd"
+  "h": "c4a142eecbc0e124086c6dc1b728210847aef816"
  },
  "/statti/keis-avtomatyzatsiia-internet-mahazynu-1c-unf/": {
   "d": "2026-11-20",
@@ -141,7 +141,7 @@
  },
  "/statti/obmin-1c-bas-z-horoshop-prom-opencart-woocommerce/": {
   "d": "2026-11-20",
-  "h": "65117573285a3531fafcdce9a57e6811d834233a"
+  "h": "428b8412da5407751d5754e43f9d284a132e0f51"
  },
  "/statti/obmin-bitrix-z-1c-typovyy-chy-vlasne-api/": {
   "d": "2026-11-20",
@@ -169,7 +169,7 @@
  },
  "/statti/rozshyrennia-konfihuratsii-1c-chomu-bezpechnishe/": {
   "d": "2026-11-20",
-  "h": "70bc13427f3c2a5c2fa620a5298e65ac9bfc01f1"
+  "h": "f7a5464f82a410187d7d4b2806085f0809c7bff4"
  },
  "/statti/skilky-koshtuie-intehratsiia-1c/": {
   "d": "2026-11-20",
@@ -177,7 +177,7 @@
  },
  "/statti/slovnyk-internet-mahazyn-1c-eqvairynh-nakladenyi-platizh/": {
   "d": "2026-11-20",
-  "h": "e1d70316d4a1e9c2004109446b191eaf8d8c81c5"
+  "h": "8c80540981b4e2ca89eff5d3a01f044ecede1d0e"
  },
  "/statti/zalyshky-postachalnyka-na-saiti/": {
   "d": "2026-11-20",
@@ -201,6 +201,6 @@
  },
  "/zalyshky-z-1c-na-sayt/": {
   "d": "2026-11-20",
-  "h": "b0d7e2235d0ffc6dc5fa0f21d5760be5513e668a"
+  "h": "423021b33fe73f58849af2b2a40028654c2f19a6"
  }
 }

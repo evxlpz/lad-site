@@ -55,7 +55,7 @@
 - [Розширення 1С чи зміна конфігурації: що безпечніше](https://ladtech.com.ua/statti/rozshyrennia-konfihuratsii-1c-chomu-bezpechnishe/): Чим розширення конфігурації 1С і BAS відрізняється від правок основної конфігурації, чому з розширеннями простіше оновлюватись і як не зламати облік доробками.
 - [CRM для інтернет-магазину в 1С: чи потрібна окрема](https://ladtech.com.ua/statti/crm-dlia-internet-mahazynu-v-1c/): Чи потрібна інтернет-магазину окрема CRM, якщо облік уже в 1С чи BAS: дзвінки, чати, нагадування, статистика менеджерів прямо в обліку без подвійного введення.
 - [Словник: еквайринг, накладений платіж, ТТН, розширення 1С](https://ladtech.com.ua/statti/slovnyk-internet-mahazyn-1c-eqvairynh-nakladenyi-platizh/): Короткі зрозумілі визначення термінів інтернет-магазину й обліку: еквайринг, plata by mono, накладений платіж, NovaPay, ТТН, розширення 1С, BAS, ФОП, вебхук, API.
-- [Обмін 1С і BAS з Хорошоп, Prom, OpenCart, WooCommerce](https://ladtech.com.ua/statti/obmin-1c-bas-z-horoshop-prom-opencart-woocommerce/): Як зв’язати 1С чи BAS з сайтом на Хорошоп, Prom, OpenCart або WooCommerce: замовлення, статуси, залишки, ціни. Що працює незалежно від платформи і що адаптується під її API.
+- [Обмін 1С і BAS з Хорошоп, Prom, Rozetka, WooCommerce](https://ladtech.com.ua/statti/obmin-1c-bas-z-horoshop-prom-opencart-woocommerce/): Як зв’язати 1С чи BAS з сайтом на Хорошоп, Prom, OpenCart чи WooCommerce і з маркетплейсом Rozetka: замовлення, статуси, залишки, ціни. Що працює незалежно від платформи і що адаптується під її API.
 
 ## Додатково
 
