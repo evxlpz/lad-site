@@ -1,7 +1,7 @@
 {
  "/": {
   "d": "2026-11-20",
-  "h": "82cb235e988f54044914c31e534604b9335e4394"
+  "h": "1a537cb4cfb0e07412520bea2505caf9e176a41a"
  },
  "/ai-pomichnytsya-1c/": {
   "d": "2026-11-20",
@@ -41,7 +41,7 @@
  },
  "/obmin-saytu-z-1c/": {
   "d": "2026-11-20",
-  "h": "eaa1e62d4fe2ec507d1d444dd5ec8b9a34125738"
+  "h": "bae1de9366f96fbeb2712e10f1e3cbafe3a9ae26"
  },
  "/obmin-z-postachalnykom-api-1c/": {
   "d": "2026-11-20",
@@ -57,7 +57,7 @@
  },
  "/pytannia/": {
   "d": "2026-11-20",
-  "h": "8af300627b84e088a604d1ba17cc8c18e33e6d7a"
+  "h": "f0eaebe30a73087dbdbc7e2cfe9c0711e63acfb7"
  },
  "/robochyy-stil-menedzhera-1c/": {
   "d": "2026-11-20",
@@ -73,7 +73,7 @@
  },
  "/statti/": {
   "d": "2026-11-20",
-  "h": "c11165197f57a1e7b3e6c51305f246c7264a3ffa"
+  "h": "a51bffb9668c13e246c389d4219607073c695b6a"
  },
  "/statti/ai-pomichnyk-1c-zapyty-do-bazy/": {
   "d": "2026-11-20",
@@ -85,7 +85,7 @@
  },
  "/statti/avtomatyzatsiia-internet-mahazynu-1c-z-choho-pochaty/": {
   "d": "2026-11-20",
-  "h": "c1c4e960b4adf85961599576c8d5f0a311321ac2"
+  "h": "671ed3b782c8febaa2709354f96504ed0a6c0d16"
  },
  "/statti/avtopovidomlennia-klientam-viber-telegram-1c/": {
   "d": "2026-11-20",
@@ -99,9 +99,13 @@
   "d": "2026-11-20",
   "h": "e8a55cba37a449ac9593e35f64600063f4b0a350"
  },
+ "/statti/keis-avtomatyzatsiia-mahazynu-kontaktnykh-linz-1c/": {
+  "d": "2026-11-20",
+  "h": "28f19d4ed7c3b9aac5ad6e261f04767673287206"
+ },
  "/statti/kharakterystyky-nomenklatury-1c-unf/": {
   "d": "2026-11-20",
-  "h": "863a9feabee203a1af539e61a5668daf5faed45d"
+  "h": "37d11f821114dc7d1a327c6b09ce5bc00f35e8aa"
  },
  "/statti/kilka-fop-v-1c-rozpodil-zamovlen/": {
   "d": "2026-11-20",
@@ -125,7 +129,7 @@
  },
  "/statti/obmin-bitrix-z-1c-typovyy-chy-vlasne-api/": {
   "d": "2026-11-20",
-  "h": "ffaf5c86b1af33a8a1819d8e67ebb170ec778585"
+  "h": "4d72cc05a0ff0c6f1103c320988077ffa230b9e9"
  },
  "/statti/oplata-chastynamy-pryvatbank-na-sayti-1c/": {
   "d": "2026-11-20",
@@ -149,7 +153,7 @@
  },
  "/statti/skilky-koshtuie-intehratsiia-1c/": {
   "d": "2026-11-20",
-  "h": "2271ed96bd9721d0d6fa887e7bda156a8e31d00d"
+  "h": "e67a9cd0fe6c5ed9df19f9e0cfb32b7e2735321a"
  },
  "/statti/zalyshky-postachalnyka-na-saiti/": {
   "d": "2026-11-20",

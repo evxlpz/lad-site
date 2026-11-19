@@ -291,3 +291,5 @@ from articles_boost import boost as _boost
 _boost(ARTICLES, "uk")
 from articles_boost import add_new as _add_new
 _add_new(ARTICLES, EXTRA, "uk")
+from articles_boost import add_case as _add_case
+_add_case(ARTICLES, "uk")

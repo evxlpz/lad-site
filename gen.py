@@ -249,6 +249,10 @@ ORG = {"@type": "Organization", "@id": BASE + "/#org", "name": BRAND, "url": SIT
 cards = ''.join(f'''<a class="card" href="{m["slug"]}/"><span class="tag">{e(m["group"])}</span><h3>{e(m["card"])}</h3><p>{e(m["short"])}</p><span class="price"><b>{e(m["price"])}</b><small>разово</small></span></a>''' for m in M)
 HX = HOME[LANG]
 home_faq_html = '<section class="wrap sec"><h2 class="h2">' + HX['faq_h'] + '</h2>' + ''.join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in HX['faq']) + '</section>'
+# 20.11: посилання на кейс з головної (перед FAQ)
+_case = next((a for a in ARTICLES if a['slug'].startswith('keis-')), None)
+if _case:
+    home_faq_html = (f'<section class="wrap sec"><a class="artlink" href="statti/{_case["slug"]}/"><span class="tag">{"Кейс"}</span><b>{e(_case["title"])}</b></a></section>') + home_faq_html
 ld_index = {"@context": "https://schema.org", "@graph": [ORG,
     {"@type": "WebSite", "name": BRAND, "url": SITE + '/', "inLanguage": LANG, "publisher": {"@id": BASE + "/#org"}},
     {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in HX['faq']]},

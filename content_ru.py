@@ -524,3 +524,5 @@ from articles_boost import boost as _boost
 _boost(ARTICLES_RU, "ru")
 from articles_boost import add_new as _add_new
 _add_new(ARTICLES_RU, EXTRA_RU, "ru")
+from articles_boost import add_case as _add_case
+_add_case(ARTICLES_RU, "ru")
