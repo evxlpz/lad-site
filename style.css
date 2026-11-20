@@ -171,3 +171,12 @@ details p{margin:12px 0 0;color:var(--text)}
 video.demo{cursor:pointer}
 .vsound{position:absolute;right:12px;bottom:12px;display:flex;align-items:center;gap:6px;font:600 13px/1 inherit;font-family:inherit;padding:8px 12px;border:0;border-radius:999px;background:rgba(22,24,29,.78);color:#fff;cursor:pointer;backdrop-filter:blur(4px)}
 .vsound:hover{background:var(--ink)}
+
+/* друге, повне відео на сторінці модуля */
+.vfull{padding-top:8px}
+.vfhead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;max-width:960px;margin-bottom:22px}
+.vfhead .h2{margin:10px 0 0}
+.vfhead .lead{margin-top:12px;font-size:17px}
+.vbadge{display:inline-block;font:700 13px/1 Unbounded,sans-serif;color:var(--ink);background:var(--lime);border-radius:8px;padding:7px 10px}
+.vfhead .btn{flex:none;min-height:46px}
+@media (max-width:700px){.vfhead{flex-direction:column;align-items:flex-start}}

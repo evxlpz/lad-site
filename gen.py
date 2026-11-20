@@ -330,12 +330,20 @@ AUTOPLAY_JS = ('<button class="vsound" type="button" aria-label="Увімкну�
 
 # ---------- module pages ----------
 # дата і тривалість демо-відео, якщо відрізняються від стандартних (2026-11-07, 20 с)
-VIDEO_META = {'chaty-viber-telegram-1c': ("2026-11-20T00:00:00+02:00", "PT1M25S")}
+VIDEO_META = {}
+# друге, повне відео на сторінці модуля: файл video/<file>.mp4 + .jpg, тривалість, YouTube
+VIDEO_FULL = {'chaty-viber-telegram-1c': dict(
+    file='chaty-viber-telegram-1c-full', dur='PT1M25S', mins='1,5 хв', date='2026-11-20T00:00:00+02:00',
+    yt='https://youtu.be/lihw71i74CM',
+    h=('Повне демо: день менеджера в чатах', 'Полное демо: день менеджера в чатах'),
+    sub=('Даша AI відповідає й читає фото замовлень, документи 1С летять у чат PDF-кою, бот сам доводить клієнта до оплати.',
+         'Даша AI отвечает и читает фото заказов, документы 1С уходят в чат PDF-кой, бот сам доводит клиента до оплаты.'))}
 for m in M:
     path = f'/{m["slug"]}/'
     x = EXTRA[m["key"]]
     faq = x["faq"] + GEN_FAQ
     HAS_VIDEO = os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'video', m["slug"] + '.mp4'))
+    VF = VIDEO_FULL.get(m["slug"])
     art =[a for a in ARTICLES if a["module"] == m["key"]]
     # ціна «від …» — діапазон (minPrice), точна ціна — price
     if m["price"].startswith(('від', 'от')):
@@ -352,7 +360,10 @@ for m in M:
         ] + ([{"@type": "VideoObject", "name": m["h1"] + (": демо" if not RU else ": демо"), "description": m["desc"],
          "thumbnailUrl": f'{BASE}/video/{m["slug"]}.jpg', "contentUrl": f'{BASE}/video/{m["slug"]}.mp4',
          "uploadDate": VIDEO_META.get(m["slug"], ("2026-11-07T00:00:00+02:00", "PT20S"))[0],
-         "duration": VIDEO_META.get(m["slug"], ("2026-11-07T00:00:00+02:00", "PT20S"))[1], "inLanguage": "uk", "publisher": {"@id": BASE + "/#org"}}] if HAS_VIDEO else []) + [
+         "duration": VIDEO_META.get(m["slug"], ("2026-11-07T00:00:00+02:00", "PT20S"))[1], "inLanguage": "uk", "publisher": {"@id": BASE + "/#org"}}] if HAS_VIDEO else []) + (
+        [{"@type": "VideoObject", "name": VF["h"][1 if RU else 0], "description": VF["sub"][1 if RU else 0],
+          "thumbnailUrl": f'{BASE}/video/{VF["file"]}.jpg', "contentUrl": f'{BASE}/video/{VF["file"]}.mp4', "embedUrl": VF["yt"],
+          "uploadDate": VF["date"], "duration": VF["dur"], "inLanguage": "uk", "publisher": {"@id": BASE + "/#org"}}] if VF else []) + [
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Модулі", "item": SITE + '/'},
             {"@type": "ListItem", "position": 2, "name": m["card"], "item": SITE + path}]},
@@ -369,6 +380,11 @@ for m in M:
     arthtml = (f'<section class="wrap sec tight"><h2 class="h2 sm">{"Статті на тему" if not RU else "Статьи по теме"}</h2><div class="artgrid">' + ''.join(f'<a class="artlink" href="../statti/{a["slug"]}/"><span class="tag">{"Стаття" if not RU else "Статья"}</span><b>{e(a["title"])}</b></a>' for a in art) + '</div></section>') if art else ''
     video_html = (f'<section class="wrap sec"><h2 class="h2">{"Дивитись у дії" if not RU else "Смотреть в действии"}</h2><div class="vwrap"><video class="demo" muted loop preload="metadata" playsinline webkit-playsinline disablepictureinpicture poster="/video/{m["slug"]}.jpg"><source src="/video/{m["slug"]}.mp4" type="video/mp4"></video></div></section>\n'
                   if HAS_VIDEO else '')
+    if VF:
+        video_html += (f'<section class="wrap sec vfull"><div class="vfhead"><div><span class="vbadge">▶ {VF["mins"]}</span>'
+                       f'<h2 class="h2">{e(VF["h"][1 if RU else 0])}</h2><p class="lead">{e(VF["sub"][1 if RU else 0])}</p></div>'
+                       f'<a class="btn ghost" href="{VF["yt"]}" rel="noopener">{"Смотреть на YouTube" if RU else "Дивитись на YouTube"}</a></div>'
+                       f'<div class="vwrap"><video class="demo full" controls preload="none" playsinline poster="/video/{VF["file"]}.jpg"><source src="/video/{VF["file"]}.mp4" type="video/mp4"></video></div></section>\n')
     s += f'''<main>
 <section class="wrap hero">
 <div class="grow"><p class="kicker">{e(m["group"])}</p><h1>{e(m["h1"])}</h1><p class="lead">{e(m["lead"])}</p></div>
