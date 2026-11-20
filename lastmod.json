@@ -41,7 +41,7 @@
  },
  "/obmin-saytu-z-1c/": {
   "d": "2026-11-20",
-  "h": "69c9695a87f9ff640c02d9ce4dcc68b8030d9b1b"
+  "h": "4b2b1aed392cacf712f75ff5d01ed0e58ee10abb"
  },
  "/obmin-z-postachalnykom-api-1c/": {
   "d": "2026-11-20",
@@ -57,7 +57,7 @@
  },
  "/pytannia/": {
   "d": "2026-11-20",
-  "h": "683a4bbb578e43f8deead6d9cbfe307ba6b0fdb0"
+  "h": "ff63ba0f0895a49aed77b17dd269f8388c9f8c65"
  },
  "/robochyy-stil-menedzhera-1c/": {
   "d": "2026-11-20",
@@ -69,11 +69,11 @@
  },
  "/spovishchennya-viber-telegram-1c/": {
   "d": "2026-11-20",
-  "h": "330b6febe0a7bb255c711772a67910fe184d5ed4"
+  "h": "bca46637b92c9015c45a881c280c82da308ad1dc"
  },
  "/statti/": {
   "d": "2026-11-20",
-  "h": "6f877857b09df437bb30f9b48af4a04e34b24bd4"
+  "h": "a286a15a890e770b158d543a4c0be765c175a292"
  },
  "/statti/ai-pomichnyk-1c-zapyty-do-bazy/": {
   "d": "2026-11-20",
@@ -81,7 +81,7 @@
  },
  "/statti/alternatyva-chatbullet-easybusy-chaty-v-1c/": {
   "d": "2026-11-20",
-  "h": "c2ebde119fa656b0a4db94934c19aa83d6741dba"
+  "h": "95965f9300ba715b86e76fcc5504c5ba34b3088d"
  },
  "/statti/avtomatyzatsiia-internet-mahazynu-1c-z-choho-pochaty/": {
   "d": "2026-11-20",
@@ -89,7 +89,7 @@
  },
  "/statti/avtopovidomlennia-klientam-viber-telegram-1c/": {
   "d": "2026-11-20",
-  "h": "4d5f82ec363f5935dd9c6e771dac99201be8ae0c"
+  "h": "ccbdf142f527093611a793a1e65ea7b2b39e06a2"
  },
  "/statti/chaty-viber-telegram-v-1c-bez-abonplaty/": {
   "d": "2026-11-20",
@@ -97,7 +97,7 @@
  },
  "/statti/crm-dlia-internet-mahazynu-v-1c/": {
   "d": "2026-11-20",
-  "h": "650c795b1879596760ce2f39d6578a8dffda636d"
+  "h": "a911794e4720558bec090ab2dfa459f9ce97af3b"
  },
  "/statti/ekvairynh-monobank-plata-by-mono-1c/": {
   "d": "2026-11-20",
@@ -141,7 +141,7 @@
  },
  "/statti/obmin-1c-bas-z-horoshop-prom-opencart-woocommerce/": {
   "d": "2026-11-20",
-  "h": "428b8412da5407751d5754e43f9d284a132e0f51"
+  "h": "675d32e61d5e4a22cf295893a370d9ecd91edc22"
  },
  "/statti/obmin-bitrix-z-1c-typovyy-chy-vlasne-api/": {
   "d": "2026-11-20",
@@ -165,11 +165,11 @@
  },
  "/statti/robochyy-stil-menedzhera-internet-mahazynu-1c/": {
   "d": "2026-11-20",
-  "h": "cc1ee09933a490173538aadca0837ec607b19025"
+  "h": "fa4431a31a798707ae91863aa37c56fcbf89beb3"
  },
  "/statti/rozshyrennia-konfihuratsii-1c-chomu-bezpechnishe/": {
   "d": "2026-11-20",
-  "h": "f7a5464f82a410187d7d4b2806085f0809c7bff4"
+  "h": "04cc9b132d59b99083b760628ebed7d7a5f467b1"
  },
  "/statti/skilky-koshtuie-intehratsiia-1c/": {
   "d": "2026-11-20",
@@ -177,7 +177,19 @@
  },
  "/statti/slovnyk-internet-mahazyn-1c-eqvairynh-nakladenyi-platizh/": {
   "d": "2026-11-20",
-  "h": "8c80540981b4e2ca89eff5d3a01f044ecede1d0e"
+  "h": "67a405271af27c569863fc331e24580ac5723c50"
+ },
+ "/statti/telegram-bot-dlia-internet-mahazynu-z-1c/": {
+  "d": "2026-11-20",
+  "h": "93af04399a629b04fa9ae384392c0459b84e6678"
+ },
+ "/statti/typovyi-obmin-bitrix-1c-pomylky/": {
+  "d": "2026-11-20",
+  "h": "ecbd8135d66e208d9c2529f56e836447f70ea73d"
+ },
+ "/statti/yak-vybraty-prohramista-1c-dlia-internet-mahazynu/": {
+  "d": "2026-11-20",
+  "h": "530c973580e28e81473c70fe8c6ee3e356871383"
  },
  "/statti/zalyshky-postachalnyka-na-saiti/": {
   "d": "2026-11-20",

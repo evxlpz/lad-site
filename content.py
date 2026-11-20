@@ -301,3 +301,5 @@ from articles_new import add_mod_faq as _amf
 _amf(EXTRA, "uk")
 from articles_new import add_platform as _apl
 _apl(ARTICLES, EXTRA, "uk")
+from articles_new import add_night3 as _an3
+_an3(ARTICLES, "uk")
