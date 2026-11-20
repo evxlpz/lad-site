@@ -35,9 +35,9 @@ M = [
   lead='Виписки й реєстри NovaPay завантажуються в облік і розносяться по замовленнях за номером ТТН. Без Excel і ручного рознесення.',
   pains=['Реєстри накладеного платежу розносяться вручну','Важко зрозуміти, яке замовлення оплачене, а яке ні','Комісії NovaPay губляться у звітах'],
   features=['Завантаження виписок і реєстрів NovaPay','Рознесення оплат по замовленнях за ТТН','Комісія NovaPay враховується окремо','Видно неоплачені й незнайдені посилки','Робота з кількома ФОП']),
- dict(key='privat', slug='pryvat24-zalyshky-fop-1c', group='Оплати', card='Приват24: залишки', price='3 500 грн', amount=3500,
+ dict(key='privat', slug='pryvat24-zalyshky-fop-1c', group='Оплати', card='Приват24: залишки', price='4 500 грн', amount=3500,
   h1='Залишки Приват24 по кожному ФОП в 1С',
-  desc='Баланси рахунків Приват24 по всіх ФОП прямо в 1С і BAS зі зведенням із залишком в обліку. Без входу в банк під кожен ФОП. Разова оплата 3 500 грн.',
+  desc='Баланси рахунків Приват24 по всіх ФОП прямо в 1С і BAS зі зведенням із залишком в обліку. Без входу в банк під кожен ФОП. Разова оплата 4 500 грн.',
   short='Залишки на рахунках кожного ФОП поруч із даними обліку, без входу в банк.',
   lead='Баланси рахунків у Приват24 по всіх ваших ФОП видно прямо в обліку — поруч із тим, що показує 1С.',
   pains=['Щоб глянути залишки, треба заходити в банк під кожен ФОП','Розбіжності між банком і обліком знаходяться запізно','Немає однієї картини грошей по всіх ФОП'],
@@ -159,6 +159,10 @@ if RU:
     M, EXTRA, ARTICLES = M_RU, EXTRA_RU, ARTICLES_RU
     PH = sorted(PHRASES.items(), key=lambda kv: -len(kv[0]))
 
+# 20.11: ціни, сповіщення → чати, нові описи модулів, більше FAQ (overrides.py)
+from overrides import apply as _apply_ov
+M = _apply_ov(M, EXTRA, ARTICLES, 'ru' if RU else 'uk')
+
 e = html.escape
 LOGO_SVG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C6F26B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h5l3-7 3 14 3-7h2"/></svg>'
 CHECK = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E5E4E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
@@ -201,7 +205,7 @@ def head(title, desc, path, ld, root, robots='index,follow,max-image-preview:lar
 <link rel="icon" href="{root}favicon.svg" type="image/svg+xml">
 <link rel="preload" href="{root}fonts/manrope-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}fonts/unbounded-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="{root}style.css">
+<link rel="stylesheet" href="{root}style.css?v=20112026">
 {ld_tag}</head>
 <body>
 '''
@@ -246,8 +250,18 @@ ORG = {"@type": "Organization", "@id": BASE + "/#org", "name": BRAND, "url": SIT
        "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "url": TG, "availableLanguage": ["uk", "ru"]}}
 
 # ---------- index ----------
-cards = ''.join(f'''<a class="card" href="{m["slug"]}/"><span class="tag">{e(m["group"])}</span><h3>{e(m["card"])}</h3><p>{e(m["short"])}</p><span class="price"><b>{e(m["price"])}</b><small>разово</small></span></a>''' for m in M)
+cards = ''.join(f'''<a class="card" data-g="{e(m["group"])}" href="{m["slug"]}/"><span class="tag">{e(m["group"])}</span><h3>{e(m["card"])}</h3><p>{e(m["short"])}</p><span class="price"><b>{e(m["price"])}</b><small>разово</small></span></a>''' for m in M)
 HX = HOME[LANG]
+# 20.11: фільтр модулів за категоріями (без JS видно все)
+_gs = []
+for _m in M:
+    if _m['group'] not in _gs:
+        _gs.append(_m['group'])
+chips = ('<div class="chips" role="tablist"><button class="chip on" data-f="">' + ('Усі' if not RU else 'Все') + '</button>' +
+         ''.join(f'<button class="chip" data-f="{e(g)}">{e(g)}</button>' for g in _gs) + '</div>' +
+         '<script>document.addEventListener("click",function(ev){var b=ev.target.closest(".chip");if(!b)return;var f=b.getAttribute("data-f");'
+         'document.querySelectorAll(".chip").forEach(function(x){x.classList.toggle("on",x===b)});'
+         'document.querySelectorAll("#mcards .card").forEach(function(c){c.style.display=(!f||c.getAttribute("data-g")===f)?"":"none"})});</script>')
 home_faq_html = '<section class="wrap sec"><h2 class="h2">' + HX['faq_h'] + '</h2>' + ''.join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in HX['faq']) + '</section>'
 # 20.11: посилання на кейс з головної (перед FAQ)
 _case = next((a for a in ARTICLES if a['slug'].startswith('keis-')), None)
@@ -277,7 +291,7 @@ idx += f'''<main>
 </div></section>
 <section class="wrap sec" id="modules"><h2 class="h2">Модулі</h2>
 <p class="lead sm">Ціна разова: модуль ваш назавжди. Входить встановлення, налаштування, навчання та 30 днів виправлень. Ліцензія на одну базу.</p>
-<div class="cards">{cards}</div>
+{chips}<div class="cards" id="mcards">{cards}</div>
 <p class="note">Потрібен модуль під іншу облікову систему чи версію — адаптую, оцінка безкоштовна.</p></section>
 <section class="wrap sec" id="services"><h2 class="h2">Послуги</h2><div class="grid4">
 <div class="box lime"><h3>Консультація та оцінка</h3><p>Розбираємо задачу, кажу, що реально зробити, скільки годин і коштів.</p><b>600 грн/год</b></div>
@@ -340,7 +354,7 @@ for m in M:
     how = ''.join(f'<li>{e(t)}</li>' for t in x["how"])
     need = ''.join(f'<li>{CHECK}<span>{e(t)}</span></li>' for t in x["need"])
     faqhtml = ''.join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in faq)
-    arthtml = ''.join(f'<section class="wrap sec"><a class="artlink" href="../statti/{a["slug"]}/"><span class="tag">Стаття</span><b>{e(a["title"])}</b></a></section>' for a in art)
+    arthtml = (f'<section class="wrap sec tight"><h2 class="h2 sm">{"Статті на тему" if not RU else "Статьи по теме"}</h2><div class="artgrid">' + ''.join(f'<a class="artlink" href="../statti/{a["slug"]}/"><span class="tag">{"Стаття" if not RU else "Статья"}</span><b>{e(a["title"])}</b></a>' for a in art) + '</div></section>') if art else ''
     video_html = (f'<section class="wrap sec"><h2 class="h2">{"Дивитись у дії" if not RU else "Смотреть в действии"}</h2><div class="vwrap"><video class="demo" controls preload="metadata" playsinline poster="/video/{m["slug"]}.jpg"><source src="/video/{m["slug"]}.mp4" type="video/mp4"></video></div></section>\n'
                   if HAS_VIDEO else '')
     s += f'''<main>
@@ -391,7 +405,13 @@ for a in ARTICLES:
         at = a["title"]
     s = head(at, a["desc"], path, ld, '../../')
     s += header('../../', back=True)
-    body = ''.join(f'<h2>{e(h)}</h2>' + ''.join(f'<p>{e(p)}</p>' for p in ps) for h, ps in a["body"])
+    # 20.11: візуальна ієрархія — «Коротко» зверху, нумеровані розділи, картка модуля після 2-го розділу
+    _secs = [f'<section class="asec"><h2><span class="num">{i + 1:02d}</span>{e(h)}</h2>' + ''.join(f'<p>{e(p)}</p>' for p in ps) + '</section>' for i, (h, ps) in enumerate(a["body"])]
+    _mid = (f'<a class="modcard" href="../../{mod["slug"]}/"><span class="tag">{"Готовий модуль" if not RU else "Готовый модуль"}</span>'
+            f'<b>{e(mod["card"])}</b><span class="mc-short">{e(mod["short"])}</span><span class="mc-price">{e(mod["price"])} <small>{"разово" if not RU else "разово"}</small> →</span></a>')
+    if len(_secs) > 3:
+        _secs.insert(2, _mid)
+    body = (f'<div class="tldr"><b>{"Коротко" if not RU else "Коротко"}</b><p>{e(a["desc"])}</p></div>') + ''.join(_secs)
     if afaq:
         body += '<h2>' + HX['faq_h'] + '</h2>' + ''.join(f'<details><summary>{e(q)}</summary><p>{e(ans)}</p></details>' for q, ans in afaq)
     # схожі статті: той самий модуль, потім та сама тема, далі решта — по колу від поточної, щоб добірка різнилась
@@ -436,12 +456,19 @@ ld = {"@context": "https://schema.org", "@graph": [ORG,
         {"@type": "ListItem", "position": 2, "name": PX['crumb'], "item": SITE + '/tsiny/'}]}]}
 s = head(f'{PX["title"]} | {BRAND}', PX['desc'], '/tsiny/', ld, '../')
 s += header('../', back=True)
-rows = ''.join(f'<tr><td><a href="../{m["slug"]}/">{e(m["card"])}</a></td><td>{e(m["short"])}</td><td class="pr">{e(m["price"])}</td></tr>' for m in M)
+# 20.11: ціни — блоки за категоріями, весь рядок клікабельний
+_pg = []
+for _m in M:
+    if _m['group'] not in _pg:
+        _pg.append(_m['group'])
+rows = ''.join(f'<div class="pgroup"><h2 class="pg-h">{e(g)}</h2>' + ''.join(
+    f'<a class="prow" href="../{m["slug"]}/"><span class="pr-name">{e(m["card"])}</span><span class="pr-short">{e(m["short"])}</span>'
+    f'<span class="pr-price">{e(m["price"])}</span><span class="pr-go" aria-hidden="true">→</span></a>' for m in M if m['group'] == g) + '</div>' for g in _pg)
 extra = ''.join(f'<p>{e(t)}</p>' for t in PX['extra'])
 how = ''.join(f'<li>{e(t)}</li>' for t in PX['how'])
 s += f'''<main>
 <section class="wrap hero"><div class="grow"><p class="kicker">{e(PX["crumb"])}</p><h1>{e(PX["h1"])}</h1><p class="lead">{e(PX["lead"])}</p></div></section>
-<section class="wrap sec"><table class="ptable"><thead><tr><th>{PX["col"][0]}</th><th>{PX["col"][1]}</th><th>{PX["col"][2]}</th></tr></thead><tbody>{rows}</tbody></table></section>
+<section class="wrap sec tight"><div class="plist">{rows}</div></section>
 <section class="wrap sec"><h2 class="h2 sm">{e(PX["extra_h"])}</h2><div class="prose">{extra}</div></section>
 <section class="wrap sec"><h2 class="h2 sm">{e(PX["how_h"])}</h2><ol class="flow">{how}</ol></section>
 </main>
@@ -460,6 +487,12 @@ _old='integratsiya-monopay-1c-bas'
 _s2=f'<!doctype html><html lang="{LANG}"><head><meta charset="utf-8"><title>Еквайринг monobank | {BRAND}</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="{SITE}/ekvairynh-monobank-1c/"><meta http-equiv="refresh" content="0;url={PFX}/ekvairynh-monobank-1c/"></head><body><a href="{PFX}/ekvairynh-monobank-1c/">Еквайринг monobank</a></body></html>'
 os.makedirs(os.path.join(OUT,_old),exist_ok=True)
 open(os.path.join(OUT,_old,'index.html'),'w',encoding='utf-8').write(_s2)
+
+# 20.11: сповіщення увійшли в модуль чатів — стара адреса веде на чати
+_old = 'spovishchennya-viber-telegram-1c'
+_s3 = f'<!doctype html><html lang="{LANG}"><head><meta charset="utf-8"><title>{"Чати й сповіщення" if not RU else "Чаты и уведомления"} | {BRAND}</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="{SITE}/chaty-viber-telegram-1c/"><meta http-equiv="refresh" content="0;url={PFX}/chaty-viber-telegram-1c/"></head><body><a href="{PFX}/chaty-viber-telegram-1c/">{"Чати й сповіщення" if not RU else "Чаты и уведомления"}</a></body></html>'
+os.makedirs(os.path.join(OUT, _old), exist_ok=True)
+open(os.path.join(OUT, _old, 'index.html'), 'w', encoding='utf-8').write(_s3)
 
 # ---------- питання й відповіді ----------
 FQ = FAQP[LANG]
