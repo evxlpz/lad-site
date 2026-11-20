@@ -205,7 +205,7 @@ def head(title, desc, path, ld, root, robots='index,follow,max-image-preview:lar
 <link rel="icon" href="{root}favicon.svg" type="image/svg+xml">
 <link rel="preload" href="{root}fonts/manrope-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}fonts/unbounded-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="{root}style.css?v=20112026">
+<link rel="stylesheet" href="{root}style.css?v=20112026b">
 {ld_tag}</head>
 <body>
 '''
@@ -320,9 +320,13 @@ GEN_FAQ = [('Чи запрацює на моїй конфігурації?', 'М
            ('Можна доробити під мої процеси?', 'Так. Спершу оцінюю, скільки годин займе, потім роблю. 600 грн/год.')]
 
 # 20.11: відео саме стартує, коли доскролили (без звуку), і ставиться на паузу, коли пішло з екрана
-AUTOPLAY_JS = ('<script>(function(){var v=document.querySelectorAll("video.demo");if(!("IntersectionObserver" in window))return;'
-  'var io=new IntersectionObserver(function(es){es.forEach(function(e){var x=e.target;if(e.isIntersecting){x.muted=x.muted!==false?x.muted:true;var p=x.play();if(p&&p.catch)p.catch(function(){});}else{x.pause();}})},{threshold:0.5});'
-  'v.forEach(function(x){io.observe(x)})})();</script>')
+AUTOPLAY_JS = ('<button class="vsound" type="button" aria-label="Увімкнути звук"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M16 9l5 6M21 9l-5 6"/></svg><span>Звук</span></button>'
+  '<script>(function(){var v=document.querySelector("video.demo");if(!v)return;var w=v.parentNode,b=document.querySelector(".vsound");w.appendChild(b);'
+  'function on(){v.muted=false;v.controls=true;b.remove();var p=v.play();if(p&&p.catch)p.catch(function(){});}'
+  'b.addEventListener("click",on);v.addEventListener("click",function(){if(!v.controls)on();});'
+  'if(!("IntersectionObserver" in window)){v.controls=true;return;}'
+  'new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){v.controls=true;});}else{v.pause();}})},{threshold:0.5}).observe(v);'
+  '})();</script>')
 
 # ---------- module pages ----------
 for m in M:
@@ -360,7 +364,7 @@ for m in M:
     need = ''.join(f'<li>{CHECK}<span>{e(t)}</span></li>' for t in x["need"])
     faqhtml = ''.join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in faq)
     arthtml = (f'<section class="wrap sec tight"><h2 class="h2 sm">{"Статті на тему" if not RU else "Статьи по теме"}</h2><div class="artgrid">' + ''.join(f'<a class="artlink" href="../statti/{a["slug"]}/"><span class="tag">{"Стаття" if not RU else "Статья"}</span><b>{e(a["title"])}</b></a>' for a in art) + '</div></section>') if art else ''
-    video_html = (f'<section class="wrap sec"><h2 class="h2">{"Дивитись у дії" if not RU else "Смотреть в действии"}</h2><div class="vwrap"><video class="demo" controls muted loop preload="metadata" playsinline poster="/video/{m["slug"]}.jpg"><source src="/video/{m["slug"]}.mp4" type="video/mp4"></video></div></section>\n'
+    video_html = (f'<section class="wrap sec"><h2 class="h2">{"Дивитись у дії" if not RU else "Смотреть в действии"}</h2><div class="vwrap"><video class="demo" muted loop preload="metadata" playsinline webkit-playsinline disablepictureinpicture poster="/video/{m["slug"]}.jpg"><source src="/video/{m["slug"]}.mp4" type="video/mp4"></video></div></section>\n'
                   if HAS_VIDEO else '')
     s += f'''<main>
 <section class="wrap hero">

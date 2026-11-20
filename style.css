@@ -166,3 +166,8 @@ details p{margin:12px 0 0;color:var(--text)}
 @media (max-width:700px){.prow{grid-template-columns:1fr auto;gap:6px 12px}.pr-short{grid-column:1/-1;grid-row:2}.pr-price{grid-row:1;grid-column:2}.pr-go{display:none}}
 .sec.tight{padding-top:8px}
 .artgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+/* 20.11: відео без системних кнопок, кнопка «Звук» у куті */
+.vwrap{position:relative}
+video.demo{cursor:pointer}
+.vsound{position:absolute;right:12px;bottom:12px;display:flex;align-items:center;gap:6px;font:600 13px/1 inherit;font-family:inherit;padding:8px 12px;border:0;border-radius:999px;background:rgba(22,24,29,.78);color:#fff;cursor:pointer;backdrop-filter:blur(4px)}
+.vsound:hover{background:var(--ink)}
