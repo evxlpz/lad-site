@@ -319,6 +319,11 @@ GEN_FAQ = [('Чи запрацює на моїй конфігурації?', 'М
            ('А якщо сервіс змінить API?', 'Оновлю модуль за годинами, 600 грн/год. Зазвичай це година-дві роботи.'),
            ('Можна доробити під мої процеси?', 'Так. Спершу оцінюю, скільки годин займе, потім роблю. 600 грн/год.')]
 
+# 20.11: відео саме стартує, коли доскролили (без звуку), і ставиться на паузу, коли пішло з екрана
+AUTOPLAY_JS = ('<script>(function(){var v=document.querySelectorAll("video.demo");if(!("IntersectionObserver" in window))return;'
+  'var io=new IntersectionObserver(function(es){es.forEach(function(e){var x=e.target;if(e.isIntersecting){x.muted=x.muted!==false?x.muted:true;var p=x.play();if(p&&p.catch)p.catch(function(){});}else{x.pause();}})},{threshold:0.5});'
+  'v.forEach(function(x){io.observe(x)})})();</script>')
+
 # ---------- module pages ----------
 for m in M:
     path = f'/{m["slug"]}/'
@@ -355,14 +360,14 @@ for m in M:
     need = ''.join(f'<li>{CHECK}<span>{e(t)}</span></li>' for t in x["need"])
     faqhtml = ''.join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in faq)
     arthtml = (f'<section class="wrap sec tight"><h2 class="h2 sm">{"Статті на тему" if not RU else "Статьи по теме"}</h2><div class="artgrid">' + ''.join(f'<a class="artlink" href="../statti/{a["slug"]}/"><span class="tag">{"Стаття" if not RU else "Статья"}</span><b>{e(a["title"])}</b></a>' for a in art) + '</div></section>') if art else ''
-    video_html = (f'<section class="wrap sec"><h2 class="h2">{"Дивитись у дії" if not RU else "Смотреть в действии"}</h2><div class="vwrap"><video class="demo" controls preload="metadata" playsinline poster="/video/{m["slug"]}.jpg"><source src="/video/{m["slug"]}.mp4" type="video/mp4"></video></div></section>\n'
+    video_html = (f'<section class="wrap sec"><h2 class="h2">{"Дивитись у дії" if not RU else "Смотреть в действии"}</h2><div class="vwrap"><video class="demo" controls muted loop preload="metadata" playsinline poster="/video/{m["slug"]}.jpg"><source src="/video/{m["slug"]}.mp4" type="video/mp4"></video></div></section>\n'
                   if HAS_VIDEO else '')
     s += f'''<main>
 <section class="wrap hero">
 <div class="grow"><p class="kicker">{e(m["group"])}</p><h1>{e(m["h1"])}</h1><p class="lead">{e(m["lead"])}</p></div>
 <aside class="pricebox"><span class="muted">Разова оплата, модуль ваш назавжди</span><b>{e(m["price"])}</b><span>Встановлення, налаштування, навчання і 30 днів виправлень уже в ціні.</span><a class="btn lime" href="{TG}">Подивитись демо</a></aside>
 </section>
-{video_html}<section class="white"><div class="wrap sec"><h2 class="h2">Що зараз забирає час</h2><ul class="list pains">{pains}</ul></div></section>
+{video_html}{AUTOPLAY_JS if HAS_VIDEO else ''}<section class="white"><div class="wrap sec"><h2 class="h2">Що зараз забирає час</h2><ul class="list pains">{pains}</ul></div></section>
 <section class="wrap sec"><h2 class="h2">Що робить модуль</h2><ul class="list feats">{feats}</ul></section>
 <section class="wrap sec"><h2 class="h2">Як це працює</h2><ol class="flow">{how}</ol></section>
 <section class="wrap sec"><h2 class="h2">Що потрібно для підключення</h2><ul class="need">{need}</ul></section>
