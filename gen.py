@@ -329,6 +329,8 @@ AUTOPLAY_JS = ('<button class="vsound" type="button" aria-label="Увімкну�
   '})();</script>')
 
 # ---------- module pages ----------
+# дата і тривалість демо-відео, якщо відрізняються від стандартних (2026-11-07, 20 с)
+VIDEO_META = {'chaty-viber-telegram-1c': ("2026-11-20T00:00:00+02:00", "PT1M25S")}
 for m in M:
     path = f'/{m["slug"]}/'
     x = EXTRA[m["key"]]
@@ -349,7 +351,8 @@ for m in M:
          "offers": offer},
         ] + ([{"@type": "VideoObject", "name": m["h1"] + (": демо" if not RU else ": демо"), "description": m["desc"],
          "thumbnailUrl": f'{BASE}/video/{m["slug"]}.jpg', "contentUrl": f'{BASE}/video/{m["slug"]}.mp4',
-         "uploadDate": "2026-11-07T00:00:00+02:00", "duration": "PT20S", "inLanguage": "uk", "publisher": {"@id": BASE + "/#org"}}] if HAS_VIDEO else []) + [
+         "uploadDate": VIDEO_META.get(m["slug"], ("2026-11-07T00:00:00+02:00", "PT20S"))[0],
+         "duration": VIDEO_META.get(m["slug"], ("2026-11-07T00:00:00+02:00", "PT20S"))[1], "inLanguage": "uk", "publisher": {"@id": BASE + "/#org"}}] if HAS_VIDEO else []) + [
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Модулі", "item": SITE + '/'},
             {"@type": "ListItem", "position": 2, "name": m["card"], "item": SITE + path}]},
