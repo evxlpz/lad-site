@@ -540,3 +540,5 @@ _an3(ARTICLES_RU, "ru")
 # 23.11: статті з Claude Batch — articles_claude.py
 from articles_claude import add_claude_arts as _aca
 _aca(ARTICLES_RU, "ru")
+from articles_claude import refresh_arts as _rfa
+_rfa(ARTICLES_RU, "ru")

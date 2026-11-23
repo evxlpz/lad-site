@@ -5,7 +5,7 @@
  },
  "/ai-pomichnytsya-1c/": {
   "d": "2026-11-23",
-  "h": "6718d4f43d846f8eb3bc7880766f2b01f8bea60b"
+  "h": "8c8e478ef9a294c054028090047be10ef56087b0"
  },
  "/ceny/": {
   "d": "2026-11-07",
@@ -13,19 +13,19 @@
  },
  "/chaty-viber-telegram-1c/": {
   "d": "2026-11-23",
-  "h": "963863aa8e62ff3e185ac341d4cb9c0692524097"
+  "h": "08e698893ae18c8855c64a0a56b55ad16085a8d1"
  },
  "/ekvairynh-monobank-1c/": {
   "d": "2026-11-23",
-  "h": "80081e670d5058d308e2430bf23c4a3a2449e60e"
+  "h": "978fea5d0bc862ad743feba4a4d2db399fe37b52"
  },
  "/groshi-marzha-1c/": {
   "d": "2026-11-23",
-  "h": "2ed486d00e55e3dbfbb6eb82d9ccc7fd79a477c9"
+  "h": "a3a93d1e76d796e030127c6d20f48f7a08c21a20"
  },
  "/heneratsiya-kharakterystyk-1c/": {
   "d": "2026-11-23",
-  "h": "0c70eca97023fb491cf20527e5f993e4d94e94d9"
+  "h": "1ee21d7cc337afe91eba6709c0b4fe93558ac3f9"
  },
  "/integratsiya-monopay-1c-bas/": {
   "d": "2026-11-07",
@@ -33,23 +33,23 @@
  },
  "/nova-poshta-1c/": {
   "d": "2026-11-23",
-  "h": "e016ae177007a49ce6f134cc840b367408822a6c"
+  "h": "716aeec3ea80bcc1906def654e214079b5143cfe"
  },
  "/novapay-1c/": {
   "d": "2026-11-23",
-  "h": "25d42749b963b6ad63994bb32b4e48c7da5f68a8"
+  "h": "3ff6be9cd52b658c35174d9418b9708e345559c9"
  },
  "/obmin-saytu-z-1c/": {
   "d": "2026-11-23",
-  "h": "28620b3cdcd64ba685ddd22f96572682d15b10ce"
+  "h": "efe8161de94fdb771b8e2fd34bcabb704e4e795a"
  },
  "/obmin-z-postachalnykom-api-1c/": {
   "d": "2026-11-23",
-  "h": "8b3daa95a6a1745a280aec896e0146f49778853b"
+  "h": "15424f5665b17aa844313ef87c3451e98ccd504a"
  },
  "/oplata-chastynamy-pryvatbank-1c/": {
   "d": "2026-11-23",
-  "h": "7dd328eb73c594e2c271c05ce3d2abdaafb784a8"
+  "h": "0924f6b96b8a332d9d51505963fbd798b163df4e"
  },
  "/pryvat24-zalyshky-fop-1c/": {
   "d": "2026-11-20",
@@ -57,15 +57,15 @@
  },
  "/pytannia/": {
   "d": "2026-11-23",
-  "h": "4c5f08b25b4f9e336c6f4ddaecb01112d94d0c94"
+  "h": "4473f9b66a87e7f0df8157633b6efeb0382c6b4f"
  },
  "/robochyy-stil-menedzhera-1c/": {
   "d": "2026-11-23",
-  "h": "e0a5e348874f7ed856f3bc5aa3e1864eb5e78e78"
+  "h": "11530dfe5e95a32ae61f2e582576cd06ae0f2a6d"
  },
  "/rozpodil-zamovlen-fop-1c/": {
   "d": "2026-11-23",
-  "h": "95d6279e09fb3e5017f030771b14f84bd8f4092b"
+  "h": "46e4fdcb1df1860a93f152afbb637a7baa7b7d62"
  },
  "/spovishchennya-viber-telegram-1c/": {
   "d": "2026-11-20",
@@ -73,51 +73,75 @@
  },
  "/statti/": {
   "d": "2026-11-23",
-  "h": "dee2ff58650178e4b4709ad68cb590ed2ce060a8"
+  "h": "5a7b87f337b8ce2fc81e52561bc69c27b1ca0df1"
+ },
+ "/statti/1c-v-khmari-chy-na-svoiemu-serveri-dlia-integratsii/": {
+  "d": "2026-11-23",
+  "h": "cd07dcf9db65c508293c9ddfef8fcea2f0f3f76c"
+ },
+ "/statti/adresna-dostavka-kurierom-nova-poshta-1c/": {
+  "d": "2026-11-23",
+  "h": "44dcac90e58d1b8655318c6c7575bb873d9deab3"
  },
  "/statti/ai-pomichnyk-1c-zapyty-do-bazy/": {
   "d": "2026-11-23",
-  "h": "6e1d05bb2d32aa876ca63ec577424939a0080b78"
+  "h": "e26c4114f4d63d8d873b353419aa27a982c0506d"
  },
  "/statti/alternatyva-chatbullet-easybusy-chaty-v-1c/": {
   "d": "2026-11-23",
-  "h": "7af4adb8751dd9f4a307d50456de3cff98057d85"
+  "h": "474872bda8fe997a8033b4ce78533181488d2d98"
+ },
+ "/statti/api-dlia-telegram-bota-z-1c/": {
+  "d": "2026-11-23",
+  "h": "9b41c2c45a3e72daa62b9f5aabb4fa53b8815986"
+ },
+ "/statti/api-postachalnyka-dlia-internet-mahazynu/": {
+  "d": "2026-11-23",
+  "h": "7693533f4ecb4b3e16452ee1fdc8fc4f093f4b50"
  },
  "/statti/avtomatychne-povidomlennia-ttn-kliientu/": {
   "d": "2026-11-23",
   "h": "08e6498de698637c9c5cb8e76b0d155bc3411292"
  },
  "/statti/avtomatyzatsiia-internet-mahazynu-1c-z-choho-pochaty/": {
-  "d": "2026-11-20",
-  "h": "39d0721fb6179e9b16de579260d15d749ca340cf"
+  "d": "2026-11-23",
+  "h": "e367d3e13606e5f89191122ec954193290ea6aa4"
  },
  "/statti/avtopovidomlennia-klientam-viber-telegram-1c/": {
-  "d": "2026-11-20",
-  "h": "7a9e886a535c270171081ab4d4f66f3b7fb41533"
+  "d": "2026-11-23",
+  "h": "2c0c91325a49aeac8b16819be7970291e465cef9"
  },
  "/statti/avtovidpovidi-kliientam-shi-u-chatakh/": {
   "d": "2026-11-23",
-  "h": "091e2b929116f13789f6006a66b49bfe2300c2af"
+  "h": "d0a523b4d3043e17d4b044b7068fe887f6fb80e7"
  },
  "/statti/avtozamovlennia-postachalnyku-z-1c/": {
   "d": "2026-11-23",
   "h": "3a86652c4e60786688c5757632cc22f8546487e6"
  },
+ "/statti/bezpeka-shi-v-1c-dani-kliientiv/": {
+  "d": "2026-11-23",
+  "h": "819f93e48a24090633ef73ffe628bb6f7b915a23"
+ },
  "/statti/binotel-ringostat-1c-intehratsiia/": {
   "d": "2026-11-23",
-  "h": "d1ad7ad06e896551070c0b884e85140a04c654a7"
+  "h": "9401ffb1ccb1ee847e634ead399e9351b1d537ee"
+ },
+ "/statti/chastkova-peredoplata-internet-mahazyn-1c/": {
+  "d": "2026-11-23",
+  "h": "c90cc29af9d35dee1f9812d5f454090d51822793"
  },
  "/statti/chat-na-saiti-v-1c/": {
   "d": "2026-11-23",
-  "h": "9344b7177a84d9423b81fb3527053be8f79b7912"
+  "h": "dd9c89659d926a7717b9955eb2d0d4af0609bc50"
  },
  "/statti/chatgpt-gemini-claude-v-1c/": {
   "d": "2026-11-23",
-  "h": "7cc5f10b2c49229e0ea6fdc7c696b2c2b419f936"
+  "h": "5db2f5fd945764a63d5154572d2d265f64bab77e"
  },
  "/statti/chaty-viber-telegram-v-1c-bez-abonplaty/": {
   "d": "2026-11-23",
-  "h": "d6447d2f7e3282ee54ca674394ce7f10fb8114bb"
+  "h": "691a9cd33c41090c65215c760e8becac0cc66cea"
  },
  "/statti/chek-lyst-avtomatyzatsii-internet-mahazynu/": {
   "d": "2026-11-23",
@@ -125,15 +149,15 @@
  },
  "/statti/crm-dlia-internet-mahazynu-v-1c/": {
   "d": "2026-11-23",
-  "h": "6327dad36bb15bc3a43587ad86c71919dcc89860"
+  "h": "2f469fd76ba63158334b997729162385592b977a"
  },
  "/statti/dovidnyk-viddilen-poshtomativ-nova-poshta-1c/": {
   "d": "2026-11-23",
-  "h": "0298175ded1a0905e21cf72e188323ec477b4467"
+  "h": "372216ad70804064ddc13bc8c0ad42b77aa42383"
  },
  "/statti/dropshypinh-oblik-v-1c/": {
   "d": "2026-11-23",
-  "h": "d450a393b7c88ece00e37e10e16323ffd41609d0"
+  "h": "c1e3a84fe4a6583adc6005dd27bed0faefa8906d"
  },
  "/statti/dubli-zamovlen-pry-obmini-saitu-z-1c/": {
   "d": "2026-11-23",
@@ -141,15 +165,27 @@
  },
  "/statti/ekvairynh-monobank-bas-rozdrib-ut/": {
   "d": "2026-11-23",
-  "h": "1da16feb5c7cdb748220d22412b5fdb1cc5a15f5"
+  "h": "a900ac7494f1ae768e771dbc593fcd254e92a907"
  },
  "/statti/ekvairynh-monobank-plata-by-mono-1c/": {
   "d": "2026-11-23",
-  "h": "064790d39195913ed7f752b656e37fd48b68a08d"
+  "h": "71716ceaa9ba5323fdddf6cfdf8f6243f23dfdbb"
+ },
+ "/statti/fid-dlia-google-merchant-z-1c/": {
+  "d": "2026-11-23",
+  "h": "e557d12903262d4ea5ee59c07a4729e164a06e85"
+ },
+ "/statti/fiskalnyi-chek-pry-onlain-oplati-1c/": {
+  "d": "2026-11-23",
+  "h": "03dedfecedea6e5c6628569e02bf6eeda59ad19b"
  },
  "/statti/hroshi-na-rakhunkakh-i-kasakh-odyn-ekran-1c/": {
   "d": "2026-11-23",
-  "h": "a0947197212c2ebb42401da4503b104442f3d08b"
+  "h": "f665d19c6a7eb5b354085620a8f113b9c0a2abc3"
+ },
+ "/statti/hroshi-za-nakladenyi-platizh-ne-pryishly/": {
+  "d": "2026-11-23",
+  "h": "e1397c7c3cb814245a1ffee13b7bb70085247b5d"
  },
  "/statti/http-servis-1c-dlia-intehratsii/": {
   "d": "2026-11-23",
@@ -160,12 +196,20 @@
   "h": "36102480a48f34a7802a53a27d7ed51c40423ee6"
  },
  "/statti/intehratsii-bas-malyi-biznes-internet-mahazyn/": {
-  "d": "2026-11-20",
-  "h": "9946f72e733730aa11cc7b1ddb45b7ccc6190499"
+  "d": "2026-11-23",
+  "h": "228a4c933e84aced7e0cba6839214617ea75a4bc"
+ },
+ "/statti/istoriia-lystuvannia-z-kliientom-v-kartsi/": {
+  "d": "2026-11-23",
+  "h": "1d3cbfb4f1fe2b8b9f9c7f09dffad131ff9450fe"
+ },
+ "/statti/kasovyi-rozryv-internet-mahazyn/": {
+  "d": "2026-11-23",
+  "h": "86df2d24e9236546a27d38ceed3803bb3b66c59d"
  },
  "/statti/keis-avtomatyzatsiia-internet-mahazynu-1c-unf/": {
-  "d": "2026-11-20",
-  "h": "ab87e22a984a49fbaf5bdc225334b2aacf7d8829"
+  "d": "2026-11-23",
+  "h": "302b2f68ce627e5b96e32581d5ceb355e3c94393"
  },
  "/statti/keis-avtomatyzatsiia-mahazynu-kontaktnykh-linz-1c/": {
   "d": "2026-11-20",
@@ -173,27 +217,47 @@
  },
  "/statti/kharakterystyky-nomenklatury-1c-unf/": {
   "d": "2026-11-23",
-  "h": "7731a0ed460f318e8bfb4a5a796a2e9cdd473287"
+  "h": "4409944b6f690b0d62e24f92ed503bdce9b7c3c7"
+ },
+ "/statti/kilka-fop-i-bankivski-rakhunky-v-1c/": {
+  "d": "2026-11-23",
+  "h": "24484cf4a8fd7b0ffa643dc371068f3472db3c08"
  },
  "/statti/kilka-fop-v-1c-rozpodil-zamovlen/": {
   "d": "2026-11-23",
-  "h": "db63022f4be3273c1c393223bde947ec3a89ecde"
+  "h": "757673d54645ce8e4195f387d90441486abf8012"
+ },
+ "/statti/kilka-saitiv-odna-baza-1c/": {
+  "d": "2026-11-23",
+  "h": "b68dbdcfc45f307155fe408c24487ab76b5cc125"
+ },
+ "/statti/klientska-baza-saitu-i-1c-dubli-kontrahentiv/": {
+  "d": "2026-11-23",
+  "h": "361d79b00cdda50531e6de12d089f224aaad886b"
  },
  "/statti/komisiia-ekvairynhu-v-obliku-1c/": {
   "d": "2026-11-23",
   "h": "dc516c251f7dade3b053beb0728ab01cbca694a1"
  },
+ "/statti/komisiia-novapay-yak-vrakhuvaty-v-obliku/": {
+  "d": "2026-11-23",
+  "h": "8286b67095c487a2fd8e4b825082e77f1b6ddb29"
+ },
  "/statti/kontrol-limitiv-fop-v-1c/": {
   "d": "2026-11-23",
-  "h": "b5d7bab53c13c6cf9739c767285038c6e7154947"
+  "h": "297b920d45a85dd570ac8b4490aca829004820e7"
  },
  "/statti/kontrol-oplaty-nova-poshta-chy-nakladenyi-platizh/": {
   "d": "2026-11-23",
-  "h": "3298681e266894bf9a6c0db2ce1d5da67352deba"
+  "h": "e5c3a833cc284b8bb0124f27f162901ac1810da0"
+ },
+ "/statti/kontrol-tsin-postachalnyka-zminy-zakupivli/": {
+  "d": "2026-11-23",
+  "h": "f17032711bee70c60f204788444927fd4e29cf35"
  },
  "/statti/kpi-menedzheriv-internet-mahazynu-v-1c/": {
   "d": "2026-11-23",
-  "h": "a816176fdb72062f9046ede1235efaa39bfbc710"
+  "h": "497bec54f89fc3708273db0e605a4dddd43c879c"
  },
  "/statti/kynutyi-koshyk-nahaduvannia-viber-telegram/": {
   "d": "2026-11-23",
@@ -201,39 +265,63 @@
  },
  "/statti/marzha-pislia-reklamy-v-1c/": {
   "d": "2026-11-23",
-  "h": "a156d41374d207c4e7fb669a6eae7c1218a36c5f"
+  "h": "f37fec3f1a8a2cfd92f6dfbbe6a6bde9164d9277"
+ },
+ "/statti/mizhnarodna-dostavka-internet-mahazyn-1c/": {
+  "d": "2026-11-23",
+  "h": "e1e7df3e12fbf8b6668dcbb798fe5862a877c42c"
  },
  "/statti/nahaduvannia-pro-povtornu-pokupku-1c/": {
   "d": "2026-11-23",
   "h": "6b24662f5604833dd8210544df47f68effe84092"
  },
+ "/statti/nakladenyi-platizh-chy-peredoplata-shcho-vyhidnishe/": {
+  "d": "2026-11-23",
+  "h": "9246585d0acd476806e8c1178af4dbce27f5e8c2"
+ },
  "/statti/nakladenyy-platizh-nova-poshta-oblik-1c/": {
   "d": "2026-11-23",
-  "h": "7d7513001af45c21296487eeb6a54c9cf6f053ba"
+  "h": "f8121e46e0b8867491beff9da7c4f8b1fa37545d"
+ },
+ "/statti/nazvy-tovariv-dlia-saitu-seo-z-1c/": {
+  "d": "2026-11-23",
+  "h": "e80cdc7657365168134f91af5e813564c74e144a"
  },
  "/statti/nevirni-zalyshky-na-saiti-prodaly-toho-choho-nemaie/": {
   "d": "2026-11-23",
-  "h": "0778c733cf29980aa05feca8489dff91a4abd4ab"
+  "h": "b86d4adb0a1e062c61f89088888106557b9138dc"
  },
  "/statti/nezabrani-posylky-nakladenyi-platizh-zbytky/": {
   "d": "2026-11-23",
-  "h": "222dd37124974b3e62c59b64aaee5c67e32d458d"
+  "h": "b376b27cb3613f58abbc757ef2390b811ccbc78a"
  },
  "/statti/nova-poshta-i-1c-shcho-avtomatyzuvaty/": {
   "d": "2026-11-23",
-  "h": "3152f9b46576589664845d92c92fe489effa81c6"
+  "h": "7efb329639b79b4a95580a2184d3b786b5d2c331"
  },
  "/statti/novapay-nakladenyy-platizh-1c/": {
   "d": "2026-11-23",
-  "h": "5bf8dcf5d2ebb50ffcdcc02f4809728875e2ca3d"
+  "h": "a69d04fbdf592938ec5e5a157646625980119716"
  },
  "/statti/obmin-1c-bas-z-horoshop-prom-opencart-woocommerce/": {
   "d": "2026-11-23",
-  "h": "bd1e9a35ab75d7126b1191e26a35864fc082d7f8"
+  "h": "9bf573d1207566fb1bc6e24d1634fdf10056cbb0"
  },
  "/statti/obmin-1c-z-epicentrk-marketplace/": {
   "d": "2026-11-23",
   "h": "26ef28c42ea802a116fd61431461abdd1e7beb53"
+ },
+ "/statti/obmin-1c-z-horoshop-detalno/": {
+  "d": "2026-11-23",
+  "h": "8f3c026181665ef924d0b7e84bf46ffcf8b30ba9"
+ },
+ "/statti/obmin-1c-z-opencart/": {
+  "d": "2026-11-23",
+  "h": "363bbb1f0b5a8057b3b0efcfca3ec7adca09d9b7"
+ },
+ "/statti/obmin-1c-z-prom-ua-zamovlennia/": {
+  "d": "2026-11-23",
+  "h": "6cec28fd35d3bed0fdbdbf70a0bcc7a811a5d8f0"
  },
  "/statti/obmin-1c-z-rozetka-marketplace/": {
   "d": "2026-11-23",
@@ -243,41 +331,69 @@
   "d": "2026-11-23",
   "h": "c7bf244e90f03830bc67cb6b96c8c519d4366022"
  },
+ "/statti/obmin-1c-z-woocommerce/": {
+  "d": "2026-11-23",
+  "h": "6011f04c30b8cec9b589707a90fee922c2b4d351"
+ },
  "/statti/obmin-bitrix-z-1c-typovyy-chy-vlasne-api/": {
-  "d": "2026-11-20",
-  "h": "32cceef64c2254fddf12dcd522c26a47584a3d87"
+  "d": "2026-11-23",
+  "h": "18908fb592b35c156c638ef26af9a360599155fe"
  },
  "/statti/obmin-saitu-z-1c-za-rozkladom-chy-odrazu/": {
   "d": "2026-11-23",
   "h": "c3ecfc016711ec84e92b743a7529b8f0b188988f"
  },
+ "/statti/obmin-tsin-z-1c-na-sait/": {
+  "d": "2026-11-23",
+  "h": "353e2d300fa8fa40c727e3e5f78eace6278690d8"
+ },
  "/statti/onovlennia-1c-zlamalo-dorobky/": {
   "d": "2026-11-23",
-  "h": "b887763409e412b66a317e1aa5a7959d00e00772"
+  "h": "cd651c171a16ae4939552e2ed983aefe35cd5b33"
  },
  "/statti/oplata-chastynamy-pryvatbank-na-sayti-1c/": {
   "d": "2026-11-23",
-  "h": "c7a5606fe06ad7a53d130b36fe2131533ebee1ca"
+  "h": "6ba8405fcc2e3d56b698cd508de207a66cafdd4d"
+ },
+ "/statti/oplata-chastynamy-yak-pidkliuchyty-na-saiti/": {
+  "d": "2026-11-23",
+  "h": "4fcaa46cabaa42a09dfaf176ad3830fcb928c676"
+ },
+ "/statti/oplata-kartkoiu-pry-otrymanni-chy-peredoplata/": {
+  "d": "2026-11-23",
+  "h": "f7ae596753db081b413192d42ee45ab0ae65a15e"
+ },
+ "/statti/oplata-za-qr-kodom-v-1c/": {
+  "d": "2026-11-23",
+  "h": "00d7c648e287aa327ef0058e59ac323cf9493af6"
  },
  "/statti/opysy-tovariv-dlia-internet-mahazynu-z-1c/": {
   "d": "2026-11-23",
-  "h": "423cf0dde68b0ef61cc3e456e3a07c302d4c72c1"
+  "h": "8798b4b312124b65885c09aae05163a6f7daecc6"
  },
  "/statti/osobystyi-viber-telegram-menedzhera-v-1c/": {
   "d": "2026-11-23",
-  "h": "b21ec4a1924233e8921d06f135bef98716c548f6"
+  "h": "4af926b57334696d36eda041b53e4856435e3c4e"
+ },
+ "/statti/peredacha-chatu-mizh-menedzheramy/": {
+  "d": "2026-11-23",
+  "h": "636346c571e532d211dd84e2473da41b0d52a750"
  },
  "/statti/perekhid-z-1c-unf-na-bas-malyi-biznes-dorobky/": {
   "d": "2026-11-23",
-  "h": "296aaf5885bc6dd46880c0a3270a5d02e2c74267"
+  "h": "8d27cf3d73a9b74b5eca5bebf61432f7b329ff0f"
+ },
+ "/statti/peresort-i-nevirni-zalyshky-inventaryzatsiia/": {
+  "d": "2026-11-23",
+  "h": "0940b13f5e13eb3cefef282ab308ef2f5cb16041"
  },
  "/statti/pidkliuchennia-monobank-do-1c/": {
-  "d": "2026-11-20",
-  "h": "d8acb14862d3d6b67531d68078e17df9a688fbf6"
+  "d": "2026-11-23",
+  "h": "b6977c17609c008c3ed781b5226faaf4b74e21cf"
  },
  "/statti/pokupka-chastynamy-monobank-1c/": {
   "d": "2026-11-23",
-  "h": "69e357d40b4e26b4fd87e7adacf67f345ddb6045"
+  "h": "d867d82cdb20bb3b94ac2e949068e60681f62ed0"
  },
  "/statti/posylka-na-zberihanni-nahaduvannia-kliientu/": {
   "d": "2026-11-23",
@@ -285,63 +401,103 @@
  },
  "/statti/povernennia-koshtiv-za-kartkoiu-1c/": {
   "d": "2026-11-23",
-  "h": "2eb5619f1a3314869fad76629f5dc0d0812fac28"
+  "h": "d69468cb13ee4151fbc54a8929f1ec85338c16c5"
+ },
+ "/statti/povernennia-tovaru-postachalnyku-1c/": {
+  "d": "2026-11-23",
+  "h": "3826c027cc5d44eccc8362b5fd21c09f4aad2b5a"
  },
  "/statti/povernennia-tovaru-vid-kliienta-oblik-1c/": {
   "d": "2026-11-23",
-  "h": "eddb0b0d42ec78e73b5d754bf1aec5fc6224f215"
+  "h": "ba162425c001ac45ca576218498eba481baf6558"
+ },
+ "/statti/povidomlennia-pro-oplatu-i-povernennia-kliientu/": {
+  "d": "2026-11-23",
+  "h": "9e5ff81a6f73a8891629a5bbae578dfe5c9bdeef"
  },
  "/statti/pretenziia-nova-poshta-vtrachena-poshkodzhena-posylka/": {
   "d": "2026-11-23",
   "h": "c06a9f2b5eebcb0d59c3e3480f4597cd4ce2c5b6"
  },
+ "/statti/pributok-po-kanalakh-prodazhu-1c/": {
+  "d": "2026-11-23",
+  "h": "ce9941da5b3b93eff60856fa32c73ec721b99dec"
+ },
+ "/statti/promokody-dlia-povernennia-kliientiv/": {
+  "d": "2026-11-23",
+  "h": "c2baf04e0ab7761a85e833e1d266441b23e26d5b"
+ },
  "/statti/propushcheni-dzvinky-internet-mahazyn-1c/": {
   "d": "2026-11-23",
-  "h": "0cda48a02a58ed61fc330b7f30e2723a86771d58"
+  "h": "08643e6a638989859558202be987709d95ac27df"
  },
  "/statti/prykhidna-nakladna-z-foto-shi-1c/": {
   "d": "2026-11-23",
-  "h": "1d426bfd99e137ba45ea2209b461c288a156ceb6"
+  "h": "bb22d2e800ff57bcaac4a32304b9b26a6800cb2e"
  },
  "/statti/rakhunok-na-oplatu-monobank-za-posylanniam-1c/": {
   "d": "2026-11-23",
   "h": "0ccd9c7a456caf8482c0b3c3bce8d7709493c267"
  },
+ "/statti/rezerv-tovaru-pid-zamovlennia-z-saitu/": {
+  "d": "2026-11-23",
+  "h": "f42a19eb30b5586cb40f0a9087b31a7be192dca2"
+ },
+ "/statti/rfm-sehmentatsiia-kliientiv-internet-mahazynu/": {
+  "d": "2026-11-23",
+  "h": "1c8c89816c0e69458e92d5992475967c136477ed"
+ },
  "/statti/robochyy-stil-menedzhera-internet-mahazynu-1c/": {
   "d": "2026-11-23",
-  "h": "7079d5607857ba19ba8daf4de2a6c785d5a5ab48"
+  "h": "22d2c29eacc684c00fdb4c80afbeb216a7aa6970"
  },
  "/statti/rozpodil-oplat-mizh-fop-avtomatychno/": {
   "d": "2026-11-23",
-  "h": "7f5a8819e2e27f58472a24812e00818394276190"
+  "h": "8a11da93d5060f1dc0446d9300efbf2551ce4a91"
+ },
+ "/statti/rozpodil-zamovlen-mizh-menedzheramy/": {
+  "d": "2026-11-23",
+  "h": "32e13d7544c8fa10fa32be1360d9c0941a8b132f"
  },
  "/statti/rozshyrennia-konfihuratsii-1c-chomu-bezpechnishe/": {
-  "d": "2026-11-20",
-  "h": "d74426ff0442f368d2439659cf6139997d7886b5"
+  "d": "2026-11-23",
+  "h": "39208b7ad9ef9cceffdc2561150cd1396f36b78b"
  },
  "/statti/rozstrochka-dlia-internet-mahazynu-monobank-chy-pryvatbank/": {
   "d": "2026-11-23",
-  "h": "20fa24806a1b2872dbe47d6cb531ff0292e69fd4"
+  "h": "b69b547e4f2cb78599f79ac0fc98b73fa0cf5f36"
  },
  "/statti/rozsylky-po-bazi-kliientiv-1c-viber-telegram/": {
   "d": "2026-11-23",
-  "h": "073ef68122cfb9e46e23d974f5025b50d3890c9b"
+  "h": "d274a85f8b1f75f0be116c516a2262e8eb34d59e"
+ },
+ "/statti/shablony-vidpovidei-menedzheriv-v-chatakh/": {
+  "d": "2026-11-23",
+  "h": "178d367019b9dec97c05ed1344b2f456b0513ba1"
  },
  "/statti/shchodennyi-zvit-vlasnyka-internet-mahazynu/": {
   "d": "2026-11-23",
-  "h": "227dbfb09240c45e02abd255dbb56b10bea9e3fd"
+  "h": "217a68c45551048d54d6c77d19cb402ff5a760db"
+ },
+ "/statti/shi-pidbir-analohiv-tovaru/": {
+  "d": "2026-11-23",
+  "h": "7742c8309f226e151ce06fe9711676d30c41beed"
  },
  "/statti/shi-v-1c-dlia-internet-mahazynu/": {
   "d": "2026-11-23",
   "h": "b9915214114f7cc3057fcbb14d19c15694f5905a"
  },
+ "/statti/shi-zapyty-do-bazy-bez-prohramista/": {
+  "d": "2026-11-23",
+  "h": "02f0b1e6e570d571fc94faa210a7cbdfee33a524"
+ },
  "/statti/skilky-koshtuie-intehratsiia-1c/": {
-  "d": "2026-11-20",
-  "h": "80a77a1cb070ecccdf432a891366bb9650371b60"
+  "d": "2026-11-23",
+  "h": "b1b140bac69ee09773c3be1a0f00a50b9e8ab13e"
  },
  "/statti/slovnyk-internet-mahazyn-1c-eqvairynh-nakladenyi-platizh/": {
-  "d": "2026-11-20",
-  "h": "97975d3447a25cea6fdd4d6286cd4c63c8bdeb69"
+  "d": "2026-11-23",
+  "h": "8bcf051c1a40bf30a6756778e5389dab66954bf1"
  },
  "/statti/sms-chy-viber-chy-telegram-povidomlennia-kliientam/": {
   "d": "2026-11-23",
@@ -349,43 +505,67 @@
  },
  "/statti/sobivartist-i-marzha-internet-mahazynu-1c/": {
   "d": "2026-11-23",
-  "h": "78588e8ef103f6e1e6c7255750ec1c7225df304d"
+  "h": "ce5c6775316f59455094e83730295ec38358fb3a"
+ },
+ "/statti/statusy-zamovlen-kliientu-avtomatychno/": {
+  "d": "2026-11-23",
+  "h": "598d96088eb479c923f83717df29169dc886ce8c"
  },
  "/statti/stvorennia-ttn-nova-poshta-z-1c/": {
   "d": "2026-11-23",
-  "h": "ae4ee6d31a44472c1d955f55139067c5c7753319"
+  "h": "535f9de3d12175ab132039d0c825259a810d8bf3"
  },
  "/statti/telegram-bot-dlia-internet-mahazynu-z-1c/": {
   "d": "2026-11-23",
-  "h": "476ce0529d052777b05c883381c5c203d6c13712"
+  "h": "e1343200355f8238ad17708900403accc33a1154"
  },
  "/statti/typovi-pomylky-avtomatyzatsii-internet-mahazynu/": {
   "d": "2026-11-23",
-  "h": "e53c05a6bf539bdebd8037a9a85951389e9cf8c5"
+  "h": "851ec84f685a466ad1bc5960be842f91f6429ec7"
  },
  "/statti/typovyi-obmin-bitrix-1c-pomylky/": {
   "d": "2026-11-23",
-  "h": "9a0973811e26c0fdfed39688412460921c061576"
+  "h": "cd3cc3df2ed4617f4ceefd77485e0ff6e3e65987"
  },
  "/statti/ukrposhta-meest-1c-intehratsiia/": {
   "d": "2026-11-23",
-  "h": "a05a98810bb41f0604a8c1bd72ca6168f7a7d30e"
+  "h": "47792d2f42348df28e18932faad40037b91bf5cf"
+ },
+ "/statti/upravlinskyi-oblik-internet-mahazynu-1c/": {
+  "d": "2026-11-23",
+  "h": "c40e1ab7afbca2ee1e4b6d0f8e68ed5065712d62"
  },
  "/statti/varianty-tovaru-rozmir-kolir-1c-masovo/": {
   "d": "2026-11-23",
-  "h": "fb00fe91ec6a8e43d30fa789616cd972387ce655"
+  "h": "9245e369b2cb36ba00b9ae6e858839bff42133ba"
  },
  "/statti/vebkhuk-statusu-oplaty-monobank-1c/": {
   "d": "2026-11-23",
-  "h": "094fa9e86b6e03ada617a863b1272734b04c844a"
+  "h": "ef99e68e5c477c28bb15eb49f38d6bd709675b72"
  },
  "/statti/viber-bot-dlia-internet-mahazynu/": {
   "d": "2026-11-23",
   "h": "89cf37e59ce9eed28e3e23099c3cd4cf565eee2d"
  },
+ "/statti/viddilennia-chy-poshtomat-shcho-proponuvaty-kliientu/": {
+  "d": "2026-11-23",
+  "h": "a0ffba0fccda5ce5225ab13d3ee4c3e3a0602405"
+ },
  "/statti/vidhuky-pro-tovary-cherez-bota/": {
   "d": "2026-11-23",
   "h": "80a3a08a2f47deaeda54d4708c745e5700c5cbbf"
+ },
+ "/statti/vidpravka-rakhunku-i-ttn-u-chat/": {
+  "d": "2026-11-23",
+  "h": "8a65419da9b22fdefeb0749790e904d4a2928f48"
+ },
+ "/statti/vidstezhennia-statusiv-posylok-v-1c/": {
+  "d": "2026-11-23",
+  "h": "b903fad48d7c43311a53fe30239b42cbcdeb975e"
+ },
+ "/statti/vytraty-z-foto-cheka-v-1c/": {
+  "d": "2026-11-23",
+  "h": "0615ac75c67d1a64b3d94764bd8f7891d20e7c7e"
  },
  "/statti/whatsapp-business-v-1c/": {
   "d": "2026-11-23",
@@ -393,31 +573,43 @@
  },
  "/statti/yak-vybraty-prohramista-1c-dlia-internet-mahazynu/": {
   "d": "2026-11-23",
-  "h": "68a83ab6bbf0083017c16acc393f233c09226906"
+  "h": "6df7241e5cd7233f47e238e87bbb7118a76d775c"
+ },
+ "/statti/zadachi-menedzheram-v-1c-peredzvonyty/": {
+  "d": "2026-11-23",
+  "h": "1eb3f3eaf557d7677542e9e257cefd58beaa339e"
+ },
+ "/statti/zakriplennia-postachalnyka-za-fop/": {
+  "d": "2026-11-23",
+  "h": "5529cece426e7a2e196d382c1998900d02f62359"
  },
  "/statti/zalyshky-postachalnyka-na-saiti/": {
   "d": "2026-11-23",
-  "h": "4dd4f2ff1d68243799935c73cc0c7d1fcc959759"
+  "h": "58744f4aa89abecb1e63e9a85331534c9f8c5bdb"
  },
  "/statti/zalyshky-pryvat24-po-vsikh-fop-1c/": {
   "d": "2026-11-23",
-  "h": "dcff4c2f593b322d5d9a22551d09307402f21c11"
+  "h": "0c42c2f13caade2b951bd54439138115ec66c15b"
  },
  "/statti/zalyshky-z-1c-na-sayt-bez-ruchnoi-roboty/": {
   "d": "2026-11-23",
-  "h": "5792515b2699d18c3359ebbbf54f01f160143ce2"
+  "h": "f4557e3c0a5e370d391686aa9dab3b9e980d1056"
  },
  "/statti/zavantazhennia-prais-lysta-postachalnyka-v-1c/": {
   "d": "2026-11-23",
-  "h": "350219f28b521b5029df65262335913e4462d8ef"
+  "h": "adec31993973f261981e248c40c54721f9b91ae4"
  },
  "/statti/zistavlennia-nomenklatury-postachalnyka-1c/": {
   "d": "2026-11-23",
-  "h": "755cdc79a65150b3265fb4020a8be568ec13e7fb"
+  "h": "d21ba275aad257a1c6f8deabab4dba0b5a851d28"
  },
  "/statti/zvirka-nakladenoho-platezhu-1c/": {
   "d": "2026-11-23",
-  "h": "b13acf7b5b2504adccd7b70e02d81eb05f39fc70"
+  "h": "a7b0c0175c6aef881283cb1b687f2f17affe6bda"
+ },
+ "/statti/zvit-po-skasovanykh-zamovlenniakh/": {
+  "d": "2026-11-23",
+  "h": "8d8d1361c84fd3b306b8dc91bcf010da6bcf3bc8"
  },
  "/tsiny/": {
   "d": "2026-11-20",
@@ -425,6 +617,6 @@
  },
  "/zalyshky-z-1c-na-sayt/": {
   "d": "2026-11-23",
-  "h": "29e0ffe47062b893dd79f60b94ad2d019a3de70e"
+  "h": "d67683681a9811199e8d1b1afc9dde77890c7a7e"
  }
 }
