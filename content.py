@@ -303,3 +303,7 @@ from articles_new import add_platform as _apl
 _apl(ARTICLES, EXTRA, "uk")
 from articles_new import add_night3 as _an3
 _an3(ARTICLES, "uk")
+
+# 23.11: статті з Claude Batch — articles_claude.py
+from articles_claude import add_claude_arts as _aca
+_aca(ARTICLES, "uk")

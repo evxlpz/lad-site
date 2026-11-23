@@ -536,3 +536,7 @@ from articles_new import add_platform as _apl
 _apl(ARTICLES_RU, EXTRA_RU, "ru")
 from articles_new import add_night3 as _an3
 _an3(ARTICLES_RU, "ru")
+
+# 23.11: статті з Claude Batch — articles_claude.py
+from articles_claude import add_claude_arts as _aca
+_aca(ARTICLES_RU, "ru")
