@@ -5,6 +5,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content import EXTRA, ARTICLES
 from home_extra import HOME, AKA, PRICES, FAQP
 import hashlib
+from articles_claude import module_guide
 
 BASE = (sys.argv[1] if len(sys.argv) > 1 else 'https://example.com').rstrip('/')
 LANG = sys.argv[2] if len(sys.argv) > 2 else 'uk'
@@ -341,7 +342,9 @@ VIDEO_FULL = {'chaty-viber-telegram-1c': dict(
 for m in M:
     path = f'/{m["slug"]}/'
     x = EXTRA[m["key"]]
-    faq = x["faq"] + GEN_FAQ
+    # 23.11: блок-гайд і додаткові FAQ від Claude (articles_claude.module_guide)
+    MG = module_guide(m["key"], LANG)
+    faq = x["faq"] + [tuple(q) for q in (MG or {}).get("faq", [])] + GEN_FAQ
     HAS_VIDEO = os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'video', m["slug"] + '.mp4'))
     VF = VIDEO_FULL.get(m["slug"])
     art =[a for a in ARTICLES if a["module"] == m["key"]]
@@ -385,6 +388,7 @@ for m in M:
                        f'<h2 class="h2">{e(VF["h"][1 if RU else 0])}</h2><p class="lead">{e(VF["sub"][1 if RU else 0])}</p></div>'
                        f'<a class="btn ghost" href="{VF["yt"]}" rel="noopener">{"Смотреть на YouTube" if RU else "Дивитись на YouTube"}</a></div>'
                        f'<div class="vwrap"><video class="demo full" controls preload="none" playsinline poster="/video/{VF["file"]}.jpg"><source src="/video/{VF["file"]}.mp4" type="video/mp4"></video></div></section>\n')
+    guide_html = (f'<section class="wrap sec"><h2 class="h2">{e(MG["h"])}</h2><div class="prose mguide">' + ''.join(f'<h3>{e(h)}</h3>' + ''.join(f'<p>{e(p)}</p>' for p in ps) for h, ps in MG["sections"]) + '</div></section>\n') if MG else ''
     s += f'''<main>
 <section class="wrap hero">
 <div class="grow"><p class="kicker">{e(m["group"])}</p><h1>{e(m["h1"])}</h1><p class="lead">{e(m["lead"])}</p></div>
@@ -394,7 +398,7 @@ for m in M:
 <section class="wrap sec"><h2 class="h2">Що робить модуль</h2><ul class="list feats">{feats}</ul></section>
 <section class="wrap sec"><h2 class="h2">Як це працює</h2><ol class="flow">{how}</ol></section>
 <section class="wrap sec"><h2 class="h2">Що потрібно для підключення</h2><ul class="need">{need}</ul></section>
-<section class="wrap sec"><div class="box lime grid3">
+{guide_html}<section class="wrap sec"><div class="box lime grid3">
 <div><i>01</i><h3>Демо наживо</h3><p>Показую модуль у роботі через демонстрацію екрана, до оплати.</p></div>
 <div><i>02</i><h3>Встановлення</h3><p>Сам ставлю віддалено: спершу на копію бази, потім на робочу.</p></div>
 <div><i>03</i><h3>Навчання</h3><p>Показую вашим людям, як працювати, і 30 днів виправляю, якщо щось не так.</p></div>

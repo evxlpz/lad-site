@@ -32,3 +32,13 @@ def refresh_arts(articles, lang):
         if n:
             a.update(title=n['title'], desc=n['desc'], lead=n['lead'], body=[(h, list(ps)) for h, ps in n['body']],
                      faq=[(q, ans) for q, ans in n.get('faq', [])])
+
+
+_MG = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'claude_modules.json')
+
+
+def module_guide(key, lang):
+    """23.11: додатковий блок-гайд і FAQ для сторінки модуля (Claude). Нема — None."""
+    if not os.path.exists(_MG):
+        return None
+    return json.load(open(_MG, encoding='utf-8')).get(key, {}).get('uk' if lang == 'uk' else 'ru')

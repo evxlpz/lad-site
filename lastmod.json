@@ -5,7 +5,7 @@
  },
  "/ai-pomichnytsya-1c/": {
   "d": "2026-11-23",
-  "h": "8c8e478ef9a294c054028090047be10ef56087b0"
+  "h": "f7571905238164bde21c077ff42105674412e46b"
  },
  "/ceny/": {
   "d": "2026-11-07",
@@ -13,19 +13,19 @@
  },
  "/chaty-viber-telegram-1c/": {
   "d": "2026-11-23",
-  "h": "08e698893ae18c8855c64a0a56b55ad16085a8d1"
+  "h": "60c2fb3a72717fab32577ddbf46b7ee475755af1"
  },
  "/ekvairynh-monobank-1c/": {
   "d": "2026-11-23",
-  "h": "978fea5d0bc862ad743feba4a4d2db399fe37b52"
+  "h": "0b653dbd6748a0f1da4261bb32bd68569bf0e190"
  },
  "/groshi-marzha-1c/": {
   "d": "2026-11-23",
-  "h": "a3a93d1e76d796e030127c6d20f48f7a08c21a20"
+  "h": "24239d48295ef7799902ea75c37dcaa1dbd3e772"
  },
  "/heneratsiya-kharakterystyk-1c/": {
   "d": "2026-11-23",
-  "h": "1ee21d7cc337afe91eba6709c0b4fe93558ac3f9"
+  "h": "c291cde4b28c634d3de53eee95daae27d54245a8"
  },
  "/integratsiya-monopay-1c-bas/": {
   "d": "2026-11-07",
@@ -33,27 +33,27 @@
  },
  "/nova-poshta-1c/": {
   "d": "2026-11-23",
-  "h": "716aeec3ea80bcc1906def654e214079b5143cfe"
+  "h": "fbd7b24e128fd759c1e8700dd0b200a2312a4d24"
  },
  "/novapay-1c/": {
   "d": "2026-11-23",
-  "h": "3ff6be9cd52b658c35174d9418b9708e345559c9"
+  "h": "b58e3116a8c513b89764fce2302e4cb0bb434071"
  },
  "/obmin-saytu-z-1c/": {
   "d": "2026-11-23",
-  "h": "efe8161de94fdb771b8e2fd34bcabb704e4e795a"
+  "h": "e1c0f26af156dd164f4dc86034e3fc14925804d1"
  },
  "/obmin-z-postachalnykom-api-1c/": {
   "d": "2026-11-23",
-  "h": "15424f5665b17aa844313ef87c3451e98ccd504a"
+  "h": "72afb2ec7cb4cc1a1f49b140e4f86fd925c0e6d9"
  },
  "/oplata-chastynamy-pryvatbank-1c/": {
   "d": "2026-11-23",
-  "h": "0924f6b96b8a332d9d51505963fbd798b163df4e"
+  "h": "70d137794e8135ccb7db60d4fb75d369ceef9f83"
  },
  "/pryvat24-zalyshky-fop-1c/": {
-  "d": "2026-11-20",
-  "h": "c96e463aa06f03c92f744fbd7ee2844de46bdde1"
+  "d": "2026-11-23",
+  "h": "6aae40fc9ce563a71cdca0b865228454562b780d"
  },
  "/pytannia/": {
   "d": "2026-11-23",
@@ -61,11 +61,11 @@
  },
  "/robochyy-stil-menedzhera-1c/": {
   "d": "2026-11-23",
-  "h": "11530dfe5e95a32ae61f2e582576cd06ae0f2a6d"
+  "h": "a2c50eefe8bdb1c509f538dff8178a1512076a1f"
  },
  "/rozpodil-zamovlen-fop-1c/": {
   "d": "2026-11-23",
-  "h": "46e4fdcb1df1860a93f152afbb637a7baa7b7d62"
+  "h": "486faca5bf832fc5158a195fb47fca0923403ce2"
  },
  "/spovishchennya-viber-telegram-1c/": {
   "d": "2026-11-20",
@@ -617,6 +617,6 @@
  },
  "/zalyshky-z-1c-na-sayt/": {
   "d": "2026-11-23",
-  "h": "d67683681a9811199e8d1b1afc9dde77890c7a7e"
+  "h": "4203a4308250680690a9c553ba125629fb6983cb"
  }
 }
